@@ -1,0 +1,3879 @@
+{
+  "summary": {
+    "dryRun": false,
+    "totalSourceRows": 139,
+    "validRecords": 70,
+    "created": 70,
+    "updated": 0,
+    "unchanged": 0,
+    "archived": 3,
+    "skipped": 1,
+    "duplicates": 2,
+    "missingImages": 70,
+    "missingSkus": 0,
+    "invalidPrices": 0,
+    "gstInconsistencies": 0,
+    "visibilityConflicts": 1,
+    "needsReview": 9
+  },
+  "products": [
+    {
+      "sku": "DDG-LGT-001",
+      "name": "Tactical Rugged Metal Torch",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Torches & Lighting",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!3",
+      "priceInclusive": 282.02,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "8513",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-LGT-002",
+      "name": "RockLite Rechargeable Flashlight",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Torches & Lighting",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!4",
+      "priceInclusive": 966.42,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "8513",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-TLS-001",
+      "name": "15-in-1 Pocket Multitool",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Tools & Survival",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!5",
+      "priceInclusive": 1792.42,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "8205",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "restricted_knife",
+          "message": "Knife: 18+ and India-only delivery"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-LGT-003",
+      "name": "Multi-Function Rechargeable LED Light",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Torches & Lighting",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!6",
+      "priceInclusive": 954.62,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "8513",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-LGT-004",
+      "name": "Rechargeable Waterproof LED Bulb",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Torches & Lighting",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!7",
+      "priceInclusive": 376.42,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "8539",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-CMP-001",
+      "name": "Camping Cookware Set",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Camping & Outdoor",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!8",
+      "priceInclusive": 2539.95,
+      "gstRate": 5,
+      "gstRule": "fixed",
+      "hsn": "7615",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-LGT-005",
+      "name": "Rechargeable Head Lamp",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Torches & Lighting",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!9",
+      "priceInclusive": 506.22,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "8513",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "spec_incomplete",
+          "message": "2 specification line(s) hidden from customers (placeholder or internal note) — complete them in the admin"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-APP-001",
+      "name": "Snow Hat with Fur Lining & Face Mask",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Headwear & Apparel",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!10",
+      "priceInclusive": 933.45,
+      "gstRate": 5,
+      "gstRule": "apparel_threshold",
+      "hsn": "6505",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-TLS-002",
+      "name": "Survival Kit",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Tools & Survival",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!11",
+      "priceInclusive": 2736.42,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "9605",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-TLS-003",
+      "name": "Multi-Tool Folding Knife (Pocket Knife)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Tools & Survival",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!12",
+      "priceInclusive": 743.4,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "8211",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "restricted_knife",
+          "message": "Knife: 18+ and India-only delivery"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-CMP-002",
+      "name": "Mosquito Head Net (Headgear Not Included)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Camping & Outdoor",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!13",
+      "priceInclusive": 303.45,
+      "gstRate": 5,
+      "gstRule": "fixed",
+      "hsn": "6307",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-CMP-003",
+      "name": "Ice Cleats / Crampons (Pair)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Camping & Outdoor",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!14",
+      "priceInclusive": 3373.62,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "7326",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-EYE-001",
+      "name": "Intruder Tactical Goggles (3 Lens)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Tactical Eyewear",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!15",
+      "priceInclusive": 1568.22,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "9004",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-EYE-002",
+      "name": "DareDevil Tactical Shooting Glasses (3 Lens)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Tactical Eyewear",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!16",
+      "priceInclusive": 1910.42,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "9004",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "spec_incomplete",
+          "message": "1 specification line(s) hidden from customers (placeholder or internal note) — complete them in the admin"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-EYE-003",
+      "name": "Sports Tactical Glasses",
+      "action": "create",
+      "status": "review",
+      "importStatus": "review",
+      "department": "Tactical Eyewear",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!17",
+      "priceInclusive": 1473.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "9004",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [
+        "Safety standard claimed — show only with the test report on file",
+        "Standards/certification claim — requires evidence",
+        "Safety standard claimed — show only with the test report on file"
+      ],
+      "blockingFlags": [
+        {
+          "code": "claim_safety_standard",
+          "message": "Safety standard claimed — show only with the test report on file",
+          "evidence": "in extreme environments. Built to meet Z87 safety standards, the impact-resistant polycarbonate len"
+        },
+        {
+          "code": "claim_meets_standards",
+          "message": "Standards/certification claim — requires evidence",
+          "evidence": "of protection in extreme environments. Built to meet Z87 safety standards, the impact-resistant pol"
+        },
+        {
+          "code": "claim_safety_standard",
+          "message": "Safety standard claimed — show only with the test report on file",
+          "evidence": "Safety Standard: ANSI Z87.1 Compliant"
+        }
+      ],
+      "warnings": [
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": true
+    },
+    {
+      "sku": "DDG-CMP-004",
+      "name": "Camping Collapsible Water Bucket (10 L)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Camping & Outdoor",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!18",
+      "priceInclusive": 544.95,
+      "gstRate": 5,
+      "gstRule": "fixed",
+      "hsn": "6307",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-TLS-004",
+      "name": "Folding Entrenching Tool (Shovel)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Tools & Survival",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!19",
+      "priceInclusive": 1414.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "8201",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-APP-002",
+      "name": "Tactical Military Poncho",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Headwear & Apparel",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!20",
+      "priceInclusive": 586.95,
+      "gstRate": 5,
+      "gstRule": "apparel_threshold",
+      "hsn": "6210",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-CMP-005",
+      "name": "Portable Cassette Gas Stove",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Camping & Outdoor",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!21",
+      "priceInclusive": 4895.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "7321",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "spec_incomplete",
+          "message": "4 specification line(s) hidden from customers (placeholder or internal note) — complete them in the admin"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-LGT-006",
+      "name": "Camping Emergency Lantern",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Torches & Lighting",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!22",
+      "priceInclusive": 1083.24,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "8513",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "spec_incomplete",
+          "message": "4 specification line(s) hidden from customers (placeholder or internal note) — complete them in the admin"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-CMP-006",
+      "name": "Multi-Fuel Camping Stove",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Camping & Outdoor",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!23",
+      "priceInclusive": 8825.22,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "7321",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-CMP-007",
+      "name": "Zapp Anti-Shock Trekking Pole",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Camping & Outdoor",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!24",
+      "priceInclusive": 691.95,
+      "gstRate": 5,
+      "gstRule": "fixed",
+      "hsn": "6602",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "third_party_brand",
+          "message": "Third-party brand name — keep only with authorised-distributor proof"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-TAC-001",
+      "name": "Tactical Airsoft Helmet - Non-Ballistic",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Training & Tactical Gear",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!25",
+      "priceInclusive": 3102.22,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "6506",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-CMP-008",
+      "name": "Folding Aluminium Table with Stools",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Camping & Outdoor",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!26",
+      "priceInclusive": 9781.02,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "9403",
+      "packaging": 150,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "spec_incomplete",
+          "message": "2 specification line(s) hidden from customers (placeholder or internal note) — complete them in the admin"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-CMP-009",
+      "name": "Portable Folding Toilet",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Camping & Outdoor",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!27",
+      "priceInclusive": 5160.14,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "3922",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "spec_incomplete",
+          "message": "1 specification line(s) hidden from customers (placeholder or internal note) — complete them in the admin"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-CMP-010",
+      "name": "Foldable Outdoor Chair",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Camping & Outdoor",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!28",
+      "priceInclusive": 2453.22,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "9401",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "spec_incomplete",
+          "message": "4 specification line(s) hidden from customers (placeholder or internal note) — complete them in the admin"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-CMP-011",
+      "name": "Camping Foam Mat (Aluminium-Coated)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Camping & Outdoor",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!29",
+      "priceInclusive": 2181.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "3921",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-CMP-012",
+      "name": "Shower / Changing / Toilet Tent",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Camping & Outdoor",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!30",
+      "priceInclusive": 3390.45,
+      "gstRate": 5,
+      "gstRule": "fixed",
+      "hsn": "6306",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-CMP-013",
+      "name": "Pop-Up Tent (2-3 Person)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Camping & Outdoor",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!31",
+      "priceInclusive": 3631.95,
+      "gstRate": 5,
+      "gstRule": "fixed",
+      "hsn": "6306",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-BAG-001",
+      "name": "Combat First Aid & Soldier Bag",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Bags & Backpacks",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!32",
+      "priceInclusive": 765.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "4202",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-FTW-001",
+      "name": "DareDevil Anti-Spike Jungle Shoes",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Footwear",
+      "sourceCategory": "Warrior Men",
+      "source": "Products!33",
+      "priceInclusive": 11210,
+      "gstRate": 18,
+      "gstRule": "apparel_threshold",
+      "hsn": "6404",
+      "packaging": 80,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "spec_incomplete",
+          "message": "1 specification line(s) hidden from customers (placeholder or internal note) — complete them in the admin"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-FTW-002",
+      "name": "DareDevil Leather Anti-Spike Shoes",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Footwear",
+      "sourceCategory": "Warrior Men",
+      "source": "Products!34",
+      "priceInclusive": 10500.82,
+      "gstRate": 18,
+      "gstRule": "apparel_threshold",
+      "hsn": "6403",
+      "packaging": 80,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-FTW-003",
+      "name": "Tactical Jungle Operations Shoes",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Footwear",
+      "sourceCategory": "Warrior Men",
+      "source": "Products!35",
+      "priceInclusive": 3186,
+      "gstRate": 18,
+      "gstRule": "apparel_threshold",
+      "hsn": "6404",
+      "packaging": 80,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-FTW-004",
+      "name": "DareDevil High-Altitude Snow Boots",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Footwear",
+      "sourceCategory": "Warrior Men",
+      "source": "Products!36",
+      "priceInclusive": 37758.82,
+      "gstRate": 18,
+      "gstRule": "apparel_threshold",
+      "hsn": "6402",
+      "packaging": 80,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "origin_claim",
+          "message": "Country-of-origin claim — confirm and fill the Country of Origin field"
+        },
+        {
+          "code": "origin_claim",
+          "message": "Country-of-origin claim — confirm and fill the Country of Origin field"
+        },
+        {
+          "code": "origin_claim",
+          "message": "Country-of-origin claim — confirm and fill the Country of Origin field"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-EYE-004",
+      "name": "Tactical Day and Night Goggles",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Tactical Eyewear",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!37",
+      "priceInclusive": 1650.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "9004",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-EYE-005",
+      "name": "Impact-Resistant Tactical Goggles",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Tactical Eyewear",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!38",
+      "priceInclusive": 1296.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "9004",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "spec_incomplete",
+          "message": "1 specification line(s) hidden from customers (placeholder or internal note) — complete them in the admin"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-EYE-006",
+      "name": "Tactical Day Goggles (3 Lens)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Tactical Eyewear",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!39",
+      "priceInclusive": 4248,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "9004",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-SAF-001",
+      "name": "Pepper Spray",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Personal Safety",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!40",
+      "priceInclusive": 100.3,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "3824",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "third_party_company",
+          "message": "Mentions a different company name — confirm manufacturer/brand naming"
+        },
+        {
+          "code": "third_party_company",
+          "message": "Mentions a different company name — confirm manufacturer/brand naming"
+        },
+        {
+          "code": "spec_incomplete",
+          "message": "2 specification line(s) hidden from customers (placeholder or internal note) — complete them in the admin"
+        },
+        {
+          "code": "restricted_pepper_spray",
+          "message": "Pepper spray: 18+, India-only, dangerous goods (aerosol), non-returnable"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-BAG-002",
+      "name": "DareDevil Safara Tactical 3 Backpack - Pale Khaki",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Bags & Backpacks",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!41",
+      "priceInclusive": 3538.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "4202",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-BAG-003",
+      "name": "DareDevil Seeker 23 Laptop Backpack - Topo Grey",
+      "action": "create",
+      "status": "review",
+      "importStatus": "review",
+      "department": "Bags & Backpacks",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!42",
+      "priceInclusive": 3774.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "4202",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [
+        "\"Military-grade\" claim is unsubstantiated"
+      ],
+      "blockingFlags": [
+        {
+          "code": "claim_military_grade",
+          "message": "\"Military-grade\" claim is unsubstantiated",
+          "evidence": "bag combines functionality with rugged military-grade durability. With double compartments, padded"
+        }
+      ],
+      "warnings": [
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": true
+    },
+    {
+      "sku": "DDG-BAG-004",
+      "name": "DareDevil M-Sling Bag - Granite Black",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Bags & Backpacks",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!43",
+      "priceInclusive": 1296.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "4202",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-BAG-005",
+      "name": "DareDevil M-Sling Bag - Matte Dark Forest",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Bags & Backpacks",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!44",
+      "priceInclusive": 1296.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "4202",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-BAG-006",
+      "name": "DareDevil Safara Tactical 3 Backpack - Desert Camo",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Bags & Backpacks",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!45",
+      "priceInclusive": 3538.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "4202",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-BAG-007",
+      "name": "DareDevil Seeker 23 Laptop Backpack - Metallic Black",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Bags & Backpacks",
+      "sourceCategory": "Adventure Maniacs",
+      "source": "Products!46",
+      "priceInclusive": 3774.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "4202",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-TAC-002",
+      "name": "Army-Pattern Tactical Plate Carrier",
+      "action": "create",
+      "status": "archived",
+      "importStatus": "archived",
+      "department": "Training & Tactical Gear",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!47",
+      "priceInclusive": 3675,
+      "gstRate": 5,
+      "gstRule": "fixed",
+      "hsn": "6307",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [
+        "Marked \"(Remove)\" in the source spreadsheet"
+      ],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-TAC-003",
+      "name": "Tactical Plate Carrier - Jungle Pattern (Plates Not Included)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Training & Tactical Gear",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!48",
+      "priceInclusive": 1836.45,
+      "gstRate": 5,
+      "gstRule": "fixed",
+      "hsn": "6307",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-TAC-004",
+      "name": "Stun Gloves - Restricted Sale",
+      "action": "create",
+      "status": "review",
+      "importStatus": "review",
+      "department": "Training & Tactical Gear",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!49",
+      "priceInclusive": 19470,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "",
+      "packaging": 0,
+      "stock": null,
+      "statusReasons": [
+        "Stun device — legal review required before any sale",
+        "Marked \"Restricted Sale\" in source data — legal review required"
+      ],
+      "blockingFlags": [
+        {
+          "code": "restricted_stun",
+          "message": "Stun device — legal review required before any sale",
+          "evidence": "Stun Gloves - Restricted Sale"
+        },
+        {
+          "code": "restricted_sale_label",
+          "message": "Marked \"Restricted Sale\" in source data — legal review required",
+          "evidence": "Stun Gloves - Restricted Sale"
+        }
+      ],
+      "warnings": [
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Not present in the \"Dare Devil All Product\" sheet — packaging cost, HSN and GST rule unavailable"
+        }
+      ],
+      "needsReview": true
+    },
+    {
+      "sku": "DDG-BAG-008",
+      "name": "Army-Pattern Combat Bag 35 L",
+      "action": "create",
+      "status": "archived",
+      "importStatus": "archived",
+      "department": "Bags & Backpacks",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!50",
+      "priceInclusive": 2122.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "4202",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [
+        "Marked \"(Remove)\" in the source spreadsheet"
+      ],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "third_party_company",
+          "message": "Mentions a different company name — confirm manufacturer/brand naming"
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-BAG-009",
+      "name": "Combat Rucksack 95 L",
+      "action": "create",
+      "status": "review",
+      "importStatus": "review",
+      "department": "Bags & Backpacks",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!51",
+      "priceInclusive": 5898.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "4202",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [
+        "Standards/certification claim — requires evidence"
+      ],
+      "blockingFlags": [
+        {
+          "code": "claim_meets_standards",
+          "message": "Standards/certification claim — requires evidence",
+          "evidence": "ear is made to perform under pressure. Designed to meet Indian Army standards, the rucksack feature"
+        }
+      ],
+      "warnings": [
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "origin_claim",
+          "message": "Country-of-origin claim — confirm and fill the Country of Origin field"
+        },
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": true
+    },
+    {
+      "sku": "DDG-BAG-010",
+      "name": "Army-Pattern ROP Team Bag 25 L",
+      "action": "create",
+      "status": "archived",
+      "importStatus": "archived",
+      "department": "Bags & Backpacks",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!52",
+      "priceInclusive": 2358.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "4202",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [
+        "Marked \"(Remove)\" in the source spreadsheet"
+      ],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "origin_claim",
+          "message": "Country-of-origin claim — confirm and fill the Country of Origin field"
+        },
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "origin_claim",
+          "message": "Country-of-origin claim — confirm and fill the Country of Origin field"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-BAG-011",
+      "name": "Dhanush Commando Bag - Olive Green",
+      "action": "create",
+      "status": "review",
+      "importStatus": "review",
+      "department": "Bags & Backpacks",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!53",
+      "priceInclusive": 1768.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "4202",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [
+        "Endorsement/testing claim without a named user or test"
+      ],
+      "blockingFlags": [
+        {
+          "code": "claim_endorsement",
+          "message": "Endorsement/testing claim without a named user or test",
+          "evidence": "lon, this 35-litre tactical gear bag is trusted by professionals who demand Indian-made military gea"
+        }
+      ],
+      "warnings": [
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "origin_claim",
+          "message": "Country-of-origin claim — confirm and fill the Country of Origin field"
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "third_party_company",
+          "message": "Mentions a different company name — confirm manufacturer/brand naming"
+        },
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "origin_claim",
+          "message": "Country-of-origin claim — confirm and fill the Country of Origin field"
+        },
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": true
+    },
+    {
+      "sku": "DDG-BAG-012",
+      "name": "Light Combat Bag - Olive Green",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Bags & Backpacks",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!54",
+      "priceInclusive": 2358.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "4202",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "origin_claim",
+          "message": "Country-of-origin claim — confirm and fill the Country of Origin field"
+        },
+        {
+          "code": "worldwide_shipping_claim",
+          "message": "Mentions worldwide delivery — conflicts with India-only shipping policy for restricted items"
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "third_party_company",
+          "message": "Mentions a different company name — confirm manufacturer/brand naming"
+        },
+        {
+          "code": "third_party_company",
+          "message": "Mentions a different company name — confirm manufacturer/brand naming"
+        },
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "origin_claim",
+          "message": "Country-of-origin claim — confirm and fill the Country of Origin field"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-BAG-013",
+      "name": "Soldiers Personal Accessories Bag - Olive Green",
+      "action": "create",
+      "status": "review",
+      "importStatus": "review",
+      "department": "Bags & Backpacks",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!55",
+      "priceInclusive": 1591.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "4202",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [
+        "\"Military-grade\" claim is unsubstantiated"
+      ],
+      "blockingFlags": [
+        {
+          "code": "claim_military_grade",
+          "message": "\"Military-grade\" claim is unsubstantiated",
+          "evidence": "campers, and fitness enthusiasts, this military-grade waist bag blends rugged utility with organize"
+        }
+      ],
+      "warnings": [
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": true
+    },
+    {
+      "sku": "DDG-BAG-014",
+      "name": "Ghatak Team Bag 45 L - Semi High-Altitude Camo",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Bags & Backpacks",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!56",
+      "priceInclusive": 2948.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "4202",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "ballistic_fabric_wording",
+          "message": "\"Ballistic nylon\" is a fabric name — consider \"1000D nylon\" to avoid implying protection"
+        },
+        {
+          "code": "origin_claim",
+          "message": "Country-of-origin claim — confirm and fill the Country of Origin field"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-APP-003",
+      "name": "Jungle Pattern Cap",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Headwear & Apparel",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!57",
+      "priceInclusive": 523.95,
+      "gstRate": 5,
+      "gstRule": "apparel_threshold",
+      "hsn": "6505",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-APP-004",
+      "name": "Jungle Pattern Hat",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Headwear & Apparel",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!58",
+      "priceInclusive": 523.95,
+      "gstRate": 5,
+      "gstRule": "apparel_threshold",
+      "hsn": "6505",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-APP-005",
+      "name": "Reversible Round Military Hat",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Headwear & Apparel",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!59",
+      "priceInclusive": 523.95,
+      "gstRate": 5,
+      "gstRule": "apparel_threshold",
+      "hsn": "6505",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-APP-006",
+      "name": "Web Belt Military",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Headwear & Apparel",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Products!60",
+      "priceInclusive": 577.5,
+      "gstRate": 5,
+      "gstRule": "apparel_threshold",
+      "hsn": "6217",
+      "packaging": 16,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "spec_incomplete",
+          "message": "1 specification line(s) hidden from customers (placeholder or internal note) — complete them in the admin"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-MEM-001",
+      "name": "Kashmiri Kani Cape Coat",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Memsahab Corner",
+      "sourceCategory": "Memsahab Corner",
+      "source": "Products!61",
+      "priceInclusive": 3776,
+      "gstRate": 18,
+      "gstRule": "apparel_threshold",
+      "hsn": "6202",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "spec_incomplete",
+          "message": "3 specification line(s) hidden from customers (placeholder or internal note) — complete them in the admin"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-MEM-002",
+      "name": "Kani Design Kalamkari Cape",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Memsahab Corner",
+      "sourceCategory": "Memsahab Corner",
+      "source": "Products!62",
+      "priceInclusive": 10148,
+      "gstRate": 18,
+      "gstRule": "apparel_threshold",
+      "hsn": "6214",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "origin_claim",
+          "message": "Country-of-origin claim — confirm and fill the Country of Origin field"
+        },
+        {
+          "code": "origin_claim",
+          "message": "Country-of-origin claim — confirm and fill the Country of Origin field"
+        },
+        {
+          "code": "spec_incomplete",
+          "message": "3 specification line(s) hidden from customers (placeholder or internal note) — complete them in the admin"
+        },
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-VGC-001",
+      "name": "Super Pro 4T Motorcycle Oil 20W-40 (900 ml)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Vehicle & Generator Care",
+      "sourceCategory": "Engine Oil",
+      "source": "Engine OIl!3",
+      "priceInclusive": 352.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "2710",
+      "packaging": 16,
+      "stock": 132,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "brand_unconfirmed",
+          "message": "Brand not stated in the product name. The fix plan refers to the Flemex range — confirm before assigning."
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-VGC-002",
+      "name": "Multi Power Multigrade Diesel Engine Oil 20W-40 (1 L)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Vehicle & Generator Care",
+      "sourceCategory": "Engine Oil",
+      "source": "Engine OIl!4",
+      "priceInclusive": 293.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "2710",
+      "packaging": 16,
+      "stock": 91,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "brand_unconfirmed",
+          "message": "Brand not stated in the product name. The fix plan refers to the Flemex range — confirm before assigning."
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "lubricant",
+          "message": "Lubricant: opened oils are non-returnable per draft policy"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-VGC-003",
+      "name": "Multigrade IC Engine Oil 20W-40 (1 L)",
+      "action": "create",
+      "status": "review",
+      "importStatus": "review",
+      "department": "Vehicle & Generator Care",
+      "sourceCategory": "Engine Oil",
+      "source": "Engine OIl!5",
+      "priceInclusive": 1178.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "2710",
+      "packaging": 16,
+      "stock": 29,
+      "statusReasons": [
+        "Spreadsheet review note: Rs 999 for 1 L 20W-40 vs Rs 249 for Multi Power 20W-40 (also 1 L) - and spec says semi-synthetic. Confirm grade and price."
+      ],
+      "blockingFlags": [
+        {
+          "code": "source_price_unconfirmed",
+          "message": "Spreadsheet review note: Rs 999 for 1 L 20W-40 vs Rs 249 for Multi Power 20W-40 (also 1 L) - and spec says semi-synthetic. Confirm grade and price."
+        }
+      ],
+      "warnings": [
+        {
+          "code": "brand_unconfirmed",
+          "message": "Brand not stated in the product name. The fix plan refers to the Flemex range — confirm before assigning."
+        },
+        {
+          "code": "lubricant",
+          "message": "Lubricant: opened oils are non-returnable per draft policy"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": true
+    },
+    {
+      "sku": "DDG-VGC-004",
+      "name": "Gear Guard Gear Oil EP-90 (1 L)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Vehicle & Generator Care",
+      "sourceCategory": "Engine Oil",
+      "source": "Engine OIl!6",
+      "priceInclusive": 1414.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "2710",
+      "packaging": 16,
+      "stock": 29,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "brand_unconfirmed",
+          "message": "Brand not stated in the product name. The fix plan refers to the Flemex range — confirm before assigning."
+        },
+        {
+          "code": "lubricant",
+          "message": "Lubricant: opened oils are non-returnable per draft policy"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-VGC-005",
+      "name": "Ultra Pro 4T Motorcycle Oil 20W-50 (1 L)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Vehicle & Generator Care",
+      "sourceCategory": "Engine Oil",
+      "source": "Engine OIl!7",
+      "priceInclusive": 529.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "2710",
+      "packaging": 16,
+      "stock": 19,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "source_review_note",
+          "message": "Spreadsheet review note: Spec says brand \"HARPY\" - the website sells it as Flemex range. Use one brand name."
+        },
+        {
+          "code": "brand_unconfirmed",
+          "message": "Brand name conflict (HARPY vs Flemex) — use one brand name"
+        },
+        {
+          "code": "brand_unconfirmed",
+          "message": "Brand not stated in the product name. The fix plan refers to the Flemex range — confirm before assigning."
+        },
+        {
+          "code": "third_party_brand",
+          "message": "Third-party brand name — keep only with authorised-distributor proof"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-VGC-006",
+      "name": "Flemex Cool-24 Engine Coolant (1 L)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Vehicle & Generator Care",
+      "sourceCategory": "Engine Oil",
+      "source": "Engine OIl!8",
+      "priceInclusive": 647.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "3820",
+      "packaging": 16,
+      "stock": 28,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "lubricant",
+          "message": "Lubricant: opened oils are non-returnable per draft policy"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-VGC-007",
+      "name": "Fully Synthetic Motor Oil 5W-40 (3.5 L)",
+      "action": "create",
+      "status": "review",
+      "importStatus": "review",
+      "department": "Vehicle & Generator Care",
+      "sourceCategory": "Engine Oil",
+      "source": "Engine OIl!9",
+      "priceInclusive": 4128.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "2710",
+      "packaging": 16,
+      "stock": 10,
+      "statusReasons": [
+        "Standards/certification claim — requires evidence"
+      ],
+      "blockingFlags": [
+        {
+          "code": "claim_meets_standards",
+          "message": "Standards/certification claim — requires evidence",
+          "evidence": "API SN Certified: Superior wear protection, cleanliness, and sludge"
+        }
+      ],
+      "warnings": [
+        {
+          "code": "source_review_note",
+          "message": "Spreadsheet review note: Pack is 3.5 L - shipping sheet weight corrected to 3.3 kg."
+        },
+        {
+          "code": "brand_unconfirmed",
+          "message": "Brand not stated in the product name. The fix plan refers to the Flemex range — confirm before assigning."
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "performance_claim",
+          "message": "Superlative performance wording — make sure it can be substantiated"
+        },
+        {
+          "code": "lubricant",
+          "message": "Lubricant: opened oils are non-returnable per draft policy"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": true
+    },
+    {
+      "sku": "DDG-VGC-008",
+      "name": "Synth Power Fully Synthetic Oil 0W-30 (3.5 L)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Vehicle & Generator Care",
+      "sourceCategory": "Engine Oil",
+      "source": "Engine OIl!10",
+      "priceInclusive": 5367.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "2710",
+      "packaging": 16,
+      "stock": 8,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "source_review_note",
+          "message": "Spreadsheet review note: Pack is 3.5 L - shipping sheet weight corrected to 3.3 kg."
+        },
+        {
+          "code": "brand_unconfirmed",
+          "message": "Brand not stated in the product name. The fix plan refers to the Flemex range — confirm before assigning."
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-VGC-009",
+      "name": "Flemex DL Diesel Additive (1 L)",
+      "action": "create",
+      "status": "published",
+      "importStatus": "published",
+      "department": "Vehicle & Generator Care",
+      "sourceCategory": "Engine Oil",
+      "source": "Engine OIl!11",
+      "priceInclusive": 1886.82,
+      "gstRate": 18,
+      "gstRule": "fixed",
+      "hsn": "3811",
+      "packaging": 16,
+      "stock": 11,
+      "statusReasons": [],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "lubricant",
+          "message": "Lubricant: opened oils are non-returnable per draft policy"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": false
+    },
+    {
+      "sku": "DDG-APP-007",
+      "name": "Tactical Gloves",
+      "action": "create",
+      "status": "review",
+      "importStatus": "review",
+      "department": "Headwear & Apparel",
+      "sourceCategory": "Soldiers Accessories",
+      "source": "Dare Devil All Product!64",
+      "priceInclusive": 3186,
+      "gstRate": 18,
+      "gstRule": "apparel_threshold",
+      "hsn": "6116",
+      "packaging": 50,
+      "stock": null,
+      "statusReasons": [
+        "Product content missing in the source data"
+      ],
+      "blockingFlags": [],
+      "warnings": [
+        {
+          "code": "stock_missing",
+          "message": "No stock quantity supplied — set stock in Inventory before launch"
+        },
+        {
+          "code": "image_missing",
+          "message": "No product image supplied"
+        }
+      ],
+      "issues": [
+        {
+          "level": "review",
+          "message": "Only present in the pricing sheet — no description or specifications supplied"
+        },
+        {
+          "level": "info",
+          "message": "Chargeable weight is #REF! in the pricing sheet — shipping uses the fallback weight"
+        }
+      ],
+      "needsReview": true
+    }
+  ],
+  "generatedAt": "2026-10-28T06:17:39.949Z",
+  "sheets": [
+    {
+      "name": "Products",
+      "rows": 62,
+      "state": "visible"
+    },
+    {
+      "name": "Engine OIl",
+      "rows": 10,
+      "state": "visible"
+    },
+    {
+      "name": "Dare Devil All Product",
+      "rows": 70,
+      "state": "visible"
+    },
+    {
+      "name": "Remove Product ",
+      "rows": 14,
+      "state": "visible"
+    }
+  ],
+  "totals": {
+    "sourceRows": 139
+  },
+  "skipped": [
+    {
+      "sheet": "Products",
+      "row": 2,
+      "reason": "No product name (sub-header or blank row)"
+    }
+  ],
+  "errors": [],
+  "duplicates": [
+    {
+      "key": "winter-shoes",
+      "name": "Winter Shoes",
+      "rows": [
+        "Remove Product!3"
+      ],
+      "resolution": "Repeated entry in hide list (ignored)"
+    },
+    {
+      "key": "mich-ballistic-helmet-level-iiia",
+      "name": "MICH Ballistic Helmet Level IIIA",
+      "rows": [
+        "Remove Product!9"
+      ],
+      "resolution": "Repeated entry in hide list (ignored)"
+    }
+  ],
+  "conflicts": [],
+  "reconciliation": [
+    {
+      "name": "Tactical Rugged Metal Torch",
+      "sheet": "Products",
+      "row": 3,
+      "base": 239,
+      "gst": 18,
+      "inclusive": 282.02,
+      "expected": 282.02,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "RockLite Rechargeable Flashlight",
+      "sheet": "Products",
+      "row": 4,
+      "base": 819,
+      "gst": 18,
+      "inclusive": 966.42,
+      "expected": 966.42,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "15-in-1 Pocket Multitool",
+      "sheet": "Products",
+      "row": 5,
+      "base": 1519,
+      "gst": 18,
+      "inclusive": 1792.42,
+      "expected": 1792.42,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Multi-Function Rechargeable LED Light",
+      "sheet": "Products",
+      "row": 6,
+      "base": 809,
+      "gst": 18,
+      "inclusive": 954.62,
+      "expected": 954.62,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Rechargeable Waterproof LED Bulb",
+      "sheet": "Products",
+      "row": 7,
+      "base": 319,
+      "gst": 18,
+      "inclusive": 376.42,
+      "expected": 376.42,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Camping Cookware Set",
+      "sheet": "Products",
+      "row": 8,
+      "base": 2419,
+      "gst": 5,
+      "inclusive": 2539.95,
+      "expected": 2539.95,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Rechargeable Head Lamp",
+      "sheet": "Products",
+      "row": 9,
+      "base": 429,
+      "gst": 18,
+      "inclusive": 506.22,
+      "expected": 506.22,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Snow Hat with Fur Lining & Face Mask",
+      "sheet": "Products",
+      "row": 10,
+      "base": 889,
+      "gst": 5,
+      "inclusive": 933.45,
+      "expected": 933.45,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Survival Kit",
+      "sheet": "Products",
+      "row": 11,
+      "base": 2319,
+      "gst": 18,
+      "inclusive": 2736.42,
+      "expected": 2736.42,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Multi-Tool Folding Knife (Pocket Knife)",
+      "sheet": "Products",
+      "row": 12,
+      "base": 630,
+      "gst": 18,
+      "inclusive": 743.4,
+      "expected": 743.4,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Mosquito Head Net (Headgear Not Included)",
+      "sheet": "Products",
+      "row": 13,
+      "base": 289,
+      "gst": 5,
+      "inclusive": 303.45,
+      "expected": 303.45,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Ice Cleats / Crampons (Pair)",
+      "sheet": "Products",
+      "row": 14,
+      "base": 2859,
+      "gst": 18,
+      "inclusive": 3373.62,
+      "expected": 3373.62,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Intruder Tactical Goggles (3 Lens)",
+      "sheet": "Products",
+      "row": 15,
+      "base": 1329,
+      "gst": 18,
+      "inclusive": 1568.22,
+      "expected": 1568.22,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "DareDevil Tactical Shooting Glasses (3 Lens)",
+      "sheet": "Products",
+      "row": 16,
+      "base": 1619,
+      "gst": 18,
+      "inclusive": 1910.42,
+      "expected": 1910.42,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Sports Tactical Glasses",
+      "sheet": "Products",
+      "row": 17,
+      "base": 1249,
+      "gst": 18,
+      "inclusive": 1473.82,
+      "expected": 1473.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Camping Collapsible Water Bucket (10 L)",
+      "sheet": "Products",
+      "row": 18,
+      "base": 519,
+      "gst": 5,
+      "inclusive": 544.95,
+      "expected": 544.95,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Folding Entrenching Tool (Shovel)",
+      "sheet": "Products",
+      "row": 19,
+      "base": 1199,
+      "gst": 18,
+      "inclusive": 1414.82,
+      "expected": 1414.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Tactical Military Poncho",
+      "sheet": "Products",
+      "row": 20,
+      "base": 559,
+      "gst": 5,
+      "inclusive": 586.95,
+      "expected": 586.95,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Portable Cassette Gas Stove",
+      "sheet": "Products",
+      "row": 21,
+      "base": 4149,
+      "gst": 18,
+      "inclusive": 4895.82,
+      "expected": 4895.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Camping Emergency Lantern",
+      "sheet": "Products",
+      "row": 22,
+      "base": 918,
+      "gst": 18,
+      "inclusive": 1083.24,
+      "expected": 1083.24,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Multi-Fuel Camping Stove",
+      "sheet": "Products",
+      "row": 23,
+      "base": 7479,
+      "gst": 18,
+      "inclusive": 8825.22,
+      "expected": 8825.22,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Zapp Anti-Shock Trekking Pole",
+      "sheet": "Products",
+      "row": 24,
+      "base": 659,
+      "gst": 5,
+      "inclusive": 691.95,
+      "expected": 691.95,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Tactical Airsoft Helmet - Non-Ballistic",
+      "sheet": "Products",
+      "row": 25,
+      "base": 2629,
+      "gst": 18,
+      "inclusive": 3102.22,
+      "expected": 3102.22,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Folding Aluminium Table with Stools",
+      "sheet": "Products",
+      "row": 26,
+      "base": 8289,
+      "gst": 18,
+      "inclusive": 9781.02,
+      "expected": 9781.02,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Portable Folding Toilet",
+      "sheet": "Products",
+      "row": 27,
+      "base": 4373,
+      "gst": 18,
+      "inclusive": 5160.14,
+      "expected": 5160.14,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Foldable Outdoor Chair",
+      "sheet": "Products",
+      "row": 28,
+      "base": 2079,
+      "gst": 18,
+      "inclusive": 2453.22,
+      "expected": 2453.22,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Camping Foam Mat (Aluminium-Coated)",
+      "sheet": "Products",
+      "row": 29,
+      "base": 1849,
+      "gst": 18,
+      "inclusive": 2181.82,
+      "expected": 2181.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Shower / Changing / Toilet Tent",
+      "sheet": "Products",
+      "row": 30,
+      "base": 3229,
+      "gst": 5,
+      "inclusive": 3390.45,
+      "expected": 3390.45,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Pop-Up Tent (2-3 Person)",
+      "sheet": "Products",
+      "row": 31,
+      "base": 3459,
+      "gst": 5,
+      "inclusive": 3631.95,
+      "expected": 3631.95,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Combat First Aid & Soldier Bag",
+      "sheet": "Products",
+      "row": 32,
+      "base": 649,
+      "gst": 18,
+      "inclusive": 765.82,
+      "expected": 765.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "DareDevil Anti-Spike Jungle Shoes",
+      "sheet": "Products",
+      "row": 33,
+      "base": 9500,
+      "gst": 18,
+      "inclusive": 11210,
+      "expected": 11210,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "DareDevil Leather Anti-Spike Shoes",
+      "sheet": "Products",
+      "row": 34,
+      "base": 8899,
+      "gst": 18,
+      "inclusive": 10500.82,
+      "expected": 10500.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Tactical Jungle Operations Shoes",
+      "sheet": "Products",
+      "row": 35,
+      "base": 2700,
+      "gst": 18,
+      "inclusive": 3186,
+      "expected": 3186,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "DareDevil High-Altitude Snow Boots",
+      "sheet": "Products",
+      "row": 36,
+      "base": 31999,
+      "gst": 18,
+      "inclusive": 37758.82,
+      "expected": 37758.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Tactical Day and Night Goggles",
+      "sheet": "Products",
+      "row": 37,
+      "base": 1399,
+      "gst": 18,
+      "inclusive": 1650.82,
+      "expected": 1650.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Impact-Resistant Tactical Goggles",
+      "sheet": "Products",
+      "row": 38,
+      "base": 1099,
+      "gst": 18,
+      "inclusive": 1296.82,
+      "expected": 1296.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Tactical Day Goggles (3 Lens)",
+      "sheet": "Products",
+      "row": 39,
+      "base": 3600,
+      "gst": 18,
+      "inclusive": 4248,
+      "expected": 4248,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Pepper Spray",
+      "sheet": "Products",
+      "row": 40,
+      "base": 85,
+      "gst": 18,
+      "inclusive": 100.3,
+      "expected": 100.3,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "DareDevil Safara Tactical 3 Backpack - Pale Khaki",
+      "sheet": "Products",
+      "row": 41,
+      "base": 2999,
+      "gst": 18,
+      "inclusive": 3538.82,
+      "expected": 3538.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "DareDevil Seeker 23 Laptop Backpack - Topo Grey",
+      "sheet": "Products",
+      "row": 42,
+      "base": 3199,
+      "gst": 18,
+      "inclusive": 3774.82,
+      "expected": 3774.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "DareDevil M-Sling Bag - Granite Black",
+      "sheet": "Products",
+      "row": 43,
+      "base": 1099,
+      "gst": 18,
+      "inclusive": 1296.82,
+      "expected": 1296.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "DareDevil M-Sling Bag - Matte Dark Forest",
+      "sheet": "Products",
+      "row": 44,
+      "base": 1099,
+      "gst": 18,
+      "inclusive": 1296.82,
+      "expected": 1296.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "DareDevil Safara Tactical 3 Backpack - Desert Camo",
+      "sheet": "Products",
+      "row": 45,
+      "base": 2999,
+      "gst": 18,
+      "inclusive": 3538.82,
+      "expected": 3538.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "DareDevil Seeker 23 Laptop Backpack - Metallic Black",
+      "sheet": "Products",
+      "row": 46,
+      "base": 3199,
+      "gst": 18,
+      "inclusive": 3774.82,
+      "expected": 3774.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Army-Pattern Tactical Plate Carrier",
+      "sheet": "Products",
+      "row": 47,
+      "base": 3500,
+      "gst": 5,
+      "inclusive": 3675,
+      "expected": 3675,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Tactical Plate Carrier - Jungle Pattern (Plates Not Included)",
+      "sheet": "Products",
+      "row": 48,
+      "base": 1749,
+      "gst": 5,
+      "inclusive": 1836.45,
+      "expected": 1836.45,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Stun Gloves - Restricted Sale",
+      "sheet": "Products",
+      "row": 49,
+      "base": 16500,
+      "gst": 18,
+      "inclusive": 19470,
+      "expected": 19470,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Army-Pattern Combat Bag 35 L",
+      "sheet": "Products",
+      "row": 50,
+      "base": 1799,
+      "gst": 18,
+      "inclusive": 2122.82,
+      "expected": 2122.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Combat Rucksack 95 L",
+      "sheet": "Products",
+      "row": 51,
+      "base": 4999,
+      "gst": 18,
+      "inclusive": 5898.82,
+      "expected": 5898.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Army-Pattern ROP Team Bag 25 L",
+      "sheet": "Products",
+      "row": 52,
+      "base": 1999,
+      "gst": 18,
+      "inclusive": 2358.82,
+      "expected": 2358.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Dhanush Commando Bag - Olive Green",
+      "sheet": "Products",
+      "row": 53,
+      "base": 1499,
+      "gst": 18,
+      "inclusive": 1768.82,
+      "expected": 1768.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Light Combat Bag - Olive Green",
+      "sheet": "Products",
+      "row": 54,
+      "base": 1999,
+      "gst": 18,
+      "inclusive": 2358.82,
+      "expected": 2358.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Soldiers Personal Accessories Bag - Olive Green",
+      "sheet": "Products",
+      "row": 55,
+      "base": 1349,
+      "gst": 18,
+      "inclusive": 1591.82,
+      "expected": 1591.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Ghatak Team Bag 45 L - Semi High-Altitude Camo",
+      "sheet": "Products",
+      "row": 56,
+      "base": 2499,
+      "gst": 18,
+      "inclusive": 2948.82,
+      "expected": 2948.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Jungle Pattern Cap",
+      "sheet": "Products",
+      "row": 57,
+      "base": 499,
+      "gst": 5,
+      "inclusive": 523.95,
+      "expected": 523.95,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Jungle Pattern Hat",
+      "sheet": "Products",
+      "row": 58,
+      "base": 499,
+      "gst": 5,
+      "inclusive": 523.95,
+      "expected": 523.95,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Reversible Round Military Hat",
+      "sheet": "Products",
+      "row": 59,
+      "base": 499,
+      "gst": 5,
+      "inclusive": 523.95,
+      "expected": 523.95,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Web Belt Military",
+      "sheet": "Products",
+      "row": 60,
+      "base": 550,
+      "gst": 5,
+      "inclusive": 577.5,
+      "expected": 577.5,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Kashmiri Kani Cape Coat",
+      "sheet": "Products",
+      "row": 61,
+      "base": 3200,
+      "gst": 18,
+      "inclusive": 3776,
+      "expected": 3776,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Kani Design Kalamkari Cape",
+      "sheet": "Products",
+      "row": 62,
+      "base": 8600,
+      "gst": 18,
+      "inclusive": 10148,
+      "expected": 10148,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Super Pro 4T Motorcycle Oil 20W-40 (900 ml)",
+      "sheet": "Engine OIl",
+      "row": 3,
+      "base": 299,
+      "gst": 18,
+      "inclusive": 352.82,
+      "expected": 352.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Multi Power Multigrade Diesel Engine Oil 20W-40 (1 L)",
+      "sheet": "Engine OIl",
+      "row": 4,
+      "base": 249,
+      "gst": 18,
+      "inclusive": 293.82,
+      "expected": 293.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Multigrade IC Engine Oil 20W-40 (1 L)",
+      "sheet": "Engine OIl",
+      "row": 5,
+      "base": 999,
+      "gst": 18,
+      "inclusive": 1178.82,
+      "expected": 1178.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Gear Guard Gear Oil EP-90 (1 L)",
+      "sheet": "Engine OIl",
+      "row": 6,
+      "base": 1199,
+      "gst": 18,
+      "inclusive": 1414.82,
+      "expected": 1414.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Ultra Pro 4T Motorcycle Oil 20W-50 (1 L)",
+      "sheet": "Engine OIl",
+      "row": 7,
+      "base": 449,
+      "gst": 18,
+      "inclusive": 529.82,
+      "expected": 529.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Flemex Cool-24 Engine Coolant (1 L)",
+      "sheet": "Engine OIl",
+      "row": 8,
+      "base": 549,
+      "gst": 18,
+      "inclusive": 647.82,
+      "expected": 647.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Fully Synthetic Motor Oil 5W-40 (3.5 L)",
+      "sheet": "Engine OIl",
+      "row": 9,
+      "base": 3499,
+      "gst": 18,
+      "inclusive": 4128.82,
+      "expected": 4128.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Synth Power Fully Synthetic Oil 0W-30 (3.5 L)",
+      "sheet": "Engine OIl",
+      "row": 10,
+      "base": 4549,
+      "gst": 18,
+      "inclusive": 5367.82,
+      "expected": 5367.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Flemex DL Diesel Additive (1 L)",
+      "sheet": "Engine OIl",
+      "row": 11,
+      "base": 1599,
+      "gst": 18,
+      "inclusive": 1886.82,
+      "expected": 1886.82,
+      "diff": 0,
+      "ok": true
+    },
+    {
+      "name": "Tactical Gloves",
+      "sheet": "Dare Devil All Product",
+      "row": 64,
+      "base": 2700,
+      "gst": 18,
+      "inclusive": 3186,
+      "expected": 3186,
+      "diff": 0,
+      "ok": true
+    }
+  ],
+  "gstInconsistencies": [],
+  "visibilityConflicts": [
+    {
+      "name": "DareDevil Anti-Spike Jungle Shoes",
+      "list": "hide",
+      "listEntry": "Jungle Shoes",
+      "resolution": "Not applied automatically — confirm whether this list entry refers to this product"
+    }
+  ],
+  "blocklistOnly": [
+    {
+      "name": "Winter Shoes",
+      "list": "hide",
+      "reason": null
+    },
+    {
+      "name": "BULLET PROOF",
+      "list": "remove_page",
+      "reason": null
+    },
+    {
+      "name": "Winter Shoes",
+      "list": "hide",
+      "reason": null
+    },
+    {
+      "name": "Medium Ankle Anti Spike shoes",
+      "list": "remove",
+      "reason": null
+    },
+    {
+      "name": "GIFT CERTIFICATE",
+      "list": "remove_page",
+      "reason": null
+    },
+    {
+      "name": "T shirt",
+      "list": "hide",
+      "reason": null
+    },
+    {
+      "name": "Concealed Bulletproof Jacket (NIJ)",
+      "list": "remove",
+      "reason": null
+    },
+    {
+      "name": "BRAND",
+      "list": "remove_page",
+      "reason": null
+    },
+    {
+      "name": "Tactical Bulletproof Jacket Level IV",
+      "list": "hide",
+      "reason": null
+    },
+    {
+      "name": "Anti glare, dark goggles",
+      "list": "remove",
+      "reason": null
+    },
+    {
+      "name": "DELIVERY INFORMATION",
+      "list": "remove_page",
+      "reason": null
+    },
+    {
+      "name": "Sub Zero Hand gloves",
+      "list": "hide",
+      "reason": null
+    },
+    {
+      "name": "Body Armor",
+      "list": "remove",
+      "reason": null
+    },
+    {
+      "name": "FREE ONE HOUR",
+      "list": "remove_page",
+      "reason": null
+    },
+    {
+      "name": "PASGT Ballistic Helmet (NIJ)",
+      "list": "hide",
+      "reason": null
+    },
+    {
+      "name": "Central Police Blue Cap",
+      "list": "remove",
+      "reason": "force uniform item - removed for legal reasons"
+    },
+    {
+      "name": "MICH Ballistic Helmet Level IIIA",
+      "list": "hide",
+      "reason": null
+    },
+    {
+      "name": "BSF Hat",
+      "list": "remove",
+      "reason": "force uniform item - removed for legal reasons"
+    },
+    {
+      "name": "MICH Ballistic Helmet Level IIIA",
+      "list": "hide",
+      "reason": null
+    },
+    {
+      "name": "CISF Cap",
+      "list": "remove",
+      "reason": "force uniform item - removed for legal reasons"
+    },
+    {
+      "name": "Jungle Shoes",
+      "list": "hide",
+      "reason": null
+    },
+    {
+      "name": "CRPF Cap",
+      "list": "remove",
+      "reason": "force uniform item - removed for legal reasons"
+    },
+    {
+      "name": "Hand Torch",
+      "list": "hide",
+      "reason": null
+    },
+    {
+      "name": "CRPF Hat - Jungle Pattern",
+      "list": "remove",
+      "reason": "force uniform item - removed for legal reasons"
+    },
+    {
+      "name": "Elbow guard",
+      "list": "hide",
+      "reason": null
+    },
+    {
+      "name": "Knee Guard",
+      "list": "hide",
+      "reason": null
+    },
+    {
+      "name": "Semi-Synthetic Motor Oil 1 Liter",
+      "list": "hide",
+      "reason": null
+    }
+  ]
+}

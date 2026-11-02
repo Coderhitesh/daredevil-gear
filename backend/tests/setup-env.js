@@ -1,0 +1,20 @@
+'use strict';
+
+process.env.NODE_ENV = 'test';
+process.env.DOTENV_PATH = '/dev/null';
+process.env.MONGODB_URI = process.env.TEST_MONGODB_URI || 'mongodb://127.0.0.1:27017/ddg_test';
+process.env.MONGODB_TRANSACTIONS = 'auto';
+process.env.JWT_ACCESS_SECRET = 'test-access-secret-0123456789-abcdefghij';
+process.env.JWT_REFRESH_SECRET = 'test-refresh-secret-0123456789-abcdefghij';
+process.env.ADMIN_JWT_SECRET = 'test-admin-secret-0123456789-abcdefghijk';
+process.env.OTP_PEPPER = 'test-otp-pepper-0123456789';
+process.env.OTP_RESEND_COOLDOWN_SEC = '0';
+process.env.ADMIN_MFA_REQUIRED = 'true';
+process.env.MAIL_DEV_OUTBOX = 'true';
+process.env.RAZORPAY_KEY_ID = 'rzp_test_dummykey';
+process.env.RAZORPAY_KEY_SECRET = 'test_key_secret_for_signatures';
+process.env.RAZORPAY_WEBHOOK_SECRET = 'test_webhook_secret';
+process.env.STOREFRONT_URL = 'http://localhost:3000';
+process.env.ADMIN_URL = 'http://localhost:3001';
+process.env.REDIS_URL = '';
+process.env.CLOUDINARY_CLOUD_NAME = '';

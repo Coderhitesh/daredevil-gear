@@ -1,0 +1,13 @@
+# applies to backend/, frontend/ and admin/
+.env
+.env.*
+!.env.example
+node_modules/
+.next/
+.outbox/
+coverage/
+reports/*.json
+*.log
+.DS_Store
+playwright-report/
+test-results/

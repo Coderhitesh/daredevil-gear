@@ -1,0 +1,506 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-body: 'Inter';
+  --font-display: 'Poppins';
+  --font-script: 'Kaushan Script';
+  --header-h: 7.5rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-paper font-sans text-[15px] leading-relaxed text-ink antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  h1, h2, h3 {
+    @apply font-display font-bold text-ink;
+  }
+  ::selection {
+    @apply bg-signal text-white;
+  }
+  :focus-visible {
+    outline: 2px solid #ee5a1f;
+    outline-offset: 2px;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  [hidden] {
+    display: none !important;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-site px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-display text-[14.5px] font-semibold transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-signal text-white shadow-glow hover:bg-signal-dark active:translate-y-px;
+  }
+  .btn-dark {
+    @apply btn bg-night text-white hover:bg-night-600;
+  }
+  .btn-outline {
+    @apply btn border border-stone-400 bg-white text-ink hover:border-ink;
+  }
+  .btn-outline-light {
+    @apply btn border border-white/70 text-white hover:bg-white hover:text-ink;
+  }
+  .btn-ghost {
+    @apply btn px-3 text-graphite hover:bg-stone-200;
+  }
+  .btn-sm {
+    @apply px-3.5 py-2 text-[13.5px];
+  }
+
+  /* Section labelling (small orange kicker above section titles) */
+  .kicker {
+    @apply font-display text-[12.5px] font-semibold uppercase tracking-[0.12em] text-signal;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-sm font-medium text-graphite;
+  }
+  .input {
+    @apply block w-full rounded-lg border border-stone-300 bg-white px-3.5 py-2.5 text-[15px] text-ink placeholder:text-graphite-400 focus:border-signal focus:outline-none focus:ring-4 focus:ring-signal/15 disabled:bg-stone-200 aria-[invalid=true]:border-alert;
+  }
+  .field-error {
+    @apply mt-1 text-sm text-alert;
+  }
+  .field-hint {
+    @apply mt-1 text-sm text-graphite-400;
+  }
+
+  .panel {
+    @apply rounded-2xl border border-stone-300/70 bg-white shadow-card;
+  }
+
+  .link {
+    @apply text-graphite underline decoration-stone-400 underline-offset-4 hover:text-signal-dark hover:decoration-signal;
+  }
+
+  .tag {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+  .tag-olive {
+    @apply tag bg-olive-light text-olive;
+  }
+  .tag-signal {
+    @apply tag bg-signal-light text-signal-dark;
+  }
+  .tag-muted {
+    @apply tag bg-stone-200 text-graphite-600;
+  }
+  .badge {
+    @apply rounded-md px-2 py-0.5 font-display text-[11.5px] font-semibold;
+  }
+
+  .skeleton {
+    @apply animate-pulse rounded-xl bg-stone-300/60;
+  }
+
+  /* Dark band used for page headers across the shop */
+  .page-hero {
+    @apply relative overflow-hidden bg-night text-white;
+  }
+
+  /* CMS / long-form copy */
+  .prose-ddg {
+    @apply max-w-prose text-[16px] leading-[1.75] text-graphite;
+  }
+  .prose-ddg h2 {
+    @apply mb-3 mt-10 font-display text-2xl text-ink;
+  }
+  .prose-ddg h3 {
+    @apply mb-2 mt-6 font-display text-xl text-ink;
+  }
+  .prose-ddg p {
+    @apply my-4;
+  }
+  .prose-ddg ul {
+    @apply my-4 list-disc space-y-1.5 pl-5 marker:text-signal;
+  }
+  .prose-ddg ol {
+    @apply my-4 list-decimal space-y-1.5 pl-5;
+  }
+  .prose-ddg a {
+    @apply link;
+  }
+  .prose-ddg strong {
+    @apply font-semibold text-ink;
+  }
+  .prose-ddg table {
+    @apply my-6 w-full border-collapse text-sm;
+  }
+  .prose-ddg th,
+  .prose-ddg td {
+    @apply border border-stone-300 px-3 py-2 text-left;
+  }
+  .prose-ddg .pending {
+    @apply rounded bg-signal-light px-1 font-medium text-signal-dark;
+  }
+}
+
+/* Topographic contour field — seamless generated SVG tiles in /public/patterns */
+.contours {
+  background-color: #121614;
+  background-image: url('/patterns/contours-dark.svg');
+  background-size: 640px 640px;
+}
+.contours-light {
+  background-color: #f3f1ec;
+  background-image: url('/patterns/contours-light.svg');
+  background-size: 420px 420px;
+}
+/* Dusk sky gradient used behind hero / banners when no photo is uploaded */
+.dusk {
+  background:
+    radial-gradient(ellipse 60% 55% at 72% 38%, rgba(238, 90, 31, 0.55), transparent 70%),
+    radial-gradient(ellipse 45% 35% at 85% 20%, rgba(255, 176, 92, 0.35), transparent 70%),
+    linear-gradient(180deg, #1a1f24 0%, #2a2523 45%, #121614 100%);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* hero slider: progress fill on the active dot */
+@keyframes hero-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+.hero-progress {
+  animation-name: hero-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-progress {
+    animation: none;
+    width: 100%;
+  }
+}
+
+/* =====================================================================
+   Motion layer. Everything here is decorative and switched off for
+   visitors who ask for reduced motion (see html.motion-ok + media query).
+   ===================================================================== */
+
+/* ---- scroll reveal: elements start hidden only when JS + motion are on */
+.motion-ok .reveal {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+}
+.motion-ok .reveal.is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+.motion-ok .reveal-pop {
+  opacity: 0;
+  transform: scale(0.6) translate3d(0, 10px, 0);
+}
+.motion-ok .reveal-pop.is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.45s ease-out,
+    transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: calc(var(--i, 0) * 55ms);
+}
+
+/* section kicker: a short trail line draws in front of it */
+.kicker-trail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.kicker-trail::before {
+  content: '';
+  height: 2px;
+  width: 1.75rem;
+  border-radius: 2px;
+  background: currentColor;
+  transform-origin: left;
+}
+.motion-ok .reveal .kicker-trail::before {
+  transform: scaleX(0);
+}
+.motion-ok .reveal.is-in .kicker-trail::before {
+  transform: scaleX(1);
+  transition: transform 0.7s 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---- hero: ridges rise in, then follow the pointer */
+@keyframes ridge-rise {
+  from {
+    transform: translate3d(0, 38%, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.ridge {
+  will-change: transform;
+}
+.ridge > g {
+  transform: translate3d(calc(var(--mx, 0) * var(--depth, 0) * -1px), calc(var(--my, 0) * var(--depth, 0) * -0.35px), 0);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.motion-ok .ridge-rise > .ridge {
+  animation: ridge-rise 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--layer, 0) * 130ms);
+}
+
+@keyframes sun-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translate3d(-18px, 10px, 0) scale(1.12);
+    opacity: 0.38;
+  }
+}
+.sun-drift {
+  animation: sun-drift 9s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+.star {
+  animation: twinkle var(--t, 3.2s) ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+
+/* headline words climb in, one after another, on every slide change */
+@keyframes word-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.55em, 0) rotate(2deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.word-up {
+  display: inline-block;
+  animation: word-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(120ms + var(--w, 0) * 85ms);
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+/* the brush-stroke underline paints itself */
+@keyframes brush {
+  from {
+    stroke-dashoffset: 220;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.brush path {
+  stroke-dasharray: 220;
+  animation: brush 0.9s cubic-bezier(0.65, 0, 0.35, 1) both;
+  animation-delay: var(--d, 700ms);
+}
+/* slow push-in on banner photos */
+@keyframes ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+.ken-burns {
+  animation: ken-burns 12s ease-out both;
+}
+
+/* ---- trail ticker */
+@keyframes ticker {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.ticker-track {
+  animation: ticker var(--speed, 38s) linear infinite;
+}
+.ticker:hover .ticker-track,
+.ticker:focus-within .ticker-track {
+  animation-play-state: paused;
+}
+
+/* ---- cart: the button bumps when something lands in it */
+@keyframes cart-bump {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.22) rotate(-8deg);
+  }
+  55% {
+    transform: scale(0.92) rotate(5deg);
+  }
+  80% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.cart-bump {
+  animation: cart-bump 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes count-pop {
+  0% {
+    transform: scale(0.4);
+  }
+  60% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.count-pop {
+  animation: count-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes added-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.added-in {
+  animation: added-in 0.3s ease-out both;
+}
+
+/* ---- wishlist heart */
+@keyframes heart-pop {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(0.7);
+  }
+  60% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.heart-pop {
+  animation: heart-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes heart-ring {
+  from {
+    opacity: 0.7;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.9);
+  }
+}
+.heart-ring {
+  animation: heart-ring 0.6s ease-out forwards;
+}
+
+/* ---- category icons: a little hop on hover */
+@keyframes hop {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40% {
+    transform: translate3d(0, -6px, 0) rotate(-6deg);
+  }
+  70% {
+    transform: translate3d(0, 1px, 0) rotate(3deg);
+  }
+}
+.group:hover .hop-on-hover {
+  animation: hop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ---- topographic lines drifting (footer / bands) */
+@keyframes contour-drift {
+  to {
+    stroke-dashoffset: -400;
+  }
+}
+.contour-line {
+  stroke-dasharray: 6 10;
+  animation: contour-drift 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
+  .ridge > g {
+    transform: none !important;
+  }
+}

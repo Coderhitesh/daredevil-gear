@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-body: 'Barlow';
+  --font-display: 'Barlow Condensed';
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper font-sans text-[14px] leading-normal text-ink antialiased;
+  }
+  h1, h2, h3 {
+    @apply font-display font-semibold text-ink;
+  }
+  :focus-visible {
+    outline: 2px solid #e94e19;
+    outline-offset: 2px;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  [hidden] {
+    display: none !important;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded px-3.5 py-2 text-sm font-semibold transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-signal text-white hover:bg-signal-dark;
+  }
+  .btn-dark {
+    @apply btn bg-graphite text-white hover:bg-ink;
+  }
+  .btn-outline {
+    @apply btn border border-stone-400 bg-white text-graphite hover:border-graphite;
+  }
+  .btn-ghost {
+    @apply btn px-2.5 text-graphite hover:bg-stone-200;
+  }
+  .btn-danger {
+    @apply btn border border-alert/40 bg-white text-alert hover:bg-alert-light;
+  }
+  .btn-xs {
+    @apply px-2 py-1 text-xs;
+  }
+
+  .label {
+    @apply mb-1 block text-[13px] font-medium text-graphite;
+  }
+  .input {
+    @apply block w-full rounded border border-stone-400 bg-white px-3 py-2 text-sm text-ink placeholder:text-graphite-400 focus:border-graphite focus:outline-none focus:ring-2 focus:ring-signal/25 disabled:bg-stone-200 disabled:text-graphite-400 aria-[invalid=true]:border-alert;
+  }
+  .hint {
+    @apply mt-1 text-xs text-graphite-400;
+  }
+  .error {
+    @apply mt-1 text-xs text-alert;
+  }
+
+  .card {
+    @apply rounded border border-stone-300 bg-white;
+  }
+  .card-head {
+    @apply flex items-center justify-between gap-3 border-b border-stone-300 px-4 py-3;
+  }
+  .card-title {
+    @apply font-display text-lg font-semibold;
+  }
+  .card-body {
+    @apply p-4;
+  }
+
+  .tbl {
+    @apply w-full border-collapse text-left text-sm;
+  }
+  .tbl th {
+    @apply sticky top-0 z-[1] border-b border-stone-300 bg-stone-200 px-3 py-2 text-xs font-semibold text-graphite-600;
+  }
+  .tbl td {
+    @apply border-b border-stone-200 px-3 py-2.5 align-top;
+  }
+  .tbl tbody tr:hover td {
+    @apply bg-paper;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1 whitespace-nowrap rounded px-1.5 py-0.5 text-xs font-medium;
+  }
+  .link {
+    @apply text-graphite underline decoration-stone-400 underline-offset-2 hover:decoration-signal;
+  }
+  .skeleton {
+    @apply animate-pulse rounded bg-stone-300/70;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
