@@ -7,7 +7,7 @@ const ICONS = { receipt: Receipt, truck: Truck, rotate: RotateCcw, shield: Shiel
 export default function TrustStrip({ title, items = [] }) {
   if (!items.length) return null;
   return (
-    <section className="relative mt-20 overflow-hidden border-y border-stone-300/70 bg-white sm:mt-24">
+    <section className="relative overflow-hidden border-y border-stone-300/70 bg-white">
       <Mountains tone="light" className="absolute inset-x-0 bottom-0 h-14 w-full opacity-60" />
       <div className="reveal wrap relative pb-20 pt-14">
         <p className="kicker kicker-trail">Why choose us</p>

@@ -15,7 +15,7 @@ export class ApiError extends Error {
 
 let refreshing = null;
 
-async function refreshSession() {
+export async function refreshSession() {
   if (!refreshing) {
     refreshing = fetch('/api/v1/auth/refresh', { method: 'POST', credentials: 'include', headers: { 'x-ddg-csrf': '1' } })
       .then((r) => r.ok)

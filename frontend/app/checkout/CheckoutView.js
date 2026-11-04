@@ -19,20 +19,23 @@ import CouponForm from '@/components/cart/CouponForm';
 import ProductThumb from '@/components/product/ProductThumb';
 import { inr, deliveryEta } from '@/lib/format';
 
+// hidden address inputs keep '' after being unmounted; treat blank as missing so they do not fail validation
+const blanksToUndefined = (o) => Object.fromEntries(Object.entries(o || {}).map(([k, v]) => [k, v === '' ? undefined : v]));
+
 const schema = z
   .object({
     mode: z.enum(['saved', 'new']),
     addressId: z.string().optional(),
     contact: z.object({ name: z.string().trim().min(2, 'Enter your name').optional().or(z.literal('')), email: emailSchema.optional().or(z.literal('')), phone: phone.optional().or(z.literal('')) }),
-    shipping: addressSchema.partial(),
+    shipping: z.preprocess(blanksToUndefined, addressSchema.partial()),
     billingSame: z.boolean(),
-    billing: addressSchema.partial(),
+    billing: z.preprocess(blanksToUndefined, addressSchema.partial()),
     saveAddress: z.boolean(),
     ageConfirmed: z.boolean(),
   })
   .superRefine((v, ctx) => {
     const check = (prefix, obj) => {
-      const r = addressSchema.safeParse(obj);
+      const r = addressSchema.safeParse(Object.fromEntries(Object.keys(addressSchema.shape).map((k) => [k, obj?.[k] ?? ''])));
       if (!r.success) r.error.issues.forEach((i) => ctx.addIssue({ ...i, path: [prefix, ...i.path] }));
     };
     if (v.mode === 'new') check('shipping', v.shipping);

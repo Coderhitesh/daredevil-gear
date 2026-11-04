@@ -2,7 +2,7 @@
 
 import { useHydrated } from './hydrated';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { api } from './api-client';
+import { api, refreshSession } from './api-client';
 import { useLocalSafe, useUi } from './store';
 
 export { useHydrated };
@@ -11,9 +11,23 @@ export { useHydrated };
  * The signed-in user. While hydrating it reports "loading, no user" exactly like the server render did,
  * so streamed sections that hydrate after /auth/me has resolved do not mismatch.
  */
+let wasSignedIn = false;
+let triedRefresh = false;
+
+/** /auth/me answers 200 {user:null} once the 15-min access cookie expires (no 401), so refresh the session here. */
+async function fetchMe() {
+  let user = (await api('/auth/me')).user;
+  if (!user && (wasSignedIn || !triedRefresh)) {
+    triedRefresh = true;
+    if (await refreshSession()) user = (await api('/auth/me')).user;
+  }
+  wasSignedIn = Boolean(user);
+  return user;
+}
+
 export function useMe() {
   const hydrated = useHydrated();
-  const q = useQuery({ queryKey: ['me'], queryFn: () => api('/auth/me').then((d) => d.user), staleTime: 60_000 });
+  const q = useQuery({ queryKey: ['me'], queryFn: fetchMe, staleTime: 60_000 });
   return hydrated ? q : { ...q, data: undefined, isLoading: true, isSuccess: false };
 }
 

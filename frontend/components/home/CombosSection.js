@@ -33,7 +33,7 @@ function MultiBuyCard({ offer, index }) {
 export default function CombosSection({ title, subtitle, combos = [], multiBuys = [] }) {
   if (!combos.length && !multiBuys.length) return null;
   return (
-    <section className="relative mt-16 overflow-hidden bg-night py-14 text-white sm:mt-20 sm:py-16" aria-label={title || 'Combo offers'}>
+    <section className="relative overflow-hidden bg-night py-14 text-white sm:py-16" aria-label={title || 'Combo offers'}>
       <TopoLines className="absolute inset-0 h-full w-full text-signal/15" />
       <div className="wrap relative">
         <SectionHead kicker="Buy together, pay less" title={title || 'Combo offers'} subtitle={subtitle} dark />

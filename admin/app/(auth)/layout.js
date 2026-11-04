@@ -6,7 +6,7 @@ export default function AuthLayout({ children }) {
       <div className="w-full max-w-sm">
         <div className="mb-6 flex justify-center">
           <span className="rounded bg-white px-3 py-2">
-            <Image src="/brand/logo.png" alt="DareDevil Gears" width={180} height={48} className="h-9 w-auto" priority />
+            <Image src="/brand/logo_theme2.png" alt="DareDevil Gears" width={180} height={48} className="h-9 w-auto" priority />
           </span>
         </div>
         <div className="rounded bg-white p-6 shadow-xl">{children}</div>

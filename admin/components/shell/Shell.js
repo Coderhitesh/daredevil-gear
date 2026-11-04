@@ -19,7 +19,7 @@ function Sidebar({ me, onNavigate }) {
     <nav aria-label="Admin" className="flex h-full flex-col">
       <div className="flex items-center gap-2 px-4 pb-4 pt-4">
         <span className="rounded bg-white px-2 py-1.5">
-          <Image src="/brand/logo.png" alt="DareDevil Gears" width={132} height={36} className="h-7 w-auto" priority />
+          <Image src="/brand/logo_theme2.png" alt="DareDevil Gears" width={132} height={36} className="h-7 w-auto" priority />
         </span>
       </div>
       <div className="flex-1 overflow-y-auto px-2 pb-4">

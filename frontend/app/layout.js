@@ -70,7 +70,7 @@ export default async function RootLayout({ children }) {
               '@type': 'Organization',
               name: 'DareDevil Gears',
               url: siteUrl(),
-              logo: `${siteUrl()}/brand/logo.png`,
+              logo: `${siteUrl()}/brand/logo_theme2.png`,
               email: biz.email || undefined,
               telephone: biz.phone || undefined,
             }).replace(/</g, '\\u003c'),
