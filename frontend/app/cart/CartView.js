@@ -18,7 +18,7 @@ export default function CartView() {
 
   if (isLoading) {
     return (
-      <div className="wrap grid gap-10 pt-10 lg:grid-cols-[1fr_380px]">
+      <div className="wrap grid gap-10 pt-10 lg:grid-cols-[minmax(0,1fr)_380px]">
         <div className="skeleton h-80" />
         <div className="skeleton h-64" />
       </div>

@@ -27,7 +27,7 @@ export default function TrackForm() {
 
   return (
     <div className="mt-8 space-y-8">
-      <form onSubmit={submit} className="grid gap-4 sm:grid-cols-[1fr_1fr_auto] sm:items-end">
+      <form onSubmit={submit} className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] sm:items-end">
         <Field label="Order number" placeholder="DDG2610270001" value={orderNumber} onChange={(e) => setOrderNumber(e.target.value)} required />
         <Field label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <button type="submit" className="btn-primary h-11">

@@ -70,10 +70,10 @@ function Filters({ facets, params, set }) {
           }}
         >
           <label className="sr-only" htmlFor="minp">Minimum price</label>
-          <input id="minp" inputMode="numeric" className="input h-10 w-24" placeholder="Min" value={lo} onChange={(e) => setLo(e.target.value.replace(/[^\d]/g, ''))} />
+          <input id="minp" inputMode="numeric" className="input h-10 min-w-0 flex-1" placeholder="Min" value={lo} onChange={(e) => setLo(e.target.value.replace(/[^\d]/g, ''))} />
           <span className="text-graphite-400">to</span>
           <label className="sr-only" htmlFor="maxp">Maximum price</label>
-          <input id="maxp" inputMode="numeric" className="input h-10 w-24" placeholder="Max" value={hi} onChange={(e) => setHi(e.target.value.replace(/[^\d]/g, ''))} />
+          <input id="maxp" inputMode="numeric" className="input h-10 min-w-0 flex-1" placeholder="Max" value={hi} onChange={(e) => setHi(e.target.value.replace(/[^\d]/g, ''))} />
           <button type="submit" className="btn-outline btn-sm h-10">
             Apply
           </button>

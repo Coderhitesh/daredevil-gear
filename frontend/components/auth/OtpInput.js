@@ -45,7 +45,7 @@ export default function OtpInput({ value, onChange, disabled, error }) {
               refs.current[Math.min(5, v.length - 1)]?.focus();
             }
           }}
-          className="input tabular h-14 w-12 text-center font-display text-2xl font-semibold"
+          className="input tabular h-14 w-full max-w-12 flex-1 px-0 text-center font-display text-2xl font-semibold"
         />
       ))}
     </div>

@@ -11,10 +11,12 @@
 
 @layer base {
   html {
+    overflow-x: clip;
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
   }
   body {
+    overflow-x: clip;
     @apply bg-paper font-sans text-[15px] leading-relaxed text-ink antialiased;
     font-feature-settings: 'cv11', 'ss01';
   }
@@ -73,7 +75,7 @@
     @apply mb-1.5 block text-sm font-medium text-graphite;
   }
   .input {
-    @apply block w-full rounded-lg border border-stone-300 bg-white px-3.5 py-2.5 text-[15px] text-ink placeholder:text-graphite-400 focus:border-signal focus:outline-none focus:ring-4 focus:ring-signal/15 disabled:bg-stone-200 aria-[invalid=true]:border-alert;
+    @apply block w-full min-w-0 rounded-lg border border-stone-300 bg-white px-3.5 py-2.5 text-[16px] sm:text-[15px] text-ink placeholder:text-graphite-400 focus:border-signal focus:outline-none focus:ring-4 focus:ring-signal/15 disabled:bg-stone-200 aria-[invalid=true]:border-alert;
   }
   .field-error {
     @apply mt-1 text-sm text-alert;
@@ -117,7 +119,7 @@
 
   /* CMS / long-form copy */
   .prose-ddg {
-    @apply max-w-prose text-[16px] leading-[1.75] text-graphite;
+    @apply max-w-prose break-words text-[16px] leading-[1.75] text-graphite;
   }
   .prose-ddg h2 {
     @apply mb-3 mt-10 font-display text-2xl text-ink;
@@ -141,7 +143,7 @@
     @apply font-semibold text-ink;
   }
   .prose-ddg table {
-    @apply my-6 w-full border-collapse text-sm;
+    @apply my-6 block w-full overflow-x-auto border-collapse text-sm;
   }
   .prose-ddg th,
   .prose-ddg td {

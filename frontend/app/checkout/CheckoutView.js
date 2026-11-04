@@ -156,7 +156,7 @@ export default function CheckoutView() {
 
   if (meLoading || quote.isLoading) {
     return (
-      <div className="wrap grid gap-8 pt-10 lg:grid-cols-[1fr_400px]">
+      <div className="wrap grid gap-8 pt-10 lg:grid-cols-[minmax(0,1fr)_400px]">
         <div className="space-y-4">
           <div className="skeleton h-40" />
           <div className="skeleton h-72" />
@@ -331,7 +331,7 @@ export default function CheckoutView() {
             ) : (
               <div>
                 <p className="text-graphite">Please sign in or create an account to place your order.</p>
-                <div className="mt-4 flex gap-3">
+                <div className="mt-4 flex flex-wrap gap-3">
                   <Link href="/account/login?next=/checkout" className="btn-dark">Sign in</Link>
                   <Link href="/account/register?next=/checkout" className="btn-outline">Create account</Link>
                 </div>
