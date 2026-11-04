@@ -98,7 +98,7 @@ export default async function AboutPage() {
       <section className="relative overflow-hidden bg-night text-white">
         <div className="dusk absolute inset-0 opacity-70" aria-hidden="true" />
         <Mountains className="absolute inset-x-0 bottom-0 h-1/3 w-full opacity-70" />
-        <div className="wrap relative grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-[1.05fr_1fr] lg:py-20">
+        <div className="wrap relative grid grid-cols-1 items-center gap-10 py-12 sm:py-16 lg:grid-cols-[1.05fr_1fr] lg:py-20">
           <div>
             <div className="[&_a:hover]:text-white [&_a]:text-stone-300 [&_li]:text-stone-400 [&_span[aria-current]]:text-white">
               <Breadcrumbs items={[{ name: 'About us', href: '/about' }]} />
@@ -141,7 +141,7 @@ export default async function AboutPage() {
       </section>
 
       {/* ---------------------------------------------------------------- story */}
-      <section className="wrap mt-16 grid gap-10 sm:mt-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+      <section className="wrap mt-16 grid grid-cols-1 gap-10 sm:mt-20 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
         <div className="reveal">
           <p className="kicker kicker-trail">Our story</p>
           <h2 className="mt-2 font-display text-display-lg">Built for the trail, the field and the daily grind.</h2>
@@ -206,7 +206,7 @@ export default async function AboutPage() {
             <p className="kicker kicker-trail">How we work</p>
             <h2 className="mt-2 font-display text-display-lg">Four promises we keep on every order.</h2>
           </div>
-          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {PRINCIPLES.map(({ Icon, title, text }, k) => (
               <li key={title} className="reveal group rounded-2xl border border-stone-300/70 bg-paper p-6 transition-[box-shadow,transform] duration-300 hover:-translate-y-1 hover:shadow-lift" style={{ '--i': k }}>
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-signal text-white shadow-glow transition-transform duration-300 group-hover:rotate-[-8deg]">
@@ -263,7 +263,7 @@ export default async function AboutPage() {
             <p className="kicker kicker-trail">Who we gear up</p>
             <h2 className="mt-2 font-display text-display-lg text-white">Made for people who don&apos;t stay indoors.</h2>
           </div>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {PEOPLE.map(({ Icon, title, text }, k) => (
               <li key={title} className="reveal flex gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm" style={{ '--i': k % 3 }}>
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-signal/15 text-signal">
@@ -307,7 +307,7 @@ export default async function AboutPage() {
           <p className="kicker kicker-trail">From our base to yours</p>
           <h2 className="mt-2 font-display text-display-lg">How your order reaches you.</h2>
         </div>
-        <ol className="relative mt-10 grid gap-6 md:grid-cols-4 md:gap-5">
+        <ol className="relative mt-10 grid grid-cols-1 gap-6 md:grid-cols-4 md:gap-5">
           <span className="absolute left-6 top-6 hidden h-0.5 w-[calc(100%-3rem)] border-t-2 border-dashed border-signal/40 md:block" aria-hidden="true" />
           {STEPS.map(({ Icon, title, text }, k) => (
             <li key={title} className="reveal relative" style={{ '--i': k }}>
@@ -327,7 +327,7 @@ export default async function AboutPage() {
         <div className="reveal relative overflow-hidden rounded-3xl bg-night text-white">
           <div className="dusk absolute inset-0 opacity-80" aria-hidden="true" />
           <Mountains className="absolute inset-x-0 bottom-0 h-1/2 w-full opacity-80" />
-          <div className="relative grid gap-10 p-7 sm:p-10 lg:grid-cols-[1.2fr_1fr] lg:p-14">
+          <div className="relative grid grid-cols-1 gap-10 p-7 sm:p-10 lg:grid-cols-[1.2fr_1fr] lg:p-14">
             <div>
               <h2 className="font-display text-display-lg text-white">Planning your next trip — or kitting out a team?</h2>
               <p className="mt-4 max-w-lg text-[16px] leading-relaxed text-stone-200">Browse the range, or talk to us about sizes, specs and group orders. We reply within one working day.</p>

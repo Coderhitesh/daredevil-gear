@@ -64,7 +64,7 @@ function MenuEditor({ menuKey, initial }) {
     >
       <div className="space-y-2">
         {items.map((it, i) => (
-          <div key={i} className="grid gap-2 sm:grid-cols-[1fr_1.5fr_auto]">
+          <div key={i} className="grid grid-cols-1 gap-2 sm:grid-cols-[1fr_1.5fr_auto]">
             <input className="input" placeholder="Label" aria-label={`Link ${i + 1} label`} value={it.label} onChange={(e) => set(i, 'label', e.target.value)} />
             <div>
               <input className="input" placeholder="/pages/faq" aria-label={`Link ${i + 1} address`} value={it.href} onChange={(e) => set(i, 'href', e.target.value)} aria-invalid={errors[`items.${i}.href`] ? true : undefined} />

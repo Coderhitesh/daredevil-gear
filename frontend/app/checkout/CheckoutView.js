@@ -156,7 +156,7 @@ export default function CheckoutView() {
 
   if (meLoading || quote.isLoading) {
     return (
-      <div className="wrap grid gap-8 pt-10 lg:grid-cols-[minmax(0,1fr)_400px]">
+      <div className="wrap grid grid-cols-1 gap-8 pt-10 lg:grid-cols-[minmax(0,1fr)_400px]">
         <div className="space-y-4">
           <div className="skeleton h-40" />
           <div className="skeleton h-72" />
@@ -300,7 +300,7 @@ export default function CheckoutView() {
         </p>
       </div>
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-12">
+      <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-12">
         <form id="checkout-form" onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate className="space-y-6">
           <Step n={1} title="Contact" done={Boolean(me)}>
             {me ? (
@@ -312,7 +312,7 @@ export default function CheckoutView() {
                 <p className="text-sm text-graphite">
                   Have an account? <Link href="/account/login?next=/checkout" className="link">Sign in</Link> for saved addresses and order history. Or continue as a guest:
                 </p>
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <Field label="Email" required type="email" autoComplete="email" {...register('contact.email')} error={formState.errors.contact?.email?.message} hint="For your order confirmation and tracking" />
                   <Field
                     label="Full name"

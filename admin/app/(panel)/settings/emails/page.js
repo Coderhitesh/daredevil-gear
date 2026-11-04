@@ -16,7 +16,7 @@ export default function EmailTemplatesPage() {
   return (
     <Guard perm="settings:read">
       <PageHeader title="Email templates" description="Customer emails use the branded layout. You can change the wording; order details, links and legal footers are filled in automatically." />
-      <div className="grid gap-4 lg:grid-cols-[260px_minmax(0,1fr)]">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-[260px_minmax(0,1fr)]">
         <Card bodyClass="">
           {isLoading ? (
             <div className="skeleton m-4 h-40" />
@@ -67,7 +67,7 @@ function TemplateEditor({ t }) {
           ) : null
         }
       >
-        <fieldset disabled={!can('settings:write')} className="grid gap-4 sm:grid-cols-2">
+        <fieldset disabled={!can('settings:write')} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Input label="Subject" className="sm:col-span-2" value={v.subject} onChange={up('subject')} placeholder="Leave empty for the default" />
           <Input label="Heading" className="sm:col-span-2" value={v.heading} onChange={up('heading')} placeholder="Leave empty for the default" />
           <Textarea label="Opening paragraph" className="sm:col-span-2" rows={3} value={v.intro} onChange={up('intro')} placeholder="Leave empty for the default" />

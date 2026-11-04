@@ -134,7 +134,7 @@ export default function OrderDetail({ order, token }) {
         {order.payment?.amountRefunded ? <p className="mt-3 text-sm text-okay">Refunded so far: {inr(order.payment.amountRefunded)}</p> : null}
       </section>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <section className="panel p-5">
           <h3 className="font-display text-xl">Delivery address</h3>
           <address className="mt-2 not-italic text-graphite">

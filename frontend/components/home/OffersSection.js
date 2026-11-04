@@ -56,7 +56,7 @@ export default function OffersSection({ title, subtitle, posts = [] }) {
   return (
     <section className="wrap mt-16 sm:mt-20 mb-20 sm:mb-20" aria-label={title || 'Offers'}>
       <SectionHead kicker="Deals" title={title || 'Offers'} subtitle={subtitle} />
-      <ul className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
         {posts.map((p, k) => (
           <PostCard key={p.id} post={p} index={k % 3} />
         ))}

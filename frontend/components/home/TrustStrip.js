@@ -12,7 +12,7 @@ export default function TrustStrip({ title, items = [] }) {
       <div className="reveal wrap relative pb-20 pt-14">
         <p className="kicker kicker-trail">Why choose us</p>
         <h2 className="mt-1.5 font-display text-display-md">{title || 'Built for every explorer'}</h2>
-        <ul className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-9 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((it, k) => {
             const Icon = ICONS[it.icon] || BadgeCheck;
             return (

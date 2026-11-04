@@ -48,21 +48,21 @@ export default function DashboardPage() {
       />
       {error ? <Notice tone="alert" title="Could not load the dashboard">{error.message}</Notice> : null}
       {isLoading || !d ? (
-        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
           {Array.from({ length: 8 }).map((_, i) => (
             <div key={i} className="skeleton h-24" />
           ))}
         </div>
       ) : (
         <div className="space-y-4">
-          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
             <Stat label="Net revenue" value={inr(d.revenue, { decimals: 0 })} sub={d.refunded ? `${inr(d.grossRevenue, { decimals: 0 })} gross, ${inr(d.refunded, { decimals: 0 })} refunded` : 'No refunds in this period'} />
             <Stat label="Paid orders" value={d.ordersPlaced} sub={`Average order ${inr(d.averageOrderValue, { decimals: 0 })}`} />
             <Stat label="To fulfil" value={d.pendingOrders} sub={<Link className="link" href="/orders?status=confirmed,processing">Open the queue</Link>} />
             <Stat label="Customers" value={d.customers.total} sub={`${d.customers.new} new in this period`} />
           </div>
 
-          <div className="grid gap-4 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
             <Card title="Revenue by day" className="xl:col-span-2">
               <BarTrend data={d.revenueTrend} valueKey="revenue" label="Net revenue" format={(v, axis) => (axis ? compactINR(v) : inr(v, { decimals: 0 }))} />
             </Card>
@@ -91,7 +91,7 @@ export default function DashboardPage() {
             </Card>
           </div>
 
-          <div className="grid gap-4 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
             <Card title="Recent orders" className="xl:col-span-2" bodyClass="" actions={<Link href="/orders" className="btn-ghost btn-xs">All orders</Link>}>
               {d.recentOrders.length ? (
                 <div className="overflow-x-auto">
@@ -127,7 +127,7 @@ export default function DashboardPage() {
             </Card>
           </div>
 
-          <div className="grid gap-4 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
             <Card title="Top products" bodyClass="">
               {d.topProducts.length ? (
                 <ul className="divide-y divide-stone-200">

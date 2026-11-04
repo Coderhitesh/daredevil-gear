@@ -36,7 +36,7 @@ function NewsletterBand() {
       <div className="dusk absolute inset-0 opacity-60" aria-hidden="true" />
       <TopoLines className="absolute inset-0 h-full w-full text-signal/25" />
       <Mountains className="absolute inset-x-0 bottom-0 h-2/3 w-full opacity-80" />
-      <div className="wrap relative grid gap-8 py-12 lg:grid-cols-[1.1fr_1fr_1fr] lg:items-center">
+      <div className="wrap relative grid grid-cols-1 gap-8 py-12 lg:grid-cols-[1.1fr_1fr_1fr] lg:items-center">
         <div className="flex gap-4">
           <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-signal/50 text-signal">
             <Mail size={24} strokeWidth={1.6} aria-hidden="true" />
@@ -87,7 +87,7 @@ export default function Footer({ shell }) {
     <footer className="mt-24 bg-night text-stone-300">
       <NewsletterBand />
 
-      <div className="wrap grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.3fr]">
+      <div className="wrap grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.3fr]">
         <div className="max-w-xs">
           <Logo />
           <p className="mt-4 text-[14px] leading-relaxed text-stone-400">{biz.tagline || 'Made-in-India tactical & adventure gear for trekkers, campers, riders and everyday adventurers.'}</p>
@@ -138,7 +138,7 @@ export default function Footer({ shell }) {
       </div>
 
       <div className="border-t border-white/[0.07]">
-        <div className="wrap grid gap-4 py-6 text-[13px] text-stone-400 md:grid-cols-2">
+        <div className="wrap grid grid-cols-1 gap-4 py-6 text-[13px] text-stone-400 md:grid-cols-2">
           <p>
             <span className="text-stone-200">{biz.legalName || biz.displayName || 'DareDevil Gears'}</span>
             {biz.gstin ? <> · GSTIN {biz.gstin}</> : null}

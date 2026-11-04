@@ -46,7 +46,7 @@ export default function AccountOverview() {
           </p>
         )}
       </section>
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <section className="panel p-5">
           <h2 className="font-display text-2xl">Profile</h2>
           <p className="mt-3 text-graphite">

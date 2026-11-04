@@ -145,14 +145,14 @@ function OverlaySlide({ b, first, trust, active }) {
             </ul>
           ) : null}
 
-          <div className={`pointer-events-auto mt-9 flex flex-wrap gap-3 ${anim ? 'fade-up' : ''}`} style={{ '--d': '800ms' }}>
+          <div className={`pointer-events-auto mt-8 flex flex-wrap gap-3 sm:mt-9 [&>*]:flex-1 sm:[&>*]:flex-none ${anim ? 'fade-up' : ''}`} style={{ '--d': '800ms' }}>
             {b.ctaLabel && (b.ctaHref || b.linkHref) ? (
-              <SmartLink href={b.ctaHref || b.linkHref} newTab={!b.ctaHref && b.openInNewTab} className="btn-primary px-7">
+              <SmartLink href={b.ctaHref || b.linkHref} newTab={!b.ctaHref && b.openInNewTab} className="btn-primary px-5 sm:px-7">
                 {b.ctaLabel} <ArrowRight size={17} aria-hidden="true" />
               </SmartLink>
             ) : null}
             {b.secondaryCtaLabel && b.secondaryCtaHref ? (
-              <SmartLink href={b.secondaryCtaHref} className="btn-outline-light px-7">
+              <SmartLink href={b.secondaryCtaHref} className="btn-outline-light px-5 sm:px-7">
                 {b.secondaryCtaLabel}
               </SmartLink>
             ) : null}

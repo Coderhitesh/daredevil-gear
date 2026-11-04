@@ -64,7 +64,7 @@ export default function AddressesPage() {
           <MapPin size={20} /> No saved addresses yet. Add one to check out faster.
         </div>
       ) : null}
-      <ul className="grid gap-4 md:grid-cols-2">
+      <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {addresses.map((a) => (
           <li key={a._id} className="panel p-5">
             <p className="font-medium">

@@ -121,7 +121,7 @@ function OrderView({ order }) {
         </div>
       ) : null}
 
-      <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
         <div className="min-w-0 space-y-4">
           <Card title={`Items (${order.items.reduce((s, i) => s + i.quantity, 0)})`} bodyClass="">
             <div className="overflow-x-auto">
@@ -174,7 +174,7 @@ function OrderView({ order }) {
                 </tbody>
               </table>
             </div>
-            <div className="grid gap-4 border-t border-stone-300 p-4 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 border-t border-stone-300 p-4 sm:grid-cols-2">
               <div className="text-xs text-graphite-600">
                 <p className="font-medium text-graphite">GST breakup ({p.supplyType === 'intra' ? 'CGST + SGST, within Uttar Pradesh' : 'IGST, inter-state'})</p>
                 <table className="mt-1 w-full">

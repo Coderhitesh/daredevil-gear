@@ -9,7 +9,7 @@ export default function ReviewsStrip({ title, subtitle, reviews = [] }) {
   return (
     <section className="wrap mt-20">
       <SectionHead kicker="Customer reviews" title={title} subtitle={subtitle} />
-      <ul className="grid gap-5 md:grid-cols-3">
+      <ul className="grid grid-cols-1 gap-5 md:grid-cols-3">
         {reviews.slice(0, 3).map((r, k) => (
           <li key={r.id} className="reveal panel flex flex-col p-6" style={{ '--i': k }}>
             <Stars value={r.rating} />

@@ -45,7 +45,7 @@ export default function SystemPage() {
   return (
     <Guard perm="settings:read">
       <PageHeader title="Launch checklist" description={`Environment: ${s.environment}. Work through every item before taking real orders. Items marked done are checked live from the system.`} />
-      <div className="grid gap-4 xl:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
         <Card title="Business & legal" bodyClass="">
           <ul className="divide-y divide-stone-200">
             {['business', 'grievanceOfficer'].map((k) => {

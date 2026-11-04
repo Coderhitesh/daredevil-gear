@@ -18,7 +18,7 @@ export default function CartView() {
 
   if (isLoading) {
     return (
-      <div className="wrap grid gap-10 pt-10 lg:grid-cols-[minmax(0,1fr)_380px]">
+      <div className="wrap grid grid-cols-1 gap-10 pt-10 lg:grid-cols-[minmax(0,1fr)_380px]">
         <div className="skeleton h-80" />
         <div className="skeleton h-64" />
       </div>
@@ -44,7 +44,7 @@ export default function CartView() {
   return (
     <div className="wrap pt-10">
       <h1 className="font-display text-display-lg">Your cart</h1>
-      <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-14">
+      <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-14">
         <div className="border-t border-stone-300">
           <CartLines cart={cart} />
         </div>

@@ -27,7 +27,7 @@ export default function AccountPage() {
   return (
     <>
       <PageHeader title="My account" />
-      <div className="grid max-w-4xl gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 max-w-4xl gap-4 md:grid-cols-2">
         <Card title="Profile">
           {me ? <KeyValue rows={[['Name', me.name], ['Email', me.email], ['Role', humanize(me.role)], ['Two-factor', !me.mfaEnabled ? <Pill key="m" tone="caution">Off</Pill> : <Pill key="m" tone="okay">On</Pill>]]} /> : null}
           <p className="mt-4 text-xs text-graphite-400">To change your name, email or role, ask a super admin. Lost your authenticator? A super admin can reset it after confirming who you are.</p>

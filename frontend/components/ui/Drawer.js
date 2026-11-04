@@ -52,7 +52,7 @@ export default function Drawer({ open, onClose, title, side = 'right', children,
             role="dialog"
             aria-modal="true"
             aria-label={title}
-            className={`absolute top-0 ${side === 'right' ? 'right-0' : 'left-0'} flex h-full w-full ${width} flex-col bg-paper shadow-2xl`}
+            className={`absolute top-0 ${side === 'right' ? 'right-0' : 'left-0'} flex h-full w-full ${width} flex-col bg-paper text-ink shadow-2xl`}
             initial={{ x }}
             animate={{ x: 0 }}
             exit={{ x }}
@@ -65,7 +65,7 @@ export default function Drawer({ open, onClose, title, side = 'right', children,
               </button>
             </div>
             <div className="flex-1 overflow-y-auto">{children}</div>
-            {footer ? <div className="shrink-0 border-t border-stone-300 bg-white p-5">{footer}</div> : null}
+            {footer ? <div className="shrink-0 border-t border-stone-300 bg-white p-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:p-5 sm:pb-[max(1.25rem,env(safe-area-inset-bottom))]">{footer}</div> : null}
           </motion.div>
         </div>
       ) : null}

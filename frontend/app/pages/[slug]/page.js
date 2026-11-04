@@ -22,7 +22,7 @@ export default async function CmsPage({ params }) {
     <>
       <PageHero compact crumbs={[{ name: page.title, href: `/pages/${slug}` }]} title={page.title} subtitle={`Last updated ${date(page.updatedAt)}`} />
       <div className="wrap pt-10">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_340px]">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_340px]">
           <article className="panel p-6 sm:p-10">
             {/* body is sanitised on the server (allow-listed tags only) */}
             <div className="prose-ddg" dangerouslySetInnerHTML={{ __html: page.body }} />

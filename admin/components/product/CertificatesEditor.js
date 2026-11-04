@@ -44,7 +44,7 @@ export default function CertificatesEditor({ form }) {
           {fields.map((f, i) => {
             const url = watch(`compliance.certificates.${i}.fileUrl`);
             return (
-              <div key={f.id} className="grid gap-2 rounded border border-stone-400 p-3 sm:grid-cols-3">
+              <div key={f.id} className="grid grid-cols-1 gap-2 rounded border border-stone-400 p-3 sm:grid-cols-3">
                 <input className="input" placeholder="Document name" aria-label="Document name" {...register(`compliance.certificates.${i}.name`)} />
                 <input className="input" placeholder="Standard (e.g. IS 17051)" aria-label="Standard" {...register(`compliance.certificates.${i}.standard`)} />
                 <input className="input" placeholder="Issued by (lab)" aria-label="Issued by" {...register(`compliance.certificates.${i}.issuedBy`)} />

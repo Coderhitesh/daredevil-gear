@@ -92,7 +92,7 @@ function CustomerView({ c }) {
           ))}
         </div>
       ) : null}
-      <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
         <div className="space-y-4">
           <Card title={`Orders (${c.orders.length})`} bodyClass="">
             {c.orders.length ? (
@@ -124,7 +124,7 @@ function CustomerView({ c }) {
           </Card>
           <Card title="Addresses">
             {c.addresses.length ? (
-              <ul className="grid gap-3 sm:grid-cols-2">
+              <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {c.addresses.map((a) => (
                   <li key={a._id} className="rounded border border-stone-300 p-3 text-sm">
                     <p className="font-medium">

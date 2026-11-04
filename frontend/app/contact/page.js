@@ -18,7 +18,7 @@ export default async function ContactPage() {
         subtitle="Questions about a product, an order or a bulk purchase? We reply within one working day."
       />
       <div className="wrap pt-10">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
           <div className="space-y-6 text-[15px]">
             <dl className="space-y-4">
               {b.email ? (

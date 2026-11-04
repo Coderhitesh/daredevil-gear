@@ -4,7 +4,7 @@ import { ArrowRight, Building2, Users, FileText } from 'lucide-react';
 export default function BulkBand({ title, config = {} }) {
   return (
     <section className="wrap mt-20 sm:mt-24">
-      <div className="contours relative grid gap-8 overflow-hidden rounded-3xl p-7 text-white shadow-lift sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:items-center">
+      <div className="contours relative grid grid-cols-1 gap-8 overflow-hidden rounded-3xl p-7 text-white shadow-lift sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:items-center">
         <div className="absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-signal/25 blur-3xl" aria-hidden="true" />
         <div className="relative">
           <p className="kicker">Teams & institutions</p>
@@ -16,7 +16,7 @@ export default function BulkBand({ title, config = {} }) {
             </Link>
           ) : null}
         </div>
-        <ul className="relative grid gap-3 text-[14px]">
+        <ul className="relative grid grid-cols-1 gap-3 text-[14px]">
           {[
             [Users, 'Units, schools, clubs and expedition teams'],
             [Building2, 'Government and corporate buyers'],

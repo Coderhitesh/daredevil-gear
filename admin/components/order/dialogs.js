@@ -63,7 +63,7 @@ export function ShipDialog({ order, onClose }) {
       <div className="space-y-4">
         {order.shippingProvider === 'shiprocket' ? <Select label="How" value={mode} onChange={(e) => setMode(e.target.value)} options={[['manual', 'Enter courier and tracking myself'], ['provider', 'Book through Shiprocket']]} /> : null}
         {mode === 'manual' ? (
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <Input label="Courier" required value={v.carrier} onChange={up('carrier')} placeholder="Delhivery, India Post…" />
             <Input label="Tracking / AWB number" required value={v.trackingNumber} onChange={up('trackingNumber')} />
             <Input label="Tracking link" className="sm:col-span-2" value={v.trackingUrl} onChange={up('trackingUrl')} placeholder="https://…" hint="Optional. Included in the dispatch email." />
@@ -94,7 +94,7 @@ export function ShipmentUpdateDialog({ order, onClose }) {
   );
   return (
     <Modal open onClose={onClose} title="Update shipment" footer={<Footer onClose={onClose} busy={save.isPending} label="Save update" onClick={() => save.mutate()} />}>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <Select label="Status" value={v.status} onChange={up('status')} options={[['shipped', 'Shipped'], ['in_transit', 'In transit'], ['out_for_delivery', 'Out for delivery'], ['delivered', 'Delivered'], ['rto', 'Returned to origin (RTO)']]} />
         <Input label="Location" value={v.location} onChange={up('location')} placeholder="Delhi hub" />
         <Input label="Courier" value={v.carrier} onChange={up('carrier')} />
@@ -181,7 +181,7 @@ export function RefundDialog({ order, onClose, presetItems }) {
             </tbody>
           </table>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Input label="Refund amount (₹)" inputMode="decimal" required value={shownAmount} onChange={(e) => (setAmount(e.target.value), setTouchedAmount(true))} hint={itemValue ? `Selected items are worth ${inr(itemValue)}. You can add delivery or packaging if they are refundable.` : 'Choose items above, or enter an amount (for example a goodwill or delivery refund).'} error={paise > order.refundable ? 'More than the refundable amount' : undefined} />
           <Textarea label="Reason" required rows={2} value={reason} onChange={(e) => setReason(e.target.value)} hint="Shown to the customer" />
         </div>
@@ -235,7 +235,7 @@ export function ReturnDialog({ order, request, onClose }) {
           onChange={(e) => setStatus(e.target.value)}
           options={[['approved', 'Approved'], ['rejected', 'Rejected'], ['pickup_scheduled', 'Pickup scheduled'], ['received', 'Received at warehouse'], ['refund_initiated', 'Refund the customer now'], ['closed', 'Closed']]}
         />
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Select label="Return shipping paid by" value={paidBy} onChange={(e) => setPaidBy(e.target.value)} options={[['store', 'Us (store)'], ['customer', 'Customer']]} />
           <Input label="Deduction (₹)" inputMode="decimal" value={deduction} onChange={(e) => setDeduction(e.target.value)} hint="Only as stated in the return policy" />
         </div>

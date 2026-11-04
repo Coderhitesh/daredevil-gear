@@ -132,7 +132,7 @@ function VariantForm({ product, variant, onClose }) {
         </>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <Input label="Option name" required value={v.title} onChange={up('title')} placeholder="Size L / Olive" />
         {isNew ? <Input label="SKU" value={v.sku} onChange={up('sku')} hint={`Leave blank for ${product.sku}-NN`} /> : null}
         <Input label="Price override (incl. GST)" inputMode="decimal" value={v.price} onChange={up('price')} hint="Blank uses the product price" />

@@ -47,7 +47,7 @@ export default function ContactForm({ bulk = false }) {
     );
   }
   return (
-    <form onSubmit={handleSubmit(submit)} noValidate className="grid gap-4 sm:grid-cols-2">
+    <form onSubmit={handleSubmit(submit)} noValidate className="grid grid-cols-1 gap-4 sm:grid-cols-2">
       <Field label="Name" required autoComplete="name" {...register('name')} error={formState.errors.name?.message} />
       <Field label="Email" type="email" required autoComplete="email" {...register('email')} error={formState.errors.email?.message} />
       <Field label="Phone (optional)" type="tel" autoComplete="tel" {...register('phone')} error={formState.errors.phone?.message} />

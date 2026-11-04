@@ -76,7 +76,7 @@ export default function Reviews({ slug, productId }) {
   const summary = reviews?.summary;
   return (
     <section id="reviews" className="wrap mt-16 scroll-mt-32 border-t border-stone-300 pt-12">
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]">
         <div>
           <h2 className="font-display text-display-md">Customer reviews</h2>
           {summary?.count ? (

@@ -187,7 +187,7 @@ function TrustItems({ form }) {
       <p className="hint mb-2">Only promises you keep: real delivery times, the actual return window, payment security.</p>
       <div className="space-y-2">
         {fields.map((f, i) => (
-          <div key={f.id} className="grid gap-2 rounded border border-stone-400 p-2 sm:grid-cols-[1fr_2fr_7rem_auto]">
+          <div key={f.id} className="grid grid-cols-1 gap-2 rounded border border-stone-400 p-2 sm:grid-cols-[1fr_2fr_7rem_auto]">
             <input className="input" placeholder="Title" aria-label="Title" {...form.register(`items.${i}.title`)} />
             <input className="input" placeholder="Short text" aria-label="Text" {...form.register(`items.${i}.text`)} />
             <select className="input" aria-label="Icon" {...form.register(`items.${i}.icon`)}>

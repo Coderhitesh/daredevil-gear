@@ -11,12 +11,10 @@
 
 @layer base {
   html {
-    overflow-x: clip;
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
   }
   body {
-    overflow-x: clip;
     @apply bg-paper font-sans text-[15px] leading-relaxed text-ink antialiased;
     font-feature-settings: 'cv11', 'ss01';
   }
@@ -45,7 +43,7 @@
 
   /* Buttons */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-display text-[14.5px] font-semibold transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg px-5 py-3 font-display text-[14.5px] font-semibold transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn-primary {
     @apply btn bg-signal text-white shadow-glow hover:bg-signal-dark active:translate-y-px;

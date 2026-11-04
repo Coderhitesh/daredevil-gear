@@ -21,7 +21,7 @@ export default function MobileMenu({ categories, links = [] }) {
         <Menu size={22} />
       </button>
       <Drawer open={open} onClose={close} title="Menu" side="left" width="max-w-sm">
-        <nav aria-label="Mobile" className="pb-6">
+        <nav aria-label="Mobile" className="pb-6 text-ink">
           <ul className="grid grid-cols-2 gap-2 p-4">
             {links.map((l) => (
               <li key={l.href}>

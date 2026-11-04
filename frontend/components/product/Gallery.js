@@ -6,7 +6,7 @@ import { ZoomIn } from 'lucide-react';
 import { Placeholder } from './ProductThumb';
 import Lightbox from '../ui/Lightbox';
 
-/** Image gallery with hover zoom (desktop), swipe-scroll (mobile) and a full-screen viewer. */
+/** Image gallery with hover zoom (desktop), tap-to-switch thumbnails (mobile) and a full-screen viewer. */
 export default function Gallery({ images = [], videos = [], name }) {
   const [active, setActive] = useState(0);
   const [zoom, setZoom] = useState(null);
@@ -27,31 +27,11 @@ export default function Gallery({ images = [], videos = [], name }) {
   const img = images[active];
   return (
     <div>
-      {/* mobile: horizontal swipe */}
-      <ul className="-mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 md:hidden" aria-label="Product images">
-        {images.map((im, i) => (
-          <li key={im.url} className="relative aspect-square w-[88vw] shrink-0 snap-center overflow-hidden rounded-2xl bg-stone-100">
-            <button type="button" className="absolute inset-0" onClick={() => (setActive(i), setLightbox(true))} aria-label={`Open image ${i + 1} of ${images.length}`}>
-              <Image src={im.url} alt={im.alt || name} fill priority={i === 0} sizes="88vw" className="object-cover" />
-            </button>
-          </li>
-        ))}
-      </ul>
-
-      {/* desktop: main image with hover zoom + thumbnails */}
-      <div className="hidden gap-4 md:grid md:grid-cols-[72px_minmax(0,1fr)]">
-        <ul className="space-y-2" aria-label="Choose image">
-          {images.map((im, i) => (
-            <li key={im.url}>
-              <button type="button" onClick={() => setActive(i)} aria-current={i === active} className={`relative block aspect-square w-full overflow-hidden rounded-xl border-2 ${i === active ? 'border-signal' : 'border-transparent hover:border-stone-400'}`}>
-                <Image src={im.url} alt="" fill sizes="72px" className="object-cover" />
-              </button>
-            </li>
-          ))}
-        </ul>
+      {/* one layout for every screen: main image + thumbnails (below on mobile, left column from md) */}
+      <div className="grid gap-3 md:grid-cols-[72px_minmax(0,1fr)] md:gap-4">
         <button
           type="button"
-          className="group relative aspect-square cursor-zoom-in overflow-hidden rounded-2xl bg-stone-100"
+          className="group relative aspect-square w-full cursor-zoom-in overflow-hidden rounded-2xl bg-stone-100 md:order-2"
           onMouseMove={(e) => {
             const r = e.currentTarget.getBoundingClientRect();
             setZoom({ x: ((e.clientX - r.left) / r.width) * 100, y: ((e.clientY - r.top) / r.height) * 100 });
@@ -65,14 +45,31 @@ export default function Gallery({ images = [], videos = [], name }) {
             alt={img.alt || name}
             fill
             priority
-            sizes="(min-width:1024px) 55vw, 90vw"
+            sizes="(min-width:1024px) 55vw, 100vw"
             className="object-cover transition-transform duration-150"
             style={zoom ? { transform: 'scale(1.8)', transformOrigin: `${zoom.x}% ${zoom.y}%` } : undefined}
           />
-          <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded bg-white/90 px-2 py-1 text-xs text-graphite opacity-0 group-hover:opacity-100">
-            <ZoomIn size={14} /> Click to enlarge
+          {images.length > 1 ? (
+            <span className="tabular absolute left-3 top-3 rounded-full bg-night/70 px-2.5 py-1 text-xs font-medium text-white md:hidden">
+              {active + 1} / {images.length}
+            </span>
+          ) : null}
+          <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded bg-white/90 px-2 py-1 text-xs text-graphite md:opacity-0 md:group-hover:opacity-100">
+            <ZoomIn size={14} /> <span className="hidden md:inline">Click to enlarge</span>
+            <span className="md:hidden">Tap to zoom</span>
           </span>
         </button>
+        {images.length > 1 ? (
+          <ul className="grid grid-cols-5 gap-2 sm:grid-cols-6 md:order-1 md:grid-cols-1 md:content-start" aria-label="Choose image">
+            {images.map((im, i) => (
+              <li key={im.url}>
+                <button type="button" onClick={() => setActive(i)} aria-current={i === active} aria-label={`Show image ${i + 1}`} className={`relative block aspect-square w-full overflow-hidden rounded-xl border-2 bg-stone-100 ${i === active ? 'border-signal' : 'border-transparent hover:border-stone-400'}`}>
+                  <Image src={im.url} alt="" fill sizes="72px" className="object-cover" />
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : null}
       </div>
       <Videos videos={videos} />
       <Lightbox open={lightbox} onClose={() => setLightbox(false)} images={images} index={active} onIndex={setActive} name={name} />

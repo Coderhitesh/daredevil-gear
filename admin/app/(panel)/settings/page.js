@@ -149,7 +149,7 @@ export default function SettingsPage() {
   return (
     <Guard perm="settings:read">
       <PageHeader title="Store settings" description="Changes apply to the storefront within a minute and are recorded in the audit log." />
-      <div className="grid gap-5 lg:grid-cols-[220px_minmax(0,1fr)]">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-[220px_minmax(0,1fr)]">
         <nav aria-label="Settings groups" className="lg:sticky lg:top-20 lg:self-start">
           <ul className="flex gap-1 overflow-x-auto lg:flex-col">
             {Object.entries(GROUPS).map(([k, g]) => (

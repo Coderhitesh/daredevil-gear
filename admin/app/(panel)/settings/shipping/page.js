@@ -135,7 +135,7 @@ function ZoneDrawer({ zone, onClose }) {
         </>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <Input label="Zone name" required value={v.name} onChange={up('name')} />
         <Select label="Scope" value={v.scope} onChange={up('scope')} options={[['domestic', 'India'], ['international', 'International']]} />
         {v.scope === 'international' ? <Input label="Country codes" className="sm:col-span-2" value={v.countries} onChange={up('countries')} hint="ISO codes, comma separated (US, GB, AE)" /> : (
@@ -211,7 +211,7 @@ function RateDrawer({ rate, zones, onClose }) {
         </>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <Select label="Zone" value={v.zone} onChange={up('zone')} options={zones.map((z) => [String(z._id), z.name])} />
         <Input label="Name shown at checkout" value={v.name} onChange={up('name')} error={errors.name} />
         <Select label="Service" value={v.method} onChange={up('method')} options={[['standard', 'Standard'], ['express', 'Express'], ['india_post', 'India Post']]} />

@@ -6,7 +6,7 @@ import Mountains from '../ui/Mountains';
 export default function PromoBanners({ banners = [] }) {
   if (!banners.length) return null;
   return (
-    <section className="wrap mt-16 grid gap-5 sm:mt-20 md:grid-cols-2">
+    <section className="wrap mt-16 grid grid-cols-1 gap-5 sm:mt-20 md:grid-cols-2">
       {banners.slice(0, 2).map((b) => {
         const light = b.theme === 'light';
         return (

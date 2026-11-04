@@ -119,25 +119,26 @@ export default function ListingControls({ facets, total }) {
 
   return (
     <div className="mb-8">
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-stone-300/70 bg-white px-4 py-3 shadow-card">
+      <div className="rounded-2xl border border-stone-300/70 bg-white px-3 py-3 shadow-card sm:px-4">
         <div className="flex items-center gap-3">
-          <button type="button" onClick={() => setOpen(true)} className="btn-outline btn-sm">
+          <button type="button" onClick={() => setOpen(true)} className="btn-outline btn-sm shrink-0">
             <SlidersHorizontal size={16} /> Filter{active.length ? ` (${active.length})` : ''}
           </button>
-          <p className="tabular text-sm text-graphite" aria-live="polite">
+          <p className="tabular hidden text-sm text-graphite sm:block" aria-live="polite">
             {pending ? 'Updating…' : plural(total, 'product')}
           </p>
+          <label className="ml-auto flex min-w-0 flex-1 items-center gap-2 text-sm sm:flex-none">
+            <span className="hidden text-graphite sm:inline">Sort by</span>
+            <select className="input h-10 w-full py-1 pr-8 text-sm sm:h-9 sm:w-auto" aria-label="Sort by" value={params.get('sort') || 'featured'} onChange={(e) => set({ sort: e.target.value === 'featured' ? null : e.target.value })}>
+              {SORTS.map(([v, l]) => (
+                <option key={v} value={v}>
+                  {l}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
-        <label className="flex items-center gap-2 text-sm">
-          <span className="text-graphite">Sort by</span>
-          <select className="input h-9 w-auto py-1 pr-8 text-sm" value={params.get('sort') || 'featured'} onChange={(e) => set({ sort: e.target.value === 'featured' ? null : e.target.value })}>
-            {SORTS.map(([v, l]) => (
-              <option key={v} value={v}>
-                {l}
-              </option>
-            ))}
-          </select>
-        </label>
+        <p className="tabular mt-2 text-[13px] text-graphite sm:hidden">{pending ? 'Updating…' : plural(total, 'product')}</p>
       </div>
       {active.length ? (
         <ul className="mt-3 flex flex-wrap gap-2" aria-label="Active filters">

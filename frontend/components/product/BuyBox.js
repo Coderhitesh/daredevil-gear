@@ -97,16 +97,29 @@ export default function BuyBox({ product: p }) {
         <p className={`mb-3 text-sm font-medium ${inStock ? 'text-okay' : 'text-alert'}`} role="status">
           {inStock ? 'In stock' : 'Out of stock'}
         </p>
-        <div className="flex flex-wrap items-center gap-3">
-          {inStock ? <QuantityStepper value={qty} max={variant.maxQuantity} onChange={setQty} /> : null}
-          <button type="button" className="btn-dark flex-1 sm:flex-none sm:px-8" disabled={!inStock || isPending} onClick={() => addToCart(false)}>
+        <div className="flex items-center justify-between gap-3 sm:hidden">
+          {inStock ? <QuantityStepper value={qty} max={variant.maxQuantity} onChange={setQty} /> : <span />}
+          <div className="flex gap-1">
+            <WishlistButton productId={p.id} name={p.name} withLabel className="btn-ghost btn-sm" />
+            <button type="button" onClick={share} className="btn-ghost btn-sm">
+              <Share2 size={16} /> Share
+            </button>
+          </div>
+        </div>
+        <div className="mt-3 grid grid-cols-2 gap-3 sm:mt-0 sm:flex sm:flex-wrap sm:items-center">
+          {inStock ? (
+            <div className="hidden sm:block">
+              <QuantityStepper value={qty} max={variant.maxQuantity} onChange={setQty} />
+            </div>
+          ) : null}
+          <button type="button" className="btn-dark w-full sm:w-auto sm:px-8" disabled={!inStock || isPending} onClick={() => addToCart(false)}>
             {isPending ? 'Adding…' : 'Add to cart'}
           </button>
-          <button type="button" className="btn-primary flex-1 sm:flex-none sm:px-8" disabled={!inStock || isPending} onClick={() => addToCart(true)}>
+          <button type="button" className="btn-primary w-full sm:w-auto sm:px-8" disabled={!inStock || isPending} onClick={() => addToCart(true)}>
             Buy now
           </button>
         </div>
-        <div className="mt-3 flex gap-1">
+        <div className="mt-3 hidden gap-1 sm:flex">
           <WishlistButton productId={p.id} name={p.name} withLabel className="btn-ghost btn-sm" />
           <button type="button" onClick={share} className="btn-ghost btn-sm">
             <Share2 size={16} /> Share

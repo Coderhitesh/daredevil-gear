@@ -15,7 +15,7 @@ export default function ProductDetails({ product: p }) {
   const s = p.statutory;
   const missingStatutory = !s.countryOfOrigin || !(s.manufacturer || s.importer || s.packer) || !s.consumerCare;
   return (
-    <section className="wrap mt-16 grid gap-12 border-t border-stone-300 pt-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-14">
+    <section className="wrap mt-16 grid grid-cols-1 gap-12 border-t border-stone-300 pt-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-14">
       <div>
         <h2 className="font-display text-display-md">About this product</h2>
         <div className="prose-ddg mt-4">

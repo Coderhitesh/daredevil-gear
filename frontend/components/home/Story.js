@@ -28,7 +28,7 @@ export default function Story({ title, config = {}, stats = {} }) {
           <Mountains className="absolute inset-x-0 bottom-0 h-[70%] w-full" />
         </>
       )}
-      <div className="wrap relative grid gap-10 py-16 sm:py-20 lg:grid-cols-[1fr_auto] lg:items-center">
+      <div className="wrap relative grid grid-cols-1 gap-10 py-16 sm:py-20 lg:grid-cols-[1fr_auto] lg:items-center">
         <div className="reveal max-w-xl">
           <p className="kicker kicker-trail mb-3">Ready for your next adventure?</p>
           <h2 className="font-display text-display-lg text-white">{title}</h2>
@@ -37,7 +37,7 @@ export default function Story({ title, config = {}, stats = {} }) {
             {config.ctaLabel || 'Shop adventure gear'} <ArrowRight size={17} aria-hidden="true" />
           </Link>
         </div>
-        <ul className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3 lg:grid-cols-1">
           {figures.map(({ Icon, value, label }, k) => (
             <li key={label} style={{ '--i': k + 2 }} className="reveal flex items-center gap-4 rounded-2xl border border-white/10 bg-night/60 px-5 py-4 backdrop-blur-sm">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-signal/15 text-signal">

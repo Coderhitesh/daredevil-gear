@@ -60,7 +60,7 @@ export default async function ProductPage({ params }) {
     <>
       <div className="wrap pt-6">
         <Breadcrumbs items={[...(p.category ? [{ name: p.category.name, href: `/category/${p.category.slug}` }] : []), { name: p.name, href: `/product/${p.slug}` }]} />
-        <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-14">
+        <div className="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-14">
           <Gallery images={p.images} videos={p.videos} name={p.name} />
           <div className="lg:sticky lg:top-32 lg:self-start">
             {p.brand ? <p className="text-sm text-graphite-400">{p.brand.name}</p> : null}

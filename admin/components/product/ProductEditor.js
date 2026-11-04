@@ -129,7 +129,7 @@ function EditorBody({ product, categories, brands }) {
           </>
         }
       />
-      <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_360px]">
+      <div className="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1fr)_360px]">
         <div className="min-w-0">
           <Tabs
             value={tab}
@@ -186,7 +186,7 @@ function TaxPreview({ values }) {
   const taxable = Math.round(price / (1 + rate / 100));
   const sale = values.pricing?.sale?.active ? toPaise(values.pricing.sale.priceInclusive) : null;
   return (
-    <div className="mb-5 grid gap-3 rounded border border-stone-300 bg-paper p-3 text-sm sm:grid-cols-3">
+    <div className="mb-5 grid grid-cols-1 gap-3 rounded border border-stone-300 bg-paper p-3 text-sm sm:grid-cols-3">
       <div>
         <p className="text-xs text-graphite-400">Taxable value</p>
         <p className="tabular">{inr(taxable)}</p>

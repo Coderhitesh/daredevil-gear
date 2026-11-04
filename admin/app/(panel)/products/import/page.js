@@ -70,7 +70,7 @@ export default function ImportPage() {
         title="Import from Excel"
         description="Upload the product workbook. A dry run shows exactly what would change; nothing is saved until you apply it. Fields you have edited by hand in the admin are never overwritten."
       />
-      <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_340px]">
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_340px]">
         <div className="space-y-4">
           <Card title="1. Choose the workbook">
             <div className="flex flex-wrap items-center gap-3">

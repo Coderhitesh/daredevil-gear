@@ -38,7 +38,7 @@ export default function CombosSection({ title, subtitle, combos = [], multiBuys 
       <div className="wrap relative">
         <SectionHead kicker="Buy together, pay less" title={title || 'Combo offers'} subtitle={subtitle} dark />
         {combos.length ? (
-          <ul className="grid gap-4 sm:gap-5 lg:grid-cols-2">
+          <ul className="grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">
             {combos.map((o, k) => (
               <li key={o.id} className="reveal" style={{ '--i': k % 2 }}>
                 <ComboCard offer={o} />
@@ -51,7 +51,7 @@ export default function CombosSection({ title, subtitle, combos = [], multiBuys 
             <h3 className="mb-3 flex items-center gap-2 font-display text-[17px] font-semibold text-white">
               <BadgePercent size={19} className="text-signal" aria-hidden="true" /> Buy more, save more
             </h3>
-            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {multiBuys.map((o, k) => (
                 <MultiBuyCard key={o.id} offer={o} index={k % 3} />
               ))}

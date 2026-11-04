@@ -15,7 +15,7 @@ export default function AddressFields({ register, errors = {}, prefix = '', show
   const n = (f) => (prefix ? `${prefix}.${f}` : f);
   const e = (f) => (prefix ? errors?.[prefix]?.[f]?.message : errors?.[f]?.message);
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
       <Field label="Full name" required autoComplete="name" {...register(n('fullName'))} error={e('fullName')} />
       <Field label="Mobile number" required type="tel" inputMode="tel" autoComplete="tel" {...register(n('phone'))} error={e('phone')} hint="For delivery updates" />
       <Field label="House / flat, building, street" required autoComplete="address-line1" className="sm:col-span-2" {...register(n('line1'))} error={e('line1')} />

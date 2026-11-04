@@ -16,7 +16,7 @@ export default function BulkOrdersPage() {
         title="Bulk & institutional orders"
         subtitle="Equipping a team, a unit, a school or an expedition? Tell us what you need, how many and where it should go. We will send a written quote within one working day."
       />
-      <div className="wrap mt-10 grid gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
+      <div className="wrap mt-10 grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
         <div className="panel p-5 sm:p-8">
           <ContactForm bulk />
         </div>

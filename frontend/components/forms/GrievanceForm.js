@@ -47,7 +47,7 @@ export default function GrievanceForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit(submit)} noValidate className="mt-4 grid gap-4 sm:grid-cols-2">
+      <form onSubmit={handleSubmit(submit)} noValidate className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <Field label="Name" required {...register('name')} error={formState.errors.name?.message} />
         <Field label="Email" type="email" required {...register('email')} error={formState.errors.email?.message} />
         <Field label="Phone (optional)" type="tel" {...register('phone')} error={formState.errors.phone?.message} />
@@ -83,7 +83,7 @@ export default function GrievanceForm() {
         }}
       >
         <h3 className="font-display text-xl">Check a complaint</h3>
-        <div className="grid gap-3 sm:grid-cols-[1fr_1fr_auto] sm:items-end">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_1fr_auto] sm:items-end">
           <Field label="Ticket number" value={lookup.ticketNumber} onChange={(e) => setLookup({ ...lookup, ticketNumber: e.target.value })} />
           <Field label="Email" type="email" value={lookup.email} onChange={(e) => setLookup({ ...lookup, email: e.target.value })} />
           <button type="submit" className="btn-outline btn-sm h-11">

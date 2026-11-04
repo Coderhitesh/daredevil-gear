@@ -117,7 +117,7 @@ export function FieldSet({ fields, form, cols = 2 }) {
   const values = watch();
   const err = (name) => get(formState.errors, name)?.message;
   return (
-    <div className={`grid gap-4 ${cols === 2 ? 'sm:grid-cols-2' : ''}`}>
+    <div className={`grid grid-cols-1 gap-4 ${cols === 2 ? 'sm:grid-cols-2' : ''}`}>
       {fields.map((f) => {
         if (f.show && !f.show(values)) return null;
         const span = f.span === 2 || ['textarea', 'html', 'lines', 'image', 'imageurl'].includes(f.type) ? 'sm:col-span-2' : '';
@@ -161,7 +161,7 @@ export function FieldSet({ fields, form, cols = 2 }) {
                 render={({ field }) => (
                   <fieldset className="sm:col-span-2">
                     <legend className="label">{f.label}</legend>
-                    <div className="grid gap-1.5 rounded border border-stone-400 p-3 sm:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-1.5 rounded border border-stone-400 p-3 sm:grid-cols-2">
                       {(typeof f.options === 'function' ? f.options(values) : f.options).map(([val, text]) => (
                         <Checkbox
                           key={val}

@@ -48,7 +48,7 @@ export default function AccountShell({ children }) {
   return (
     <div className="wrap pt-10">
       <h1 className="font-display text-display-lg">{me ? `Hello, ${me.name.split(' ')[0]}` : 'Your wishlist'}</h1>
-      <div className="mt-8 grid gap-8 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12">
+      <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12">
         {me ? (
           <nav aria-label="Account" className="-mx-4 overflow-x-auto px-4 lg:mx-0 lg:px-0">
             <ul className="flex gap-1 lg:flex-col">

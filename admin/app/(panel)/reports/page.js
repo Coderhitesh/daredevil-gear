@@ -32,7 +32,7 @@ export default function ReportsPage() {
   return (
     <Guard perm="reports:read">
       <PageHeader title="Reports" description="Exports open in any spreadsheet. Amounts are in rupees; dates are in Indian time." />
-      <div className="grid gap-4 xl:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
         <Card title="Sales & GST">
           <p className="mb-4 text-sm text-graphite-600">One row per order line for paid orders: invoice number, HSN, GST rate, taxable value and tax, place of supply. Share with your accountant for GST returns.</p>
           <div className="flex flex-wrap items-end gap-3">
@@ -53,7 +53,7 @@ export default function ReportsPage() {
         </Card>
         <Card title="Search, last 30 days">
           {search.data?.totalSearches ? (
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
                 <p className="mb-2 text-sm font-medium">Most searched</p>
                 <ol className="space-y-1 text-sm">

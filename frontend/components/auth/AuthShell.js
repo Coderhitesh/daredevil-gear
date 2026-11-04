@@ -2,7 +2,7 @@ import Mountains from '../ui/Mountains';
 
 export default function AuthShell({ title, intro, children, aside }) {
   return (
-    <div className="wrap grid gap-10 pt-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-16 md:pt-16">
+    <div className="wrap grid grid-cols-1 gap-10 pt-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-16 md:pt-16">
       <div className="panel max-w-lg p-6 sm:p-9">
         <h1 className="font-display text-display-md">{title}</h1>
         {intro ? <p className="mt-2 text-graphite">{intro}</p> : null}
