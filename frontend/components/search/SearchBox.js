@@ -110,7 +110,7 @@ export default function SearchBox({ compact = false, variant = 'light' }) {
             onFocus={() => setOpen(true)}
             onKeyDown={onKeyDown}
             placeholder={compact ? 'Search gear' : 'Search for backpacks, tents, torches, goggles…'}
-            className={`input [&::-webkit-search-cancel-button]:hidden ${pill ? 'h-11 rounded-full border-0 bg-white pl-5 pr-24 text-[14px] focus:ring-signal/40' : 'h-10 pl-10 pr-9'}`}
+            className={`input [&::-webkit-search-cancel-button]:hidden text-black ${pill ? 'h-11 rounded-full bg-white pl-5 pr-24 text-[14px] focus:ring-signal/40' : 'h-10 pl-10 pr-9'}`}
           />
           {q ? (
             <button type="button" onClick={() => setQ('')} className={`absolute top-1/2 -translate-y-1/2 rounded p-1 text-graphite-400 hover:text-ink ${pill ? 'right-14' : 'right-2'}`} aria-label="Clear search">

@@ -6,7 +6,7 @@ import logo from '@/public/brand/logo_theme2.png';
 export default function Logo({ className = '', priority = false, plate = true }) {
   return (
     <Link href="/" className={`inline-flex shrink-0 items-center ${plate ? 'rounded-lg bg-white px-2.5 py-1.5' : ''} ${className}`} aria-label="DareDevil Gears — home">
-      <Image src={logo} alt="DareDevil Gears — Make in India" priority={priority} className="h-8 w-auto sm:h-9" sizes="200px" />
+      <Image src={logo} alt="DareDevil Gears — Make in India" priority={priority} className="h-10 w-auto sm:h-12" sizes="200px" />
     </Link>
   );
 }

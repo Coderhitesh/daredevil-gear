@@ -110,7 +110,7 @@ export default async function AboutPage() {
               Gear for the ones who go <span className="font-script font-normal text-signal">further.</span>
             </h1>
             <p className="fade-up mt-6 max-w-xl text-[17px] leading-relaxed text-stone-200" style={{ '--d': '260ms' }}>
-              We are a Made-in-India brand from Greater Noida making tactical and adventure gear — bags, camp kit, lighting, eyewear, footwear and field tools — for people who spend their days outdoors and need kit that keeps up.
+              We are a brand from Greater Noida making tactical and adventure gear — bags, camp kit, lighting, eyewear, footwear and field tools — for people who spend their days outdoors and need kit that keeps up.
             </p>
             <div className="fade-up mt-8 flex flex-wrap gap-3" style={{ '--d': '380ms' }}>
               <Link href="/shop" className="btn-primary px-7">

@@ -19,7 +19,7 @@ export default function Header({ categories = [] }) {
     { href: '/contact', label: 'Contact' },
   ];
   return (
-    <header className="sticky top-0 z-40 bg-night text-white shadow-[0_1px_0_rgba(255,255,255,.06)]">
+    <header className="sticky top-0 z-40 bg-white text-dark shadow-[0_1px_0_rgba(255,255,255,.06)]">
       <div className="wrap flex h-[68px] items-center gap-3 lg:gap-8">
         <MobileMenu categories={nav} links={links} />
         <Logo priority />
@@ -31,7 +31,7 @@ export default function Header({ categories = [] }) {
       <div className="wrap pb-3 md:hidden">
         <SearchBox compact variant="dark" />
       </div>
-      <div className="hidden border-t border-white/[0.07] lg:block">
+      <div className="hidden border-t bg-night border-white/[0.07] lg:block">
         <div className="wrap flex h-12 items-center gap-8">
           <CategoryMenu categories={nav} />
           <MainNav links={links} />

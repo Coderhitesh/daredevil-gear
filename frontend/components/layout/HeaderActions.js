@@ -31,19 +31,20 @@ export default function HeaderActions() {
 
   return (
     <div className="ml-auto flex items-center gap-0.5 sm:gap-1">
-      <Link href="/track-order" className={`${item} hidden xl:inline-flex`}>
-        <PackageSearch size={18} strokeWidth={1.75} aria-hidden="true" /> Track Order
-      </Link>
+     <Link href="/track-order" className={`${item} !text-black hidden xl:inline-flex`}>
+  <PackageSearch size={18} color="black" strokeWidth={1.75} aria-hidden="true" />
+  Track Order
+</Link>
       <Link href="/account/wishlist" className={`${item} w-10 px-0 xl:w-auto xl:px-2.5`} aria-label={`Wishlist${ids.length ? `, ${ids.length} items` : ''}`}>
         <span className="relative">
-          <Heart size={19} strokeWidth={1.75} aria-hidden="true" />
+          <Heart size={19} strokeWidth={1.75} color='black' aria-hidden="true" />
           <Count n={ids.length} />
         </span>
-        <span className="hidden xl:inline">Wishlist</span>
+        <span className="hidden xl:inline text-night">Wishlist</span>
       </Link>
-      <Link href={me ? '/account' : '/account/login'} className={`${item} w-10 px-0 sm:w-auto sm:px-2.5`} aria-label={me ? 'Your account' : 'Sign in'}>
-        <User size={19} strokeWidth={1.75} aria-hidden="true" />
-        <span className="hidden sm:inline">{me ? me.name.split(' ')[0] : 'Sign in'}</span>
+      <Link href={me ? '/account' : '/account/login'} className={`${item} w-10 text-night px-0 sm:w-auto sm:px-2.5`} aria-label={me ? 'Your account' : 'Sign in'}>
+        <User size={19} strokeWidth={1.75} color='black' aria-hidden="true" />
+        <span className="hidden text-night sm:inline">{me ? me.name.split(' ')[0] : 'Sign in'}</span>
       </Link>
       <button type="button" data-cart-target onClick={openCart} className="relative ml-1 inline-flex h-10 w-10 items-center justify-center rounded-full bg-signal text-white shadow-glow transition-colors hover:bg-signal-dark" aria-label={`Cart${cart?.count ? `, ${cart.count} items` : ''}`}>
         <ShoppingCart size={18} strokeWidth={2} aria-hidden="true" />

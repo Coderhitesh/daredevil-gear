@@ -17,8 +17,8 @@ export default function MobileMenu({ categories, links = [] }) {
 
   return (
     <>
-      <button type="button" className="-ml-2 inline-flex h-10 w-10 items-center justify-center rounded-lg text-white hover:bg-white/10 lg:hidden" aria-label="Open menu" onClick={() => setOpen(true)}>
-        <Menu size={22} />
+      <button type="button" className="-ml-2 inline-flex h-10 w-10 items-center justify-center rounded-lg text-night hover:bg-white/10 lg:hidden" aria-label="Open menu" onClick={() => setOpen(true)}>
+        <Menu size={22} color='black' />
       </button>
       <Drawer open={open} onClose={close} title="Menu" side="left" width="max-w-sm">
         <nav aria-label="Mobile" className="pb-6 text-ink">

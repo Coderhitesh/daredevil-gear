@@ -267,7 +267,7 @@ export default function Hero({ banners = [], trust = [] }) {
         if (e.key === 'ArrowLeft') go(i - 1);
       }}
     >
-      <div className="relative h-[540px] sm:h-[600px] lg:h-[clamp(560px,33vw,720px)]">
+      <div className="relative h-[540px] sm:h-[600px] lg:h-[clamp(430px,33vw,720px)]">
         {banners.map((b, k) => {
           const active = k === i;
           return (
