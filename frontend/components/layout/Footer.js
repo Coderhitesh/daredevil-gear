@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Clock, Instagram, Facebook, Youtube, Linkedin, Gift, Sparkles, BellOff } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Instagram, Facebook, Youtube, Linkedin, Twitter, MessageCircle, Gift, Sparkles, BellOff } from 'lucide-react';
 import Newsletter from '../home/Newsletter';
 import Logo from './Logo';
 import Mountains from '../ui/Mountains';
@@ -81,6 +81,8 @@ export default function Footer({ shell }) {
     [social.facebook, Facebook, 'Facebook'],
     [social.youtube, Youtube, 'YouTube'],
     [social.linkedin, Linkedin, 'LinkedIn'],
+    [social.twitter, Twitter, 'Twitter'],
+    [social.whatsappChannel || (biz.whatsapp ? `https://wa.me/${biz.whatsapp.replace(/\D/g, '')}` : ''), MessageCircle, 'WhatsApp'],
   ].filter(([u]) => u);
 
   return (
@@ -144,12 +146,12 @@ export default function Footer({ shell }) {
             {biz.gstin ? <> · GSTIN {biz.gstin}</> : null}
             {biz.cin ? <> · CIN {biz.cin}</> : null}
           </p>
-          <p className="md:text-right">
+          {/* <p className="md:text-right">
             <Link href="/pages/grievance-redressal" className="text-stone-200 hover:text-signal">
               Grievance Officer
             </Link>
             {s.grievanceOfficer?.name ? `: ${s.grievanceOfficer.name}${s.grievanceOfficer.designation ? `, ${s.grievanceOfficer.designation}` : ''}` : ''} — complaints acknowledged within 48 hours, resolved within 30 days.
-          </p>
+          </p> */}
         </div>
       </div>
 

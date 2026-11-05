@@ -191,9 +191,9 @@ export default function OrderDetail({ order, token }) {
             Return or report a problem
           </button>
         ) : null}
-        <Link href="/pages/grievance-redressal" className="btn-ghost btn-sm">
+        {/* <Link href="/pages/grievance-redressal" className="btn-ghost btn-sm">
           Raise a complaint
-        </Link>
+        </Link> */}
       </div>
 
       {cancelling ? (

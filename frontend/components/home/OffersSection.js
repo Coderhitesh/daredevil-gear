@@ -11,7 +11,7 @@ function PostCard({ post, index }) {
   const img = post.image?.desktop;
   const body = (
     <>
-      <div className="relative aspect-[4/2] overflow-hidden rounded-xl bg-night">
+      <div className="relative aspect-[4/4] overflow-hidden rounded-xl bg-night">
         {img ? (
           <Image src={img} alt={post.image?.alt || post.title} fill sizes="(min-width:1024px) 30vw, (min-width:640px) 45vw, 90vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
         ) : (

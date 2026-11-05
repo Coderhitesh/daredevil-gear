@@ -94,7 +94,7 @@ const DEFAULTS = {
     },
   },
   analytics: { isPublic: true, value: { ga4Id: '', gscVerification: '' } },
-  social: { isPublic: true, value: { instagram: '', facebook: '', youtube: '', linkedin: '', googleBusiness: '' } },
+  social: { isPublic: true, value: { instagram: '', facebook: '', youtube: '', linkedin: '', twitter: '', whatsappChannel: '', googleBusiness: '' } },
   notifications: {
     value: {
       adminEmails: [],

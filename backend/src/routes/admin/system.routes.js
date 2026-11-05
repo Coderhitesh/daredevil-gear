@@ -80,7 +80,7 @@ const settingSchemas = {
   }),
   seo: z.object({ homeTitle: safeText(70), homeDescription: safeText(170), ogImage: z.string().url().optional().or(z.literal('')) }),
   analytics: z.object({ ga4Id: z.string().regex(/^G-[A-Z0-9]{4,12}$/, 'GA4 IDs look like G-XXXXXXX').optional().or(z.literal('')), gscVerification: safeText(100).optional() }),
-  social: z.object({ instagram: z.string().url().optional().or(z.literal('')), facebook: z.string().url().optional().or(z.literal('')), youtube: z.string().url().optional().or(z.literal('')), linkedin: z.string().url().optional().or(z.literal('')), googleBusiness: z.string().url().optional().or(z.literal('')) }),
+  social: z.object({ instagram: z.string().url().optional().or(z.literal('')), facebook: z.string().url().optional().or(z.literal('')), youtube: z.string().url().optional().or(z.literal('')), linkedin: z.string().url().optional().or(z.literal('')), twitter: z.string().url().optional().or(z.literal('')), whatsappChannel: z.string().url().optional().or(z.literal('')), googleBusiness: z.string().url().optional().or(z.literal('')) }),
   notifications: z.object({ adminEmails: z.array(email).max(10), notifyOnNewOrder: z.boolean(), notifyOnReturn: z.boolean(), notifyOnGrievance: z.boolean(), notifyOnLowStock: z.boolean(), fromName: safeText(80).optional() }),
   reviews: z.object({ enabled: z.boolean(), requireVerifiedPurchase: z.boolean(), autoApprove: z.boolean() }),
 };

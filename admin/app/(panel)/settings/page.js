@@ -117,7 +117,7 @@ const GROUPS = {
   },
   social: {
     label: 'Social links',
-    fields: ['instagram', 'facebook', 'youtube', 'linkedin', 'googleBusiness'].map((k) => ({ name: k, label: k === 'googleBusiness' ? 'Google Business profile' : k.charAt(0).toUpperCase() + k.slice(1), placeholder: 'https://' })),
+    fields: ['instagram', 'facebook', 'youtube', 'linkedin', 'twitter', 'whatsappChannel', 'googleBusiness'].map((k) => ({ name: k, label: k === 'googleBusiness' ? 'Google Business profile' : k === 'twitter' ? 'Twitter / X' : k === 'whatsappChannel' ? 'WhatsApp channel' : k.charAt(0).toUpperCase() + k.slice(1), placeholder: 'https://', ...(k === 'whatsappChannel' ? { hint: 'If the channel link is empty, clicking the footer icon will open a chat with the Business WhatsApp number.' } : {}) })),
   },
   notifications: {
     label: 'Staff notifications',

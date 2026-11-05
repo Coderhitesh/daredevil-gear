@@ -73,13 +73,13 @@ export default async function ContactPage() {
             {b.mapEmbedUrl ? (
               <iframe src={b.mapEmbedUrl} title="Map to our office" className="aspect-[4/3] w-full rounded border border-stone-300" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
             ) : null}
-            <p className="text-graphite">
+            {/* <p className="text-graphite">
               For complaints, see{' '}
               <Link href="/pages/grievance-redressal" className="link">
                 Grievance Redressal
               </Link>
               .
-            </p>
+            </p> */}
           </div>
           <div className="panel p-5 sm:p-8">
             <ContactForm />
