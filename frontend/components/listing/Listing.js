@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { unstable_noStore as noStore } from 'next/cache';
 import { apiGet } from '@/lib/api-server';
 import { ProductGrid } from '../product/ProductCard';
 import ListingControls from './ListingControls';
@@ -18,18 +19,32 @@ export function listingQuery(searchParams = {}, base = {}) {
   return qs;
 }
 
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 /**
  * Server-rendered product listing (SEO-friendly). Filters/sort live in the URL;
  * the controls are a small client component that updates the query string.
  */
 export default async function Listing({ base = {}, searchParams = {}, basePath, clearHref, endpoint = '/products', emptyAction }) {
+  noStore(); // har request pe fresh render, taaki shuffle har baar ho
+
   const qs = listingQuery(searchParams, base);
   const facetQs = new URLSearchParams(qs);
   facetQs.delete('page');
-  const [{ data: products, meta }, facets] = await Promise.all([
+  const [{ data, meta }, facets] = await Promise.all([
     apiGet(`${endpoint}?${qs}`, { revalidate: endpoint === '/search' ? 0 : 60 }),
     apiGet(`/products/facets?${facetQs}`, { revalidate: 120 }).catch(() => null),
   ]);
+
+  // search me relevance order rakho, baaki listings shuffle
+  const products = endpoint === '/search' ? data : shuffle(data);
 
   return (
     <div>
