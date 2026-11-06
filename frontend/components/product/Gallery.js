@@ -28,10 +28,10 @@ export default function Gallery({ images = [], videos = [], name }) {
   return (
     <div>
       {/* one layout for every screen: main image + thumbnails (below on mobile, left column from md) */}
-      <div className="grid gap-3 md:grid-cols-[72px_minmax(0,1fr)] md:gap-4">
+      <div className={`grid gap-3 md:gap-4 ${images.length > 1 ? 'md:grid-cols-[72px_minmax(0,1fr)]' : ''}`}>
         <button
           type="button"
-          className="group relative aspect-square w-full cursor-zoom-in overflow-hidden rounded-2xl bg-stone-100 md:order-2"
+          className={`group relative aspect-square w-full cursor-zoom-in overflow-hidden rounded-2xl bg-stone-100 ${images.length > 1 ? 'md:order-2' : ''}`}
           onMouseMove={(e) => {
             const r = e.currentTarget.getBoundingClientRect();
             setZoom({ x: ((e.clientX - r.left) / r.width) * 100, y: ((e.clientY - r.top) / r.height) * 100 });
