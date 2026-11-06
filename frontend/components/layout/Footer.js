@@ -173,7 +173,7 @@ export default function Footer({ shell }) {
                 {m}
               </li>
             ))}
-            <li className="text-[11px] text-stone-400">via Razorpay</li>
+            <li className="text-[11px] text-stone-400">via CCAvenue</li>
           </ul>
         </div>
       </div>

@@ -118,7 +118,7 @@ export function CancelDialog({ order, onClose }) {
     <Modal open onClose={onClose} title={`Cancel ${order.orderNumber}?`} size="sm" footer={<Footer onClose={onClose} busy={save.isPending} disabled={reason.trim().length < 3} label="Cancel order" tone="btn-danger" onClick={() => save.mutate()} />}>
       <div className="space-y-4 text-sm">
         <p>Reserved or committed stock is returned to inventory.</p>
-        {paid > 0 ? <Notice tone="caution" title={`A refund of ${inr(paid)} will be issued`}>The full paid amount goes back to the original payment method through Razorpay. Banks usually take 5–7 working days.</Notice> : null}
+        {paid > 0 ? <Notice tone="caution" title={`A refund of ${inr(paid)} will be issued`}>The full paid amount goes back to the original payment method through CCAvenue. Banks usually take 5–7 working days.</Notice> : null}
         <Textarea label="Reason" required rows={3} value={reason} onChange={(e) => setReason(e.target.value)} hint="Included in the cancellation email to the customer." />
       </div>
     </Modal>
@@ -140,7 +140,7 @@ export function RefundDialog({ order, onClose, presetItems }) {
   const items = Object.entries(qty).filter(([, q]) => q > 0).map(([orderItem, quantity]) => ({ orderItem, quantity }));
   const save = useAction(() => api(`/orders/${order._id}/refunds`, { method: 'POST', body: { amount: paise, reason: reason.trim(), items: items.length ? items : undefined, restock: items.length ? restock : false, idempotencyKey, manualReference: isCod ? manualReference.trim() || undefined : undefined } }), {
     invalidate: keys(order),
-    success: isCod ? 'Refund recorded' : 'Refund initiated with Razorpay',
+    success: isCod ? 'Refund recorded' : 'Refund initiated with CCAvenue',
     onSuccess: onClose,
   });
   const valid = paise > 0 && paise <= order.refundable && reason.trim().length >= 3;

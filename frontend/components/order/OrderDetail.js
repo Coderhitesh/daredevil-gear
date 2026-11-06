@@ -10,7 +10,7 @@ import StatusBadge from '../ui/StatusBadge';
 import ProductThumb from '../product/ProductThumb';
 import OrderSummary from '../cart/OrderSummary';
 import ReturnForm from './ReturnForm';
-import { pay } from '@/lib/razorpay';
+import { pay } from '@/lib/ccavenue';
 import { useUi } from '@/lib/store';
 
 export default function OrderDetail({ order, token }) {
@@ -37,12 +37,9 @@ export default function OrderDetail({ order, token }) {
   const payNow = async () => {
     try {
       const p = await api(`/checkout/orders/${order.orderNumber}/pay`, { method: 'POST', headers });
-      const response = await pay(p.razorpay);
-      await api('/payments/razorpay/verify', { method: 'POST', body: response });
-      notify('Payment received. Thank you!', 'good');
-      refresh();
+      await pay(p.ccavenue); // leaves the site; CCAvenue returns the shopper to the success page
     } catch (err) {
-      if (!err?.dismissed) notify(err?.error?.description || err.message || 'Payment did not complete', 'bad');
+      notify(err.message || 'Payment did not complete', 'bad');
     }
   };
 

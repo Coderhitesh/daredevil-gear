@@ -57,7 +57,7 @@ function OrderView({ order }) {
   const isPaid = paidStates.includes(order.payment?.status);
 
   const addNote = useAction(() => api(`/orders/${order._id}/notes`, { method: 'POST', body: { note: note.trim() } }), { invalidate, success: 'Note added', onSuccess: () => setNote('') });
-  const reconcile = useAction(() => api(`/orders/${order._id}/reconcile`, { method: 'POST' }), { invalidate, success: (r) => ({ paid: 'Payment found and the order is confirmed', no_payment: 'Razorpay has no payment for this order yet', failed_attempts: 'Only failed payment attempts were found', unreachable: 'Could not reach Razorpay, try again shortly', no_rzp_order: 'No Razorpay order was created for this order' })[r.result] || `Reconciled: ${humanize(String(r.result))}` });
+  const reconcile = useAction(() => api(`/orders/${order._id}/reconcile`, { method: 'POST' }), { invalidate, success: (r) => ({ paid: 'Payment found and the order is confirmed', no_payment: 'CCAvenue has no payment for this order yet', failed_attempts: 'Only failed payment attempts were found', unreachable: 'Could not reach CCAvenue, try again shortly', no_rzp_order: 'No CCAvenue order was created for this order' })[r.result] || `Reconciled: ${humanize(String(r.result))}` });
   const resend = useAction(() => api(`/orders/${order._id}/resend`, { method: 'POST', body: { template } }), { invalidate, success: 'Email queued' });
 
   const statusOptions = (order.allowedTransitions || []).filter((s) => !['cancelled', 'shipped'].includes(s));
@@ -115,8 +115,8 @@ function OrderView({ order }) {
       ) : null}
       {order.payment?.status === 'created' && order.status === 'pending_payment' ? (
         <div className="mb-4">
-          <Notice tone="info" title="Awaiting payment" action={write ? <button type="button" className="btn-outline btn-xs" onClick={() => reconcile.mutate()} disabled={reconcile.isPending}>{reconcile.isPending ? <Spinner /> : <RefreshCw className="h-3.5 w-3.5" />} Check with Razorpay</button> : null}>
-            Stock is held until {dateTime(order.expiresAt)}. If the customer paid but the order did not update, check with Razorpay to confirm it.
+          <Notice tone="info" title="Awaiting payment" action={write ? <button type="button" className="btn-outline btn-xs" onClick={() => reconcile.mutate()} disabled={reconcile.isPending}>{reconcile.isPending ? <Spinner /> : <RefreshCw className="h-3.5 w-3.5" />} Check with CCAvenue</button> : null}>
+            Stock is held until {dateTime(order.expiresAt)}. If the customer paid but the order did not update, check with CCAvenue to confirm it.
           </Notice>
         </div>
       ) : null}
@@ -241,8 +241,8 @@ function OrderView({ order }) {
                 ['Method', paymentMethod(order.payment?.method)],
                 order.pricing?.codCharge ? ['COD fee', inr(order.pricing.codCharge)] : null,
                 ['Paid', order.payment?.amountPaid ? `${inr(order.payment.amountPaid)} on ${dateTime(order.payment.paidAt)}` : '—'],
-                order.payment?.provider === 'cod' ? null : ['Razorpay order', order.payment?.razorpayOrderId ? <CopyText key="o" text={order.payment.razorpayOrderId} /> : '—'],
-                order.payment?.provider === 'cod' ? null : ['Razorpay payment', order.payment?.razorpayPaymentId ? <CopyText key="p" text={order.payment.razorpayPaymentId} /> : '—'],
+                order.payment?.provider === 'cod' ? null : ['CCAvenue order', order.payment?.razorpayOrderId ? <CopyText key="o" text={order.payment.razorpayOrderId} /> : '—'],
+                order.payment?.provider === 'cod' ? null : ['CCAvenue payment', order.payment?.razorpayPaymentId ? <CopyText key="p" text={order.payment.razorpayPaymentId} /> : '—'],
                 ['Refundable now', inr(order.refundable)],
               ]}
             />

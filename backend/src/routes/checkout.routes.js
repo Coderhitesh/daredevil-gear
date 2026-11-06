@@ -43,16 +43,4 @@ router.post(
 
 router.post('/checkout/orders/:orderNumber/pay', limiters.checkout, validate({ params: z.object({ orderNumber: z.string().regex(/^DDG\d{10}$/) }) }), h(c.resume));
 
-router.post(
-  '/payments/razorpay/verify',
-  limiters.checkout,
-  validate({ body: z.object({ razorpay_order_id: z.string().max(64), razorpay_payment_id: z.string().max(64), razorpay_signature: z.string().max(256) }) }),
-  h(c.verify)
-);
-router.post(
-  '/payments/razorpay/failure',
-  validate({ body: z.object({ razorpay_order_id: z.string().max(64), code: z.string().max(64).optional(), description: z.string().max(500).optional(), reason: z.string().max(100).optional() }) }),
-  h(c.failure)
-);
-
 module.exports = router;

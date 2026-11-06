@@ -26,8 +26,8 @@ module.exports = {
     const [checkoutCfg, shippingCfg] = await Promise.all([settings.get('checkout'), settings.get('shipping')]);
     return ok(res, {
       guestCheckout: checkoutCfg.guestCheckout,
-      paymentsEnabled: require('../config/env').razorpayConfigured,
-      onlinePaymentsEnabled: require('../config/env').razorpayConfigured,
+      paymentsEnabled: require('../config/env').ccavenueConfigured,
+      onlinePaymentsEnabled: require('../config/env').ccavenueConfigured,
       codEnabled: Boolean(checkoutCfg.codEnabled),
       codGuestAllowed: checkoutCfg.codGuestAllowed !== false,
       codFee: checkoutCfg.codFee || 0,
@@ -66,20 +66,16 @@ module.exports = {
     return ok(res, await checkout.resumePayment(order));
   },
 
-  verify: async (req, res) => {
-    noStore(res);
-    const order = await payments.verifyCheckoutPayment(req.body, { user: req.user });
-    return ok(res, { orderNumber: order.orderNumber, status: order.status, paid: order.payment.status === 'captured' });
-  },
-
-  failure: async (req, res) => {
-    await payments.recordClientFailure(req.body);
-    return ok(res, { recorded: true });
-  },
-
-  webhook: async (req, res) => {
-    const result = await payments.handleWebhook(req.body, req.headers['x-razorpay-signature'], req.headers['x-razorpay-event-id']);
-    return res.status(200).json({ success: true, ...result });
+  // CCAvenue posts the customer's browser here (redirect_url and cancel_url); we confirm, then send them back to the store.
+  ccavenueResponse: async (req, res) => {
+    const base = require('../config/env').STOREFRONT_URL;
+    try {
+      const r = await payments.handleCcavenueResponse(req.body?.encResp);
+      return res.redirect(303, r.paid ? `${base}/checkout/success?order=${r.orderNumber}` : `${base}/checkout?payment=${r.reason}`);
+    } catch (err) {
+      require('../config/logger').error({ err: err.message }, 'CCAvenue response failed');
+      return res.redirect(303, `${base}/checkout?payment=failed`);
+    }
   },
 
   loadOrderForPayer,

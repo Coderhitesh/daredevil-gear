@@ -69,10 +69,9 @@ export default function SystemPage() {
         </Card>
         <Card title="Payments, email & storage" bodyClass="">
           <ul className="divide-y divide-stone-200">
-            <Item done={Boolean(i.razorpay)} warn={i.razorpay === 'test'} title={i.razorpay ? `Razorpay connected (${i.razorpay} mode)` : 'Razorpay keys added'}>
-              {i.razorpay === 'test' ? 'Test mode takes no real money. Switch to live keys only after a full test order, refund and webhook check.' : !i.razorpay ? 'Checkout cannot take payments until RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET are set on the API.' : null}
+            <Item done={Boolean(i.razorpay)} warn={i.razorpay === 'test'} title={i.razorpay ? `CCAvenue connected (${i.razorpay} mode)` : 'CCAvenue keys added'}>
+              {i.razorpay === 'test' ? 'Test mode takes no real money. Switch to live keys only after a full test order and refund.' : !i.razorpay ? 'Checkout cannot take payments until CCAVENUE_MERCHANT_ID, CCAVENUE_ACCESS_CODE and CCAVENUE_WORKING_KEY are set on the API.' : null}
             </Item>
-            <Item done={i.razorpayWebhook} title="Razorpay webhook secret set">Webhook URL: https://your-domain/api/v1/webhooks/razorpay — events payment.captured, payment.failed, order.paid, refund.processed, refund.failed.</Item>
             <Item done={i.smtp} title="SMTP email configured">{!i.smtp ? 'Without it, sign-up codes and order emails are not delivered.' : null}</Item>
             <Item done={i.cloudinary} title="Cloudinary image storage configured">{!i.cloudinary ? 'Needed to upload product photos and banners.' : null}</Item>
             <Item done={i.redis} warn={!i.redis} title="Redis job queue connected">{!i.redis ? 'Emails and jobs run inline. Recommended for production.' : null}</Item>
@@ -111,11 +110,11 @@ export default function SystemPage() {
               The first super admin password came from the server environment. Change it, then remove SUPER_ADMIN_PASSWORD from the server.
             </Item>
             <Item done={live} warn title="Final test: place, pay, ship, refund one real order">
-              {live ? 'Live mode is on.' : 'Do this in Razorpay live mode with a small amount before announcing the launch.'}
+              {live ? 'Live mode is on.' : 'Do this in CCAvenue live mode with a small amount before announcing the launch.'}
             </Item>
           </ul>
           <p className="border-t border-stone-200 px-4 py-3 text-xs text-graphite-400">
-            Integrations: <Pill tone={i.razorpay ? 'okay' : 'alert'}>Razorpay</Pill> <Pill tone={i.smtp ? 'okay' : 'alert'}>SMTP</Pill> <Pill tone={i.cloudinary ? 'okay' : 'alert'}>Cloudinary</Pill> <Pill tone={i.redis ? 'okay' : 'caution'}>Redis</Pill>
+            Integrations: <Pill tone={i.razorpay ? 'okay' : 'alert'}>CCAvenue</Pill> <Pill tone={i.smtp ? 'okay' : 'alert'}>SMTP</Pill> <Pill tone={i.cloudinary ? 'okay' : 'alert'}>Cloudinary</Pill> <Pill tone={i.redis ? 'okay' : 'caution'}>Redis</Pill>
           </p>
         </Card>
       </div>

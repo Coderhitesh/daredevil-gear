@@ -39,15 +39,7 @@ async function start() {
   } else if (!env.isTest) {
     logger.warn('Shiprocket is not configured (SHIPROCKET_EMAIL / SHIPROCKET_PASSWORD): delivery charges come from Admin → Shipping zones, orders are not sent to Shiprocket');
   }
-  if (!env.razorpayConfigured) logger.warn('Razorpay keys are not set: checkout stops before payment with "Online payment is not configured yet"');
-  else if (!env.isTest) {
-    const rzp = require('./services/razorpay.service');
-    rzp
-      .getClient()
-      .orders.all({ count: 1 })
-      .then(() => logger.info({ mode: String(env.RAZORPAY_KEY_ID).startsWith('rzp_live_') ? 'live' : 'test' }, 'Razorpay keys OK'))
-      .catch((err) => logger.error(`Razorpay check failed: ${rzp.explain(err)}`));
-  }
+  if (!env.ccavenueConfigured) logger.warn('CCAvenue keys are not set: checkout stops before payment with "Online payment is not configured yet"');
 
   if (process.env.RUN_SCHEDULER !== 'false') scheduler.start();
   const workers = process.env.RUN_WORKER_INLINE === 'true' ? queue.startWorkers() : [];

@@ -67,7 +67,7 @@ const GROUPS = {
       { name: 'codGuestAllowed', label: 'Allow COD for guest checkout', type: 'checkbox', show: (v) => v.codEnabled },
       { name: 'codMaxOpenOrders', label: 'Undelivered COD orders allowed per customer', type: 'number', step: 1, min: 1, max: 50, show: (v) => v.codEnabled, hint: 'Limits fake / refused COD orders' },
     ],
-    note: 'Online payment goes through Razorpay. Cash-on-delivery orders are marked paid when you mark them delivered; refunds for them are paid by bank transfer / UPI.',
+    note: 'Online payment goes through CCAvenue. Cash-on-delivery orders are marked paid when you mark them delivered; refunds for them are paid by bank transfer / UPI.',
   },
   shipping: {
     label: 'Shipping',

@@ -223,7 +223,7 @@ const PaymentSchema = new Schema(
     currency: { type: String, default: 'INR' },
     status: { type: String, enum: Object.values(PAYMENT_STATUS), default: PAYMENT_STATUS.CREATED, index: true },
     method: String,
-    verifiedVia: { type: String, enum: ['signature', 'webhook', 'reconcile', null], default: null },
+    verifiedVia: { type: String, enum: ['signature', 'webhook', 'reconcile', 'ccavenue', null], default: null },
     errorCode: String,
     errorDescription: String,
     errorReason: String,

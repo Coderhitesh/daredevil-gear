@@ -41,7 +41,7 @@ module.exports = [
 <h2>Can I cancel my order?</h2><p>Yes, free of charge before it is dispatched — from <a href="/account/orders">My Orders</a>. After dispatch, please use the return process.</p>
 <h2>How do returns work?</h2><p>You can request a return within 7 days of delivery for unused items with original tags and packaging. Damaged or wrong items must be reported within 48 hours. See the <a href="/pages/return-refund-policy">Return &amp; Refund Policy</a>.</p>
 <h2>Are your helmets or plate carriers bulletproof?</h2><p>No. Our airsoft/training helmets and plate carriers provide <strong>no ballistic protection</strong>. Plate carriers are supplied without plates.</p>
-<h2>Which payment methods do you accept?</h2><p>UPI, credit and debit cards, net banking and wallets through Razorpay. We never see or store your card details.</p>
+<h2>Which payment methods do you accept?</h2><p>UPI, credit and debit cards, net banking and wallets through CCAvenue. We never see or store your card details.</p>
 <h2>Who can buy pepper spray and knives?</h2><p>Only adults aged 18 or over, for delivery within India. You will be asked to confirm your age at checkout.</p>`,
   },
   {
@@ -94,8 +94,8 @@ module.exports = [
     requiresReview: true,
     reviewNotes: 'Fix plan item 11: align with the Digital Personal Data Protection Act 2023 — confirm retention periods and name the contact for data requests. Legal review required.',
     body: `<p>This policy explains how ${P('Legal entity name')} ("DareDevil Gears", "we") collects and uses your personal data when you use daredevilgears.com, in line with the Digital Personal Data Protection Act, 2023.</p>
-<h2>What we collect and why</h2><ul><li><strong>Account and order details</strong> — name, email, phone and addresses — to process and deliver orders, send order updates and provide support.</li><li><strong>Payment information</strong> — payments are processed by Razorpay. We receive the payment status and reference, never your full card number or CVV.</li><li><strong>Technical data</strong> — IP address and browser details, for security and fraud prevention.</li><li><strong>Marketing</strong> — only if you opt in. You can withdraw consent at any time.</li></ul>
-<h2>Who we share it with</h2><p>Only with service providers needed to run the store: payment gateway (Razorpay), courier partners, email delivery and hosting providers — and where required by law.</p>
+<h2>What we collect and why</h2><ul><li><strong>Account and order details</strong> — name, email, phone and addresses — to process and deliver orders, send order updates and provide support.</li><li><strong>Payment information</strong> — payments are processed by CCAvenue. We receive the payment status and reference, never your full card number or CVV.</li><li><strong>Technical data</strong> — IP address and browser details, for security and fraud prevention.</li><li><strong>Marketing</strong> — only if you opt in. You can withdraw consent at any time.</li></ul>
+<h2>Who we share it with</h2><p>Only with service providers needed to run the store: payment gateway (CCAvenue), courier partners, email delivery and hosting providers — and where required by law.</p>
 <h2>How long we keep it</h2><p>Order and invoice records are kept for the period required by tax law ${P('confirm, e.g. 8 years')}. Account data is kept while your account is active and for ${P('X months')} afterwards.</p>
 <h2>Your rights</h2><p>You can access, correct or erase your data, withdraw consent and download your data from <a href="/account/privacy">Account → Privacy</a>, or by writing to our data contact below. We respond within 30 days.</p>
 <h2>Data protection contact</h2><p>${P('Name, designation and email of the person handling data requests')}</p>
@@ -158,8 +158,8 @@ module.exports = [
     group: 'help',
     sortOrder: 4,
     requiresReview: false,
-    body: `<p>Payments on daredevilgears.com are processed securely by <strong>Razorpay</strong>. You can pay with UPI, credit or debit cards, net banking and supported wallets.</p>
-<ul><li>All prices are in Indian Rupees and include GST.</li><li>Your card details are entered on Razorpay's secure checkout — we never see or store your card number or CVV.</li><li>Your order is confirmed only after the payment is verified. If money is debited but the order is not confirmed, it is either confirmed automatically within a few minutes or refunded by your bank.</li><li>A GST tax invoice is available in My Orders once payment is confirmed.</li></ul>
+    body: `<p>Payments on daredevilgears.com are processed securely by <strong>CCAvenue</strong>. You can pay with UPI, credit or debit cards, net banking and supported wallets.</p>
+<ul><li>All prices are in Indian Rupees and include GST.</li><li>Your card details are entered on CCAvenue's secure checkout — we never see or store your card number or CVV.</li><li>Your order is confirmed only after the payment is verified. If money is debited but the order is not confirmed, it is either confirmed automatically within a few minutes or refunded by your bank.</li><li>A GST tax invoice is available in My Orders once payment is confirmed.</li></ul>
 <p>Cash on delivery is currently not available.</p>`,
   },
 ];

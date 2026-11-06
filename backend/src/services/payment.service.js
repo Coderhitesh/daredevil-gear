@@ -2,18 +2,16 @@
 
 /**
  * Payment state handling. An order is marked paid ONLY with verified evidence:
- *   - a valid Razorpay checkout signature (verified on the server), or
- *   - a signature-verified webhook (payment.captured / order.paid), or
- *   - reconciliation that fetched a captured payment from the Razorpay API.
+ *   - CCAvenue's encrypted response (only decryptable with our working key) with a matching amount, or
+ *   - reconciliation that fetched a successful payment from the CCAvenue status API.
  * All paths funnel into markPaid(), which is idempotent (compare-and-set on order status).
  */
 
-const crypto = require('crypto');
-const { Order, Payment, WebhookEvent, Cart, Product, CouponRedemption, Coupon, Refund, ReturnRequest } = require('../models');
+const { Order, Payment, Cart, Product, CouponRedemption, Coupon } = require('../models');
 const { ApiError } = require('../utils/http');
 const logger = require('../config/logger');
 const env = require('../config/env');
-const razorpay = require('./razorpay.service');
+const ccavenue = require('./ccavenue.service');
 const inventory = require('./inventory.service');
 const couponService = require('./coupon.service');
 const orders = require('./order.service');
@@ -107,129 +105,44 @@ async function confirmCod(order) {
   return afterConfirmed(updated);
 }
 
-/** Browser handler callback → server-side signature verification. */
-async function verifyCheckoutPayment({ razorpay_order_id: orderId, razorpay_payment_id: paymentId, razorpay_signature: signature }, { user } = {}) {
-  if (!razorpay.verifyPaymentSignature({ orderId, paymentId, signature })) {
-    throw ApiError.badRequest('Payment verification failed. If money was debited, it will be confirmed automatically or refunded.', { code: 'BAD_SIGNATURE' });
-  }
-  const order = await Order.findOne({ 'payment.razorpayOrderId': orderId });
+/**
+ * CCAvenue sends the customer's browser back (POST encResp) after payment, failure or cancel.
+ * Returns { orderNumber, paid, reason } for the controller to redirect with.
+ */
+async function handleCcavenueResponse(encResp) {
+  const p = ccavenue.parseResponse(encResp);
+  const order = await Order.findOne({ 'payment.razorpayOrderId': p.order_id });
   if (!order) throw ApiError.notFound('Order not found');
-  if (order.user && user && String(order.user) !== String(user._id)) throw ApiError.forbidden();
 
-  // Defence in depth: confirm amount/status with Razorpay when reachable.
-  let rzpPayment = null;
-  try {
-    rzpPayment = await razorpay.fetchPayment(paymentId);
-  } catch (err) {
-    logger.warn({ err: err.message }, 'Could not fetch payment from Razorpay; relying on verified signature');
-  }
-  if (rzpPayment) {
-    if (rzpPayment.order_id !== orderId || Number(rzpPayment.amount) !== order.pricing.grandTotal) {
-      logger.error({ orderId, paymentId }, 'Payment amount/order mismatch');
-      throw ApiError.badRequest('Payment details do not match this order. Our team has been alerted.', { code: 'PAYMENT_MISMATCH' });
+  if (p.order_status === 'Success') {
+    if (ccavenue.toPaise(p.amount) !== order.pricing.grandTotal) {
+      logger.error({ order: order.orderNumber, amount: p.amount }, 'Payment amount mismatch');
+      return { orderNumber: order.orderNumber, paid: false, reason: 'mismatch' };
     }
-    if (rzpPayment.status === 'failed') throw ApiError.badRequest('The payment failed. Please try again.', { code: 'PAYMENT_FAILED' });
+    await markPaid(order, { razorpayPaymentId: p.tracking_id, method: String(p.payment_mode || '').toLowerCase() || undefined, via: 'ccavenue', rzpPayment: { bank: p.card_name } });
+    return { orderNumber: order.orderNumber, paid: true };
   }
-  const result = await markPaid(order, { razorpayPaymentId: paymentId, method: rzpPayment?.method, via: 'signature', rzpPayment });
-  return result.order;
-}
 
-async function recordClientFailure({ razorpay_order_id: orderId, code, description, reason }) {
-  const payment = await Payment.findOne({ razorpayOrderId: orderId });
-  if (!payment || payment.status === 'captured') return;
+  const cancelled = p.order_status === 'Aborted';
+  const description = String(p.failure_message || p.status_message || p.order_status || '').slice(0, 300);
   await Payment.updateOne(
-    { _id: payment._id, status: { $ne: 'captured' } },
-    { $set: { errorCode: code, errorDescription: String(description || '').slice(0, 300), errorReason: reason }, $inc: { attempts: 1 }, $push: { events: { type: 'client.failure', note: String(description || code || '').slice(0, 200) } } }
+    { razorpayOrderId: p.order_id, status: { $nin: ['captured', 'refunded', 'partially_refunded'] } },
+    { $set: { status: 'failed', errorCode: p.status_code, errorDescription: description, errorReason: p.order_status }, $inc: { attempts: 1 }, $push: { events: { type: 'client.failure', note: description.slice(0, 200) } } }
   );
-}
-
-// ---------------- webhooks ----------------
-
-async function handleWebhook(rawBody, signature, eventIdHeader) {
-  if (!razorpay.verifyWebhookSignature(rawBody, signature)) throw ApiError.badRequest('Invalid webhook signature', { code: 'BAD_SIGNATURE' });
-  const payload = JSON.parse(rawBody.toString('utf8'));
-  const eventId = eventIdHeader || crypto.createHash('sha256').update(rawBody).digest('hex');
-
-  try {
-    await WebhookEvent.create({ eventId, type: payload.event, payloadHash: crypto.createHash('sha256').update(rawBody).digest('hex') });
-  } catch (err) {
-    if (err.code === 11000) {
-      const prev = await WebhookEvent.findOne({ eventId });
-      if (prev?.status !== 'failed') return { duplicate: true };
-      await WebhookEvent.updateOne({ eventId }, { $set: { status: 'processing' } });
-    } else throw err;
-  }
-
-  try {
-    const result = await processEvent(payload);
-    await WebhookEvent.updateOne({ eventId }, { $set: { status: result === 'ignored' ? 'ignored' : 'processed', processedAt: new Date() } });
-    return { processed: true, result };
-  } catch (err) {
-    await WebhookEvent.updateOne({ eventId }, { $set: { status: 'failed', error: err.message } });
-    throw err; // non-2xx makes Razorpay retry
-  }
-}
-
-async function processEvent(payload) {
-  const ev = payload.event;
-  const p = payload.payload?.payment?.entity;
-  const r = payload.payload?.refund?.entity;
-
-  if (ev === 'payment.captured' || ev === 'order.paid' || ev === 'payment.authorized') {
-    const orderId = p?.order_id || payload.payload?.order?.entity?.id;
-    const order = await Order.findOne({ 'payment.razorpayOrderId': orderId });
-    if (!order) return 'ignored';
-    if (ev === 'payment.authorized' && p?.status !== 'captured') {
-      await Payment.updateOne({ razorpayOrderId: orderId, status: 'created' }, { $set: { status: 'authorized', razorpayPaymentId: p.id }, $push: { events: { type: ev } } });
-      return 'authorized';
-    }
-    if (p && Number(p.amount) !== order.pricing.grandTotal) {
-      logger.error({ orderId, amount: p.amount }, 'Webhook amount mismatch — not marking paid');
-      return 'amount_mismatch';
-    }
-    await markPaid(order, { razorpayPaymentId: p?.id, method: p?.method, via: 'webhook', rzpPayment: p });
-    return 'paid';
-  }
-
-  if (ev === 'payment.failed') {
-    await Payment.updateOne(
-      { razorpayOrderId: p?.order_id, status: { $nin: ['captured', 'refunded', 'partially_refunded'] } },
-      { $set: { status: 'failed', razorpayPaymentId: p?.id, errorCode: p?.error_code, errorDescription: p?.error_description, errorReason: p?.error_reason }, $inc: { attempts: 1 }, $push: { events: { type: ev } } }
-    );
-    // the order stays pending so the shopper can retry until the hold expires
-    await Order.updateOne({ 'payment.razorpayOrderId': p?.order_id, status: 'pending_payment' }, { $set: { 'payment.status': 'failed' } });
-    return 'failed';
-  }
-
-  if (ev === 'refund.processed' || ev === 'refund.failed' || ev === 'refund.created') {
-    const refund = await Refund.findOne({ razorpayRefundId: r?.id });
-    if (!refund) return 'ignored';
-    const status = ev === 'refund.processed' ? 'processed' : ev === 'refund.failed' ? 'failed' : refund.status;
-    if (refund.status !== status) {
-      refund.status = status;
-      if (status === 'processed') refund.processedAt = new Date();
-      await refund.save();
-      if (status === 'processed' && refund.returnRequest) {
-        await ReturnRequest.updateOne({ _id: refund.returnRequest, status: 'refund_initiated' }, { $set: { status: 'refunded' }, $push: { history: { status: 'refunded', note: 'Refund processed by Razorpay' } } });
-      }
-      const order = await Order.findById(refund.order);
-      if (order) await email.send('refund_update', order.email, { order: order.toObject(), refund: refund.toObject() });
-    }
-    return 'refund_updated';
-  }
-  return 'ignored';
+  await Order.updateOne({ _id: order._id, status: 'pending_payment' }, { $set: { 'payment.status': 'failed' } });
+  return { orderNumber: order.orderNumber, paid: false, reason: cancelled ? 'cancelled' : 'failed' };
 }
 
 // ---------------- reconciliation & expiry ----------------
 
-/** Look up a pending order at Razorpay and mark it paid if a captured payment exists. */
+/** Look up a pending order at CCAvenue and mark it paid if a captured payment exists. */
 async function reconcileOrder(order) {
   if (!order.payment?.razorpayOrderId) return 'no_rzp_order';
   let payments;
   try {
-    payments = await razorpay.fetchOrderPayments(order.payment.razorpayOrderId);
+    payments = await ccavenue.fetchOrderPayments(order.payment.razorpayOrderId);
   } catch (err) {
-    logger.warn({ err: err.message, order: order.orderNumber }, 'Reconcile: Razorpay unreachable');
+    logger.warn({ err: err.message, order: order.orderNumber }, 'Reconcile: CCAvenue unreachable');
     return 'unreachable';
   }
   const captured = payments.find((p) => p.status === 'captured' && Number(p.amount) === order.pricing.grandTotal);
@@ -245,7 +158,7 @@ async function expireStaleOrders({ limit = 50 } = {}) {
   const stale = await Order.find({ status: { $in: ['pending_payment', 'payment_failed'] }, expiresAt: { $lt: new Date() } }).limit(limit);
   const results = [];
   for (const order of stale) {
-    const rec = env.razorpayConfigured ? await reconcileOrder(order) : 'not_configured';
+    const rec = env.ccavenueConfigured ? await reconcileOrder(order) : 'not_configured';
     if (rec === 'paid' || rec === 'unreachable') {
       results.push({ order: order.orderNumber, result: rec });
       continue;
@@ -269,4 +182,4 @@ async function expireStaleOrders({ limit = 50 } = {}) {
   return results;
 }
 
-module.exports = { markPaid, confirmCod, afterConfirmed, verifyCheckoutPayment, recordClientFailure, handleWebhook, processEvent, reconcileOrder, expireStaleOrders };
+module.exports = { markPaid, confirmCod, afterConfirmed, handleCcavenueResponse, reconcileOrder, expireStaleOrders };

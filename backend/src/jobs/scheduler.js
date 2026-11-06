@@ -3,8 +3,8 @@
 /**
  * Periodic maintenance (runs inside the API process; set RUN_SCHEDULER=false on extra instances
  * so only one instance runs these):
- *   - every 2 min: expire unpaid orders past their hold (after reconciling with Razorpay)
- *   - every 15 min: reconcile recently-pending orders with Razorpay (missed webhooks)
+ *   - every 2 min: expire unpaid orders past their hold (after reconciling with CCAvenue)
+ *   - every 15 min: reconcile recently-pending orders with CCAvenue (missed webhooks)
  *   - hourly: low-stock alert email (once per variant per day)
  */
 const logger = require('../config/logger');
@@ -29,7 +29,7 @@ async function expire() {
 
 async function reconcileRecent() {
   const env = require('../config/env');
-  if (!env.razorpayConfigured) return;
+  if (!env.ccavenueConfigured) return;
   const payments = require('../services/payment.service');
   const recent = await Order.find({ status: 'pending_payment', createdAt: { $gte: new Date(Date.now() - 2 * 3600_000), $lte: new Date(Date.now() - 5 * 60_000) } }).limit(50);
   for (const o of recent) await payments.reconcileOrder(o);

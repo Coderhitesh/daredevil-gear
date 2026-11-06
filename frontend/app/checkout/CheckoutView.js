@@ -10,7 +10,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Lock, ShieldAlert, Check, Banknote, CreditCard } from 'lucide-react';
 import { api, fieldErrors } from '@/lib/api-client';
 import { useMe } from '@/lib/hooks';
-import { pay } from '@/lib/razorpay';
+import { pay } from '@/lib/ccavenue';
 import { addressSchema, email as emailSchema, phone, clean } from '@/lib/validation';
 import AddressFields from '@/components/forms/AddressFields';
 import Field from '@/components/forms/Field';
@@ -103,7 +103,14 @@ export default function CheckoutView() {
   const [payMethod, setPayMethod] = useState('online'); // online | cod
   const [codBlocked, setCodBlocked] = useState(null); // reason COD was refused for this address
   const [payState, setPayState] = useState({ status: 'idle' });
-  const pending = useRef(null); // { orderNumber, razorpay, guestAccessToken }
+  const pending = useRef(null); // { orderNumber, ccavenue, guestAccessToken }
+
+  useEffect(() => {
+    const r = new URLSearchParams(window.location.search).get('payment');
+    if (!r) return;
+    setPayState({ status: 'failed', message: r === 'cancelled' ? 'Payment cancelled. Your items are held for a short time — you can try again.' : 'The payment did not go through. If money was debited, your bank will refund it. You can try again or use a different method.' });
+    router.replace('/checkout');
+  }, [router]);
 
   const form = useForm({
     resolver: zodResolver(schema),
@@ -237,18 +244,10 @@ export default function CheckoutView() {
         placed = { ...placed, ...(await api(`/checkout/orders/${placed.orderNumber}/pay`, { method: 'POST', headers: placed.guestAccessToken ? { 'x-ddg-order-token': placed.guestAccessToken } : {} })) };
       }
       setPayState({ status: 'paying', orderNumber: placed.orderNumber });
-      const response = await pay(placed.razorpay);
-      setPayState({ status: 'verifying', orderNumber: placed.orderNumber });
-      await api('/payments/razorpay/verify', { method: 'POST', body: response });
-      pending.current = null;
-      qc.invalidateQueries({ queryKey: ['cart'] });
-      router.push(`/checkout/success?order=${placed.orderNumber}`);
+      await pay(placed.ccavenue); // leaves the site; CCAvenue sends the shopper back to /checkout/success or /checkout?payment=…
     } catch (err) {
       if (err?.dismissed) {
         setPayState({ status: 'dismissed', message: 'Payment window closed. Your items are held for 30 minutes — you can try again.' });
-      } else if (err?.failed) {
-        if (pending.current) api('/payments/razorpay/failure', { method: 'POST', body: { razorpay_order_id: pending.current.razorpay.orderId, code: err.error?.code, description: err.error?.description, reason: err.error?.reason } }).catch(() => {});
-        setPayState({ status: 'failed', message: `${err.error?.description || 'The payment did not go through.'} No money has been taken. You can try again or use a different method.` });
       } else {
         if (['COD_NOT_AVAILABLE', 'COD_NOT_SERVICEABLE', 'COD_LIMIT'].includes(err.code)) {
           setCodBlocked(err.message);
@@ -296,7 +295,7 @@ export default function CheckoutView() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="font-display text-display-lg">Checkout</h1>
         <p className="flex items-center gap-2 text-sm text-graphite">
-          <Lock size={15} /> Secure payment by Razorpay
+          <Lock size={15} /> Secure payment by CCAvenue
         </p>
       </div>
 
@@ -421,7 +420,7 @@ export default function CheckoutView() {
                   onChange={() => setPayMethod('online')}
                   icon={CreditCard}
                   title="Pay online"
-                  note={onlineOff ? 'Not available right now' : 'UPI, cards, net banking and wallets through Razorpay'}
+                  note={onlineOff ? 'Not available right now' : 'UPI, cards, net banking and wallets through CCAvenue'}
                 />
                 {codOn ? (
                   <PayOption

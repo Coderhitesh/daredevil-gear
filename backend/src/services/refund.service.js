@@ -3,14 +3,14 @@
 const { Order, Payment, Refund, ReturnRequest, nextSequence } = require('../models');
 const { ApiError } = require('../utils/http');
 const logger = require('../config/logger');
-const razorpay = require('./razorpay.service');
+const ccavenue = require('./ccavenue.service');
 const inventory = require('./inventory.service');
 const orders = require('./order.service');
 const email = require('./email.service');
 const { ORDER_STATUS: S } = require('../shared');
 
 /**
- * Initiate a refund through Razorpay. Idempotent per idempotencyKey.
+ * Initiate a refund through CCAvenue. Idempotent per idempotencyKey.
  * items: [{ orderItem, quantity }] — used for restocking and per-line refund tracking.
  */
 async function createRefund(orderId, { amount, reason, items = [], restock = false, idempotencyKey, returnRequest, manualReference }, actor) {
@@ -43,18 +43,18 @@ async function createRefund(orderId, { amount, reason, items = [], restock = fal
   // bank transfer / UPI and records the reference; everything else below is the same
   if (!isCod) try {
     const seq = await nextSequence('refund');
-    const rz = await razorpay.refund(order.payment.razorpayPaymentId, { amount: amt, notes: { orderNumber: order.orderNumber, reason: String(reason || '').slice(0, 200) }, receipt: `RF${seq}` });
+    const rz = await ccavenue.refund(order.payment.razorpayPaymentId, { amount: amt, receipt: `RF${seq}` });
     refund.razorpayRefundId = rz.id;
     refund.status = rz.status === 'processed' ? 'processed' : 'pending';
     if (refund.status === 'processed') refund.processedAt = new Date();
     await refund.save();
   } catch (err) {
-    logger.error({ err: err.message, order: order.orderNumber }, 'Razorpay refund failed');
+    logger.error({ err: err.message, order: order.orderNumber }, 'CCAvenue refund failed');
     refund.status = 'failed';
     refund.failureReason = err?.error?.description || err.message;
     await refund.save();
     await Order.updateOne({ _id: order._id }, { $inc: { 'payment.amountRefunded': -amt } });
-    throw ApiError.badRequest(`Refund failed at Razorpay: ${refund.failureReason}`, { code: 'REFUND_FAILED' });
+    throw ApiError.badRequest(`Refund failed at CCAvenue: ${refund.failureReason}`, { code: 'REFUND_FAILED' });
   }
 
   const fullyRefunded = reserved.payment.amountRefunded >= reserved.payment.amountPaid;

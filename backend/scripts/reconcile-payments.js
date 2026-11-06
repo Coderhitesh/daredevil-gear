@@ -1,7 +1,7 @@
 'use strict';
 
 /* eslint-disable no-console */
-/** Manually reconcile pending orders with Razorpay and expire stale ones. */
+/** Manually reconcile pending orders with CCAvenue and expire stale ones. */
 const { run } = require('./lib/cli');
 const payments = require('../src/services/payment.service');
 const { Order } = require('../src/models');

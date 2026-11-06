@@ -26,7 +26,7 @@ const HOME_SECTIONS = [
         { title: 'Prices include GST', text: 'No hidden charges — packaging and delivery shown before you pay.', icon: 'receipt' },
         { title: 'Free delivery over ₹5,000', text: 'Delivery charge for smaller orders shown at checkout.', icon: 'truck' },
         { title: '7-day returns', text: 'Damaged or wrong item? Tell us within 48 hours.', icon: 'rotate' },
-        { title: 'Secure payments', text: 'UPI, cards and net banking via Razorpay.', icon: 'shield' },
+        { title: 'Secure payments', text: 'UPI, cards and net banking via CCAvenue.', icon: 'shield' },
       ],
     },
   },

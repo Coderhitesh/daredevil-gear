@@ -53,9 +53,12 @@ const schema = z.object({
   ADMIN_NOTIFY_EMAIL: z.string().email().optional(),
   MAIL_DEV_OUTBOX: bool(true),
 
-  RAZORPAY_KEY_ID: z.string().optional(),
-  RAZORPAY_KEY_SECRET: z.string().optional(),
-  RAZORPAY_WEBHOOK_SECRET: z.string().optional(),
+  CCAVENUE_MERCHANT_ID: z.string().optional(),
+  CCAVENUE_ACCESS_CODE: z.string().optional(),
+  CCAVENUE_WORKING_KEY: z.string().optional(),
+  CCAVENUE_ENV: z.enum(['test', 'live']).default('test'),
+  // public URL CCAvenue sends the customer back to (must be reachable by the browser); default STOREFRONT_URL + /api/v1/payments/ccavenue/response
+  CCAVENUE_REDIRECT_URL: z.string().url().optional(),
   PAYMENT_EXPIRY_MIN: z.coerce.number().int().default(30),
 
   CLOUDINARY_CLOUD_NAME: z.string().optional(),
@@ -90,8 +93,7 @@ function loadEnv(raw = process.env) {
     const problems = [];
     if (!env.SMTP_HOST) problems.push('SMTP_HOST is required in production (OTP and order emails)');
     if (!env.SMTP_TLS_REJECT_UNAUTHORIZED) problems.push('SMTP_TLS_REJECT_UNAUTHORIZED=false is for local development only');
-    if (!env.RAZORPAY_KEY_ID || !env.RAZORPAY_KEY_SECRET) problems.push('Razorpay keys are required in production');
-    if (!env.RAZORPAY_WEBHOOK_SECRET) problems.push('RAZORPAY_WEBHOOK_SECRET is required in production');
+    if (!env.CCAVENUE_MERCHANT_ID || !env.CCAVENUE_ACCESS_CODE || !env.CCAVENUE_WORKING_KEY) problems.push('CCAvenue merchant id, access code and working key are required in production');
     if (env.STOREFRONT_URL.startsWith('http://')) problems.push('STOREFRONT_URL must be https in production');
     if (env.ADMIN_URL.startsWith('http://')) problems.push('ADMIN_URL must be https in production');
     if (!env.ADMIN_MFA_REQUIRED) problems.push('ADMIN_MFA_REQUIRED cannot be false in production');
@@ -111,9 +113,9 @@ function loadEnv(raw = process.env) {
     .map((s) => s.trim())
     .filter(Boolean);
   env.smtpConfigured = Boolean(env.SMTP_HOST);
-  env.razorpayConfigured = Boolean(env.RAZORPAY_KEY_ID && env.RAZORPAY_KEY_SECRET);
+  env.ccavenueConfigured = Boolean(env.CCAVENUE_MERCHANT_ID && env.CCAVENUE_ACCESS_CODE && env.CCAVENUE_WORKING_KEY);
   env.cloudinaryConfigured = Boolean(env.CLOUDINARY_CLOUD_NAME && env.CLOUDINARY_API_KEY && env.CLOUDINARY_API_SECRET);
-  env.razorpayMode = env.RAZORPAY_KEY_ID?.startsWith('rzp_live_') ? 'live' : 'test';
+  env.ccavenueMode = env.CCAVENUE_ENV;
   env.loadEnv = loadEnv;
   return Object.freeze(env);
 }

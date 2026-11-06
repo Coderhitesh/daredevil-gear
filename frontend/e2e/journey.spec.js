@@ -1,5 +1,5 @@
 // Guest customer journey: browse → search → product → cart → checkout up to payment.
-// Payment itself is Razorpay's hosted flow; without test keys the API answers 503 and the
+// Payment itself is CCAvenue's hosted flow; without keys the API answers 503 and the
 // checkout must show a clear message and release the held stock (no fake success).
 const { test, expect } = require('@playwright/test');
 
@@ -53,10 +53,9 @@ test.describe('storefront journey', () => {
     const ageBox = form.getByLabel(/18 years|aged 18/i);
     if (await ageBox.count()) await ageBox.check();
     await page.getByRole('button', { name: /^Pay ₹/ }).click();
-    // Either Razorpay opens (test keys configured) or the store explains payments are unavailable.
-    const razorpay = page.locator('iframe.razorpay-checkout-frame');
+    // Either CCAvenue's page opens (keys configured) or the store explains payments are unavailable.
     const unavailable = page.getByRole('alert').filter({ hasText: /payment|not configured|unavailable/i });
-    await expect(unavailable.or(razorpay).first()).toBeVisible({ timeout: 20_000 });
+    await Promise.race([page.waitForURL(/ccavenue\.com/, { timeout: 20_000 }), expect(unavailable.first()).toBeVisible({ timeout: 20_000 })]);
     test.info().annotations.push({ type: 'mobile', description: String(isMobile) });
   });
 });

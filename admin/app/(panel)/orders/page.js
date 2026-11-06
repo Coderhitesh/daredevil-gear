@@ -32,7 +32,7 @@ export default function OrdersPage() {
     <Guard perm="orders:read">
       <PageHeader
         title="Orders"
-        description="Orders are confirmed only after the payment is verified with Razorpay. Expired unpaid checkouts are hidden unless you include them."
+        description="Orders are confirmed only after the payment is verified with CCAvenue. Expired unpaid checkouts are hidden unless you include them."
         actions={
           can('reports:read') ? (
             <button type="button" className="btn-outline" onClick={() => download(`/orders/export${state.from ? `?from=${state.from}` : ''}`, 'orders.csv').catch((e) => toast.show(e.message, 'error'))}>

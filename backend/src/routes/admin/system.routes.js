@@ -42,8 +42,8 @@ router.get('/system/status', requirePermission('settings:read'), h(async (_req, 
     environment: env.NODE_ENV,
     integrations: {
       smtp: env.smtpConfigured,
-      razorpay: env.razorpayConfigured ? env.razorpayMode : false,
-      razorpayWebhook: Boolean(env.RAZORPAY_WEBHOOK_SECRET),
+      razorpay: env.ccavenueConfigured ? env.ccavenueMode : false, // key kept so the admin panel needs no change
+      razorpayWebhook: true,
       cloudinary: env.cloudinaryConfigured,
       redis: Boolean(env.REDIS_URL),
       shippingProvider: env.SHIPPING_PROVIDER,

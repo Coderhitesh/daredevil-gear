@@ -75,7 +75,7 @@ ${order.pricing.offerDiscount ? `<p>Offers applied: ${(order.pricing.offers || [
 ${order.pricing.discount ? `<p>Coupon ${esc(order.pricing.couponCode)} applied: ${money(order.pricing.discount)} (already reflected in item values above).</p>` : ''}
 ${order.payment?.provider === 'cod'
   ? `<p>Payment: <strong>cash on delivery</strong> — ${order.payment?.status === 'captured' ? `${money(order.payment.amountPaid)} collected on delivery` : `${money(order.pricing.grandTotal)} to be collected on delivery`}.</p>`
-  : `<p>Amount paid: <strong>${money(order.payment?.amountPaid || order.pricing.grandTotal)}</strong> via ${esc(order.payment?.method || 'online payment')} (Razorpay ${esc(order.payment?.razorpayPaymentId || '')}).</p>`}
+  : `<p>Amount paid: <strong>${money(order.payment?.amountPaid || order.pricing.grandTotal)}</strong> via ${esc(order.payment?.method || 'online payment')} (CCAvenue ref ${esc(order.payment?.razorpayPaymentId || '')}).</p>`}
 <p class="m">Whether tax is payable on reverse charge: No. This is a computer-generated invoice.</p>
 </body></html>`;
 }

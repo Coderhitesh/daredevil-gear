@@ -56,8 +56,8 @@ function createApp() {
     res.status(dbOk ? 200 : 503).json({ status: dbOk ? 'ready' : 'not_ready', db: dbOk });
   });
 
-  // Razorpay webhooks need the raw body for signature verification — mounted before JSON parsing and CSRF.
-  app.post('/api/v1/webhooks/razorpay', express.raw({ type: 'application/json', limit: '512kb' }), asyncHandler(checkoutController.webhook));
+  // CCAvenue sends the customer back with a form POST (no CSRF header possible) — mounted before CSRF; the body is AES-encrypted with our working key.
+  app.post('/api/v1/payments/ccavenue/response', express.urlencoded({ extended: false, limit: '50kb' }), asyncHandler(checkoutController.ccavenueResponse));
 
   app.use(express.json({ limit: '200kb' }));
   app.use(express.urlencoded({ extended: false, limit: '50kb' }));

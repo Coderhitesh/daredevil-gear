@@ -2,7 +2,7 @@
 
 /**
  * Checkout: re-validates everything server-side, creates the order snapshot, holds stock and the coupon,
- * and creates the Razorpay order. Prices, discounts, tax and totals from the browser are never used.
+ * and creates the payment order. Prices, discounts, tax and totals from the browser are never used.
  */
 
 const { Order, Payment, Address } = require('../models');
@@ -19,7 +19,7 @@ const pricing = require('./pricing.service');
 const settings = require('./settings.service');
 const tax = require('./tax.service');
 const inventory = require('./inventory.service');
-const razorpay = require('./razorpay.service');
+const ccavenue = require('./ccavenue.service');
 const orders = require('./order.service');
 
 function snapshotAddress(a) {
@@ -54,30 +54,21 @@ function codPayload(order) {
   return { orderId: String(order._id), orderNumber: order.orderNumber, status: order.status, paymentMethod: 'cod', amountDue: order.pricing.grandTotal };
 }
 
-/** Paying for an existing pending order (retry) returns the same Razorpay order. */
+/** Paying for an existing pending order (retry) returns the same payment order. */
 function paymentPayload(order, payment) {
   return {
     orderId: String(order._id),
     orderNumber: order.orderNumber,
     status: order.status,
     expiresAt: order.expiresAt,
-    razorpay: {
-      keyId: razorpay.publicKey(),
-      orderId: payment.razorpayOrderId,
-      amount: payment.amount,
-      currency: 'INR',
-      name: 'DareDevil Gears',
-      description: `Order ${order.orderNumber}`,
-      prefill: { name: order.customerName, email: order.email, contact: order.phone },
-      notes: { orderNumber: order.orderNumber },
-    },
+    ccavenue: ccavenue.paymentForm(order, payment),
   };
 }
 
 async function placeOrder({ user, guestToken, input, ctx }) {
   const isCod = input.paymentMethod === 'cod';
   // fail before creating an order or reserving stock when no payment gateway is set up
-  if (!isCod) razorpay.assertConfigured();
+  if (!isCod) ccavenue.assertConfigured();
   const checkoutCfg = await settings.get('checkout');
   if (!user && !checkoutCfg.guestCheckout) throw ApiError.unauthorized('Please sign in to check out');
   if (user && !user.emailVerified) throw ApiError.forbidden('Please verify your email before checking out', { code: 'EMAIL_NOT_VERIFIED' });
@@ -254,7 +245,7 @@ async function placeOrder({ user, guestToken, input, ctx }) {
       return { ...codPayload(confirmed), guestAccessToken };
     }
 
-    const rzpOrder = await razorpay.createOrder({ amount: q.totals.grandTotal, receipt: order.orderNumber, notes: { orderId: String(order._id), orderNumber: order.orderNumber } });
+    const rzpOrder = await ccavenue.createOrder({ receipt: order.orderNumber });
     order.payment.razorpayOrderId = rzpOrder.id;
     await order.save();
     const payment = await Payment.create({ order: order._id, razorpayOrderId: rzpOrder.id, amount: q.totals.grandTotal, status: 'created', events: [{ type: 'order.created' }] });
@@ -273,7 +264,7 @@ async function placeOrder({ user, guestToken, input, ctx }) {
   }
 }
 
-/** Resume payment for a still-pending order (same Razorpay order). */
+/** Resume payment for a still-pending order (same payment order). */
 async function resumePayment(order) {
   if (!['pending_payment', 'payment_failed'].includes(order.status)) throw ApiError.conflict('This order is no longer awaiting payment', { code: 'NOT_PENDING' });
   if (order.expiresAt && order.expiresAt < new Date()) throw ApiError.conflict('This payment window has expired. Please place the order again.', { code: 'PAYMENT_EXPIRED' });

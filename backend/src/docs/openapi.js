@@ -46,11 +46,9 @@ const ROUTES = [
 
   ['get', '/checkout/config', 'Checkout', 'Checkout configuration (guest checkout, packaging mode, states)'],
   ['post', '/checkout/quote', 'Checkout', 'Delivery options and final totals for a destination'],
-  ['post', '/checkout/place', 'Checkout', 'Validate everything, create order snapshot, hold stock, create Razorpay order (idempotent)', null, 'PlaceOrder'],
+  ['post', '/checkout/place', 'Checkout', 'Validate everything, create order snapshot, hold stock, create payment order (idempotent)', null, 'PlaceOrder'],
   ['post', '/checkout/orders/{orderNumber}/pay', 'Checkout', 'Resume payment for a pending order'],
-  ['post', '/payments/razorpay/verify', 'Payments', 'Verify Razorpay checkout signature on the server and confirm the order', null, 'RazorpayVerify'],
-  ['post', '/payments/razorpay/failure', 'Payments', 'Record a client-side payment failure (informational)'],
-  ['post', '/webhooks/razorpay', 'Payments', 'Razorpay webhook (raw body HMAC verification, idempotent by event id)'],
+  ['post', '/payments/ccavenue/response', 'Payments', 'CCAvenue return URL (encrypted form POST, redirects to the storefront)'],
 
   ['get', '/users/me', 'Account', 'Profile', 'customer'],
   ['patch', '/users/me', 'Account', 'Update profile / notification preferences', 'customer'],
@@ -129,8 +127,8 @@ const ROUTES = [
   ['post', '/admin/orders/{id}/ship/provider', 'Admin · Orders', 'Create shipment via Shiprocket', 'admin'],
   ['patch', '/admin/orders/{id}/shipment', 'Admin · Orders', 'Shipment tracking update', 'admin'],
   ['post', '/admin/orders/{id}/notes', 'Admin · Orders', 'Internal note', 'admin'],
-  ['post', '/admin/orders/{id}/refunds', 'Admin · Orders', 'Initiate Razorpay refund (idempotent)', 'admin'],
-  ['post', '/admin/orders/{id}/reconcile', 'Admin · Orders', 'Reconcile payment with Razorpay', 'admin'],
+  ['post', '/admin/orders/{id}/refunds', 'Admin · Orders', 'Initiate CCAvenue refund (idempotent)', 'admin'],
+  ['post', '/admin/orders/{id}/reconcile', 'Admin · Orders', 'Reconcile payment with CCAvenue', 'admin'],
   ['post', '/admin/orders/{id}/resend', 'Admin · Orders', 'Resend customer email', 'admin'],
   ['get', '/admin/orders/{id}/invoice', 'Admin · Orders', 'Tax invoice', 'admin'],
   ['get', '/admin/payments', 'Admin · Orders', 'Payment history', 'admin'],
@@ -189,7 +187,6 @@ const schemas = {
   CartAdd: { type: 'object', required: ['productId'], properties: { productId: { type: 'string' }, variantId: { type: 'string' }, quantity: { type: 'integer', minimum: 1, maximum: 10 } } },
   Address: { type: 'object', required: ['fullName', 'phone', 'line1', 'city', 'state', 'pincode'], properties: { fullName: { type: 'string' }, phone: { type: 'string' }, line1: { type: 'string' }, line2: { type: 'string' }, landmark: { type: 'string' }, city: { type: 'string' }, state: { type: 'string' }, pincode: { type: 'string' }, country: { type: 'string', default: 'IN' }, gstin: { type: 'string' } } },
   PlaceOrder: { type: 'object', required: ['idempotencyKey'], properties: { idempotencyKey: { type: 'string' }, contact: { type: 'object', properties: { name: { type: 'string' }, email: { type: 'string' }, phone: { type: 'string' } } }, addressId: { type: 'string' }, shippingAddress: { $ref: '#/components/schemas/Address' }, billingSameAsShipping: { type: 'boolean' }, billingAddress: { $ref: '#/components/schemas/Address' }, rateId: { type: 'string' }, ageConfirmed: { type: 'boolean' }, saveAddress: { type: 'boolean' }, expectedTotal: { type: 'integer', description: 'paise; mismatch → 409 TOTAL_CHANGED' } } },
-  RazorpayVerify: { type: 'object', required: ['razorpay_order_id', 'razorpay_payment_id', 'razorpay_signature'], properties: { razorpay_order_id: { type: 'string' }, razorpay_payment_id: { type: 'string' }, razorpay_signature: { type: 'string' } } },
 };
 
 function build() {
@@ -205,7 +202,7 @@ function build() {
     if (auth === 'customer') op.security = [{ customerCookie: [] }];
     if (auth === 'admin') op.security = [{ adminCookie: [] }];
     if (body) op.requestBody = { required: true, content: { 'application/json': { schema: { $ref: `#/components/schemas/${body}` } } } };
-    if (method !== 'get' && path !== '/webhooks/razorpay') op.parameters = [...(op.parameters || []), { name: 'x-ddg-csrf', in: 'header', required: true, schema: { type: 'string', enum: ['1'] } }];
+    if (method !== 'get' && path !== '/payments/ccavenue/response') op.parameters = [...(op.parameters || []), { name: 'x-ddg-csrf', in: 'header', required: true, schema: { type: 'string', enum: ['1'] } }];
     paths[path] = paths[path] || {};
     paths[path][method] = op;
   }
