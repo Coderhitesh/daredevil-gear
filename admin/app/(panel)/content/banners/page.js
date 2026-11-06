@@ -3,12 +3,14 @@
 import ResourcePage from '@/components/resource/ResourcePage';
 import { Status, Pill } from '@/components/ui';
 import { date } from '@/lib/format';
+import OfferLinkHelper from '@/components/form/OfferLinkHelper';
 
 const fields = [
   { name: 'placement', label: 'Placement', type: 'select', required: true, options: [['hero', 'Homepage hero'], ['offer', 'Homepage offer post'], ['promo', 'Homepage promo tiles'], ['category', 'Category pages']] },
   { name: 'product', label: 'Product this offer opens', type: 'products', max: 1, span: 2, show: (v) => v.placement === 'offer', hint: 'Clicking the offer opens this product. Or leave empty and use the link below.' },
   { name: 'layout', label: 'Banner style', type: 'select', required: true, options: [['overlay', 'Photo with title and buttons on top'], ['image_only', 'Designed banner image only (text is in the picture)']], hint: '"Image only" needs a desktop image; the title is used as its description' },
-  { name: 'linkHref', label: 'Open this page when the banner is clicked', placeholder: '/collections/monsoon-gear or https://…', span: 2, hint: 'Optional. Leave empty if the banner should not be clickable.' },
+  { name: 'linkHref', label: 'Open this page when the banner is clicked', placeholder: '/shop?under=999, /collections/monsoon-gear or https://…', span: 2, hint: 'Optional. Leave empty if the banner should not be clickable.' },
+  { name: '_offerLink', type: 'custom', span: 2, render: ({ form }) => <OfferLinkHelper form={form} /> },
   { name: 'openInNewTab', label: 'Open the link in a new tab', type: 'checkbox', show: (v) => Boolean(v.linkHref) },
   { name: 'durationSeconds', label: 'Show each time for (seconds)', type: 'number', step: 1, min: 3, max: 30, hint: 'Homepage slider moves to the next banner after this' },
   { name: 'theme', label: 'Text colour', type: 'select', required: true, options: [['dark', 'Light text on dark image'], ['light', 'Dark text on light image']] },

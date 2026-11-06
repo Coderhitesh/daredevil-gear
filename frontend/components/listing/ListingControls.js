@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { SlidersHorizontal, X } from 'lucide-react';
 import Drawer from '../ui/Drawer';
 import { inr, plural } from '@/lib/format';
+import { priceOffer, priceOfferLabel } from '@/lib/price-offer';
 
 const SORTS = [
   ['featured', 'Featured'],
@@ -22,6 +23,10 @@ function useQueryState() {
   const [pending, start] = useTransition();
   const set = (changes) => {
     const qs = new URLSearchParams(params.toString());
+    if ('minPrice' in changes || 'maxPrice' in changes) {
+      qs.delete('under');
+      qs.delete('price');
+    }
     for (const [k, v] of Object.entries(changes)) {
       if (v === null || v === undefined || v === '' || v === false) qs.delete(k);
       else qs.set(k, String(v));
@@ -34,8 +39,11 @@ function useQueryState() {
 }
 
 function Filters({ facets, params, set }) {
-  const min = params.get('minPrice') ? Number(params.get('minPrice')) / 100 : '';
-  const max = params.get('maxPrice') ? Number(params.get('maxPrice')) / 100 : '';
+  const offer = priceOffer(params);
+  const minP = params.get('minPrice') ?? (offer?.minPrice != null ? String(offer.minPrice) : null);
+  const maxP = params.get('maxPrice') ?? (offer?.maxPrice != null ? String(offer.maxPrice) : null);
+  const min = minP ? Number(minP) / 100 : '';
+  const max = maxP ? Number(maxP) / 100 : '';
   const [lo, setLo] = useState(min);
   const [hi, setHi] = useState(max);
   useEffect(() => {
@@ -105,8 +113,10 @@ function Filters({ facets, params, set }) {
 export default function ListingControls({ facets, total }) {
   const { params, set, pending } = useQueryState();
   const [open, setOpen] = useState(false);
+  const offer = params.get('minPrice') || params.get('maxPrice') ? null : priceOffer(params);
   const active = [
     params.get('inStock') === 'true' && { key: 'inStock', label: 'In stock' },
+    offer && { key: 'price', label: priceOfferLabel(offer) },
     (params.get('minPrice') || params.get('maxPrice')) && { key: 'price', label: `${params.get('minPrice') ? inr(+params.get('minPrice')) : '₹0'} to ${params.get('maxPrice') ? inr(+params.get('maxPrice')) : 'any'}` },
     ...(params.get('brand') || '').split(',').filter(Boolean).map((b) => ({ key: `brand:${b}`, label: b.replace(/-/g, ' ') })),
   ].filter(Boolean);

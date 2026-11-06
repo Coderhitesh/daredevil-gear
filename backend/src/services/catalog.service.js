@@ -167,6 +167,29 @@ const SORTS = {
   featured: { isFeatured: -1, salesCount: -1, createdAt: -1 },
 };
 
+/**
+ * Mongo expression for the selling price (paise, incl. GST): the sale price while a sale is
+ * active and lower than the regular price, otherwise the regular price. Mirrors pricing.unitPrice.
+ */
+function effectivePriceExpr(now = new Date()) {
+  const sale = '$pricing.sale';
+  return {
+    $cond: [
+      {
+        $and: [
+          { $eq: [`${sale}.active`, true] },
+          { $gt: [`${sale}.priceInclusive`, 0] },
+          { $lt: [`${sale}.priceInclusive`, '$pricing.priceInclusive'] },
+          { $lte: [{ $ifNull: [`${sale}.startsAt`, new Date(0)] }, now] },
+          { $gte: [{ $ifNull: [`${sale}.endsAt`, new Date(8.64e15)] }, now] },
+        ],
+      },
+      `${sale}.priceInclusive`,
+      '$pricing.priceInclusive',
+    ],
+  };
+}
+
 async function buildFilter({ category, collection, brand, minPrice, maxPrice, inStock, ids, q }) {
   const cats = await activeCategories();
   const activeIds = cats.map((c) => c._id);
@@ -188,9 +211,12 @@ async function buildFilter({ category, collection, brand, minPrice, maxPrice, in
     filter.brand = { $in: brands.map((b) => b._id) };
   }
   if (minPrice != null || maxPrice != null) {
-    filter['pricing.priceInclusive'] = {};
-    if (minPrice != null) filter['pricing.priceInclusive'].$gte = minPrice;
-    if (maxPrice != null) filter['pricing.priceInclusive'].$lte = maxPrice;
+    // filter on the price the customer actually pays (live sale price if one is running)
+    const price = effectivePriceExpr();
+    const conds = [];
+    if (minPrice != null) conds.push({ $gte: [price, minPrice] });
+    if (maxPrice != null) conds.push({ $lte: [price, maxPrice] });
+    filter.$expr = conds.length === 1 ? conds[0] : { $and: conds };
   }
   if (inStock) filter.stockStatus = 'in_stock';
   if (q) {
@@ -200,27 +226,58 @@ async function buildFilter({ category, collection, brand, minPrice, maxPrice, in
   return filter;
 }
 
+/**
+ * Categories whose products go to the end of mixed listings (Shop all, collections) on the
+ * default sort. Override with SHOP_LIST_LAST_CATEGORIES=slug-a,slug-b (empty value = none).
+ */
+const LIST_LAST_SLUGS = (process.env.SHOP_LIST_LAST_CATEGORIES ?? 'vehicle-generator-care')
+  .split(',')
+  .map((x) => x.trim())
+  .filter(Boolean);
+
+async function listLastCategoryIds() {
+  if (!LIST_LAST_SLUGS.length) return [];
+  const cats = await activeCategories();
+  const roots = cats.filter((c) => LIST_LAST_SLUGS.includes(c.slug)).map((c) => String(c._id));
+  if (!roots.length) return [];
+  // the category itself plus all its sub-categories
+  return cats.filter((c) => roots.includes(String(c._id)) || (c.ancestors || []).some((a) => roots.includes(String(a)))).map((c) => c._id);
+}
+
+const findPage = (filter, sort, skip, limit) =>
+  limit > 0 ? Product.find(filter).sort(sort).skip(skip).limit(limit).populate('category', 'name slug').lean() : Promise.resolve([]);
+
 async function listProducts(params) {
   const { page = 1, limit = 24, sort = 'featured' } = params;
   const filter = await buildFilter(params);
-  const [items, total] = await Promise.all([
-    Product.find(filter)
-      .sort(SORTS[sort] || SORTS.featured)
-      .skip((page - 1) * limit)
-      .limit(limit)
-      .populate('category', 'name slug')
-      .lean(),
-    Product.countDocuments(filter),
-  ]);
+  const order = SORTS[sort] || SORTS.featured;
+  const skip = (page - 1) * limit;
+
+  // default sort on mixed listings: push the "list last" categories to the very end
+  const lastIds = sort === 'featured' && !params.category && !params.q && !params.ids?.length ? await listLastCategoryIds() : [];
+  if (lastIds.length) {
+    const and = filter.$and || [];
+    const mainFilter = { ...filter, $and: [...and, { category: { $nin: lastIds } }] };
+    const lastFilter = { ...filter, $and: [...and, { category: { $in: lastIds } }] };
+    const [mainTotal, lastTotal] = await Promise.all([Product.countDocuments(mainFilter), Product.countDocuments(lastFilter)]);
+    const main = await findPage(mainFilter, order, skip, Math.max(0, Math.min(limit, mainTotal - skip)));
+    const last = await findPage(lastFilter, order, Math.max(0, skip - mainTotal), limit - main.length);
+    return {
+      items: [...main.map((p) => serialiseCard(p)), ...last.map((p) => ({ ...serialiseCard(p), listLast: true }))],
+      total: mainTotal + lastTotal,
+    };
+  }
+
+  const [items, total] = await Promise.all([findPage(filter, order, skip, limit), Product.countDocuments(filter)]);
   return { items: items.map((p) => serialiseCard(p)), total };
 }
 
 async function facets(params) {
   const filter = await buildFilter({ ...params, minPrice: null, maxPrice: null, brand: null, inStock: false });
-  const products = await Product.find(filter).select('pricing.priceInclusive stockStatus brand').lean();
+  const products = await Product.find(filter).select('pricing stockStatus brand').lean();
   const brandIds = [...new Set(products.map((p) => String(p.brand || '')).filter(Boolean))];
   const brands = brandIds.length ? await Brand.find({ _id: { $in: brandIds } }).lean() : [];
-  const prices = products.map((p) => p.pricing.priceInclusive);
+  const prices = products.map((p) => unitPrice(p).unit);
   return {
     price: prices.length ? { min: Math.min(...prices), max: Math.max(...prices) } : null,
     availability: { inStock: products.filter((p) => p.stockStatus === 'in_stock').length, total: products.length },
