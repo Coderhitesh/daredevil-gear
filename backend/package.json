@@ -18,7 +18,8 @@
     "seed:all": "node scripts/seed-all.js",
     "reconcile:payments": "node scripts/reconcile-payments.js",
     "indexes": "node scripts/sync-indexes.js",
-    "email:test": "node scripts/test-email.js"
+    "email:test": "node scripts/test-email.js",
+    "check:packaging": "node scripts/check-packaging.js"
   },
   "dependencies": {
     "argon2": "^0.41.1",

@@ -37,7 +37,10 @@ async function createRefund(orderId, { amount, reason, items = [], restock = fal
 
   const payment = await Payment.findOne({ order: order._id, status: { $in: ['captured', 'partially_refunded'] } });
   const isCod = order.payment.provider === 'cod';
-  const refund = await Refund.create({ order: order._id, payment: payment?._id, amount: amt, reason, items, restock, idempotencyKey, returnRequest, initiatedBy: actor?._id, status: isCod ? 'processed' : 'pending', mode: isCod ? 'manual' : 'razorpay', manualReference: manualReference || undefined, processedAt: isCod ? new Date() : undefined });
+  // COD: the store sends the money by bank transfer / UPI. Without a transfer reference the refund
+  // waits as "pending" until an admin marks it paid; nothing tells the customer it is done before that.
+  const manualPaid = isCod && Boolean(manualReference);
+  const refund = await Refund.create({ order: order._id, payment: payment?._id, amount: amt, reason, items, restock, idempotencyKey, returnRequest, initiatedBy: actor?._id, status: manualPaid ? 'processed' : 'pending', mode: isCod ? 'manual' : 'razorpay', manualReference: manualReference || undefined, processedAt: manualPaid ? new Date() : undefined });
 
   // cash-on-delivery orders have no card/UPI payment to reverse: the store pays the customer by
   // bank transfer / UPI and records the reference; everything else below is the same
@@ -57,12 +60,7 @@ async function createRefund(orderId, { amount, reason, items = [], restock = fal
     throw ApiError.badRequest(`Refund failed at CCAvenue: ${refund.failureReason}`, { code: 'REFUND_FAILED' });
   }
 
-  const fullyRefunded = reserved.payment.amountRefunded >= reserved.payment.amountPaid;
-  const payStatus = fullyRefunded ? 'refunded' : 'partially_refunded';
-  await Order.updateOne({ _id: order._id }, { $set: { 'payment.status': payStatus } });
-  if (payment) await Payment.updateOne({ _id: payment._id }, { $set: { status: payStatus }, $inc: { amountRefunded: amt }, $push: { events: { type: 'refund.created', note: refund.razorpayRefundId } } });
-
-  // per-line tracking + optional restock
+  // per-line tracking + optional restock (the goods are back whether or not the money has gone out)
   if (items.length) {
     const fresh = await Order.findById(order._id);
     const toRestock = [];
@@ -76,12 +74,56 @@ async function createRefund(orderId, { amount, reason, items = [], restock = fal
     if (toRestock.length) await inventory.restock(toRestock, { order: order._id, type: returnRequest ? 'restock_return' : 'restock_cancel', reason: reason || 'Refund', actor: actor?._id });
   }
 
+  if (refund.status === 'processed') return finalise(refund, actor);
+  // pending (COD payout due, or the gateway has not confirmed yet): tell the customer it has started
+  const latest = await Order.findById(order._id);
+  await email.send('refund_update', latest.email, { order: latest.toObject(), refund: refund.toObject() });
+  return { refund, order: latest };
+}
+
+/**
+ * A refund is complete: payment status, order status (returns) and the customer email.
+ * `fromLater` = completed after creation (e.g. a COD payout marked paid), so the return request
+ * is moved to "refunded" here too.
+ */
+async function finalise(refund, actor, { fromLater = false } = {}) {
+  const order = await Order.findById(refund.order);
+  const done = await Refund.aggregate([{ $match: { order: order._id, status: 'processed' } }, { $group: { _id: null, sum: { $sum: '$amount' } } }]);
+  const processedTotal = done[0]?.sum || 0;
+  const fullyRefunded = processedTotal >= order.payment.amountPaid;
+  const payStatus = fullyRefunded ? 'refunded' : 'partially_refunded';
+  await Order.updateOne({ _id: order._id }, { $set: { 'payment.status': payStatus } });
+  if (refund.payment) await Payment.updateOne({ _id: refund.payment }, { $set: { status: payStatus }, $inc: { amountRefunded: refund.amount }, $push: { events: { type: 'refund.processed', note: refund.razorpayRefundId || refund.manualReference } } });
+
   // order status follows returns; cancelled orders keep "cancelled"
   const latest = await Order.findById(order._id);
   if (latest.status === S.RETURNED) await orders.transition(latest, fullyRefunded ? S.REFUNDED : S.PARTIALLY_REFUNDED, { actorType: 'system', actor, note: `Refund ${refund.razorpayRefundId || refund.manualReference || 'manual'}` });
 
-  await email.send('refund_update', latest.email, { order: latest.toObject(), refund: refund.toObject() });
-  return { refund, order: await Order.findById(order._id) };
+  if (fromLater && refund.returnRequest) {
+    const request = await ReturnRequest.findById(refund.returnRequest);
+    if (request && request.status === 'refund_initiated') {
+      request.status = 'refunded';
+      request.history.push({ status: 'refunded', by: actor?._id, note: `Paid ${refund.manualReference || ''}`.trim() });
+      await request.save();
+    }
+  }
+
+  const fresh = await Order.findById(order._id);
+  await email.send('refund_update', fresh.email, { order: fresh.toObject(), refund: refund.toObject() });
+  return { refund, order: fresh };
+}
+
+/** COD refunds: the admin has sent the money (bank transfer / UPI) — record the reference and complete it. */
+async function markManualRefundPaid(refundId, { reference }, actor) {
+  const refund = await Refund.findById(refundId);
+  if (!refund) throw ApiError.notFound('Refund not found');
+  if (refund.mode !== 'manual') throw ApiError.conflict('Only bank-transfer / UPI refunds are marked paid by hand');
+  if (refund.status === 'processed') throw ApiError.conflict('This refund is already marked paid');
+  const ref = String(reference || '').trim();
+  if (ref.length < 4) throw ApiError.unprocessable('Enter the UTR / UPI reference of the transfer', { details: [{ field: 'reference', message: 'Required' }] });
+  const updated = await Refund.findOneAndUpdate({ _id: refund._id, status: 'pending' }, { $set: { status: 'processed', manualReference: ref, processedAt: new Date() } }, { new: true });
+  if (!updated) throw ApiError.conflict('The refund was updated by someone else. Refresh and try again.');
+  return finalise(updated, actor, { fromLater: true });
 }
 
 // ---------------- cancellations ----------------
@@ -132,6 +174,8 @@ async function cancelOrder(order, { reason, actor, actorType = 'admin' }) {
   }
 
   await orders.restockOrder(updated, { reason: `Cancelled: ${reason || ''}`, actor });
+  // nothing was bought, so the customer gets the coupon use back (same as cash-on-delivery)
+  await require('./coupon.service').release(order._id, { includeUsed: true });
   let refundResult = null;
   const refundable = updated.payment.amountPaid - (updated.payment.amountRefunded || 0);
   if (refundable > 0) {
@@ -139,6 +183,40 @@ async function cancelOrder(order, { reason, actor, actorType = 'admin' }) {
   }
   await email.send('order_cancelled', updated.email, { order: updated.toObject(), reason, refundAmount: refundable });
   return { order: await Order.findById(updated._id), refund: refundResult?.refund || null };
+}
+
+// ---------------- returned to origin (undelivered) ----------------
+
+/**
+ * The courier brought the parcel back (customer refused COD, unreachable, wrong address…).
+ * Closes the order as cancelled, optionally restocks, gives the coupon back, and for prepaid
+ * orders refunds what the admin decides (often the order total minus the delivery charge).
+ */
+async function markReturnedToOrigin(order, { reason, restock = true, refundAmount = 0 }, actor) {
+  if (![S.SHIPPED, S.OUT_FOR_DELIVERY].includes(order.status)) throw ApiError.conflict('Only shipped orders that were not delivered can be marked returned to origin', { code: 'NOT_IN_TRANSIT' });
+  const note = `Returned to origin${reason ? `: ${reason}` : ''}`;
+  const updated = await Order.findOneAndUpdate(
+    { _id: order._id, status: order.status },
+    {
+      $set: { status: S.CANCELLED, 'cancellation.reason': note, 'cancellation.approvedAt': new Date(), 'cancellation.by': 'rto' },
+      $push: { statusHistory: { from: order.status, to: S.CANCELLED, at: new Date(), by: actor?._id, byName: actor?.name, byRole: actor?.role || 'admin', note } },
+    },
+    { new: true }
+  );
+  if (!updated) throw ApiError.conflict('The order was updated by someone else. Refresh and try again.');
+
+  const { Shipment } = require('../models');
+  if (updated.shipment) await Shipment.updateOne({ _id: updated.shipment }, { $set: { status: 'rto' }, $push: { events: { status: 'rto', note: reason || 'Returned to origin' } } });
+  if (restock) await orders.restockOrder(updated, { reason: note, actor });
+  await require('./coupon.service').release(order._id, { includeUsed: true });
+
+  let refund = null;
+  const paid = ['captured', 'partially_refunded'].includes(updated.payment?.status);
+  if (paid && refundAmount > 0) {
+    ({ refund } = await createRefund(updated._id, { amount: refundAmount, reason: note, idempotencyKey: `rto-${updated._id}` }, actor));
+  }
+  await email.send('order_cancelled', updated.email, { order: (await Order.findById(updated._id)).toObject(), reason: 'the parcel came back to us undelivered', refundAmount: refund?.amount || 0 });
+  return { order: await Order.findById(updated._id), refund };
 }
 
 // ---------------- returns ----------------
@@ -236,4 +314,4 @@ async function updateReturnRequest(id, { status, adminNotes, returnShippingPaidB
   return request;
 }
 
-module.exports = { createRefund, cancelOrder, createReturnRequest, updateReturnRequest, RETURN_FLOW };
+module.exports = { createRefund, markManualRefundPaid, markReturnedToOrigin, cancelOrder, createReturnRequest, updateReturnRequest, RETURN_FLOW };

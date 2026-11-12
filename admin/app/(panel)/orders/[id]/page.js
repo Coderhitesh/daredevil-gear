@@ -10,9 +10,10 @@ import { inr, dateTime, humanize, paymentMethod, ORDER_STATUS_LABEL } from '@/li
 import { PageHeader, Card, Status, Pill, KeyValue, Spinner, Notice, Textarea, Select, Empty } from '@/components/ui';
 import { useToast } from '@/components/ui/Toast';
 import Guard from '@/components/shell/Guard';
-import { StatusDialog, ShipDialog, ShipmentUpdateDialog, CancelDialog, RefundDialog, ReturnDialog } from '@/components/order/dialogs';
+import { StatusDialog, ShipDialog, ShipmentUpdateDialog, CancelDialog, RefundDialog, ReturnDialog, RtoDialog, MarkPaidDialog } from '@/components/order/dialogs';
 
 const CANCELLABLE = ['pending_payment', 'payment_failed', 'confirmed', 'processing', 'cancellation_requested'];
+const IN_TRANSIT = ['shipped', 'out_for_delivery'];
 
 export default function OrderPage({ params }) {
   const { id } = use(params);
@@ -48,6 +49,7 @@ function OrderView({ order }) {
   const can = useCan();
   const [dialog, setDialog] = useState(null);
   const [returnReq, setReturnReq] = useState(null);
+  const [payRefund, setPayRefund] = useState(null);
   const [note, setNote] = useState('');
   const [template, setTemplate] = useState('order_confirmation');
   const invalidate = [['order', order._id], '/orders'];
@@ -100,6 +102,11 @@ function OrderView({ order }) {
             {write && can('refunds:write') && CANCELLABLE.includes(order.status) ? (
               <button type="button" className="btn-danger" onClick={() => setDialog('cancel')}>
                 <Ban className="h-4 w-4" /> Cancel
+              </button>
+            ) : null}
+            {write && can('refunds:write') && IN_TRANSIT.includes(order.status) ? (
+              <button type="button" className="btn-outline" onClick={() => setDialog('rto')}>
+                <Undo2 className="h-4 w-4" /> Returned to origin
               </button>
             ) : null}
           </>
@@ -277,9 +284,17 @@ function OrderView({ order }) {
                         <span className="block text-xs text-graphite-400">
                           {dateTime(r.createdAt)} by {r.initiatedBy?.name || 'system'}
                           {r.razorpayRefundId ? `, ${r.razorpayRefundId}` : ''}
+                          {r.mode === 'manual' ? (r.manualReference ? `, bank / UPI ref ${r.manualReference}` : ', bank / UPI transfer not sent yet') : ''}
                         </span>
                       </span>
-                      <Status value={r.status} />
+                      <span className="flex items-center gap-2">
+                        {r.mode === 'manual' && r.status === 'pending' && can('refunds:write') ? (
+                          <button type="button" className="btn-outline btn-xs" onClick={() => setPayRefund(r)}>
+                            Mark as paid
+                          </button>
+                        ) : null}
+                        <Status value={r.status} />
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -434,6 +449,8 @@ function OrderView({ order }) {
       {dialog === 'shipment' ? <ShipmentUpdateDialog order={order} onClose={() => setDialog(null)} /> : null}
       {dialog === 'cancel' ? <CancelDialog order={order} onClose={() => setDialog(null)} /> : null}
       {dialog === 'refund' ? <RefundDialog order={order} onClose={() => setDialog(null)} /> : null}
+      {dialog === 'rto' ? <RtoDialog order={order} onClose={() => setDialog(null)} /> : null}
+      {payRefund ? <MarkPaidDialog refund={payRefund} orderId={order._id} onClose={() => setPayRefund(null)} /> : null}
       {returnReq ? <ReturnDialog order={order} request={returnReq} onClose={() => setReturnReq(null)} /> : null}
     </>
   );

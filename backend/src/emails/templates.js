@@ -201,7 +201,9 @@ const TEMPLATES = {
             : `${formatINR(refund.amount)} has been refunded to your original payment method. Banks usually take 5–7 working days to show it.`
           : refund.status === 'failed'
             ? 'Our team has been alerted and will contact you to complete the refund.'
-            : `A refund of ${formatINR(refund.amount)} has been initiated for order ${order.orderNumber}.`,
+            : refund.mode === 'manual'
+              ? `A refund of ${formatINR(refund.amount)} has been approved for order ${order.orderNumber}. As this was a cash-on-delivery order, we will send it to your bank account or UPI — our team will contact you for the details if we do not have them, and we will email you the transfer reference once it is sent.`
+              : `A refund of ${formatINR(refund.amount)} has been initiated for order ${order.orderNumber}.`,
     }),
   },
   grievance_ack: {

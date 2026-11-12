@@ -116,6 +116,19 @@ router.post(
   })
 );
 
+// the courier brought the parcel back undelivered (refused COD, unreachable, bad address…)
+router.post(
+  '/orders/:id/rto',
+  requirePermission('orders:write', 'refunds:write'),
+  validate({ params: idParams, body: z.object({ reason: z.string().trim().min(3).max(300), restock: z.boolean().default(true), refundAmount: paise.default(0) }) }),
+  h(async (req, res) => {
+    const order = await loadOrder(req.params.id);
+    const result = await refunds.markReturnedToOrigin(order, req.body, req.admin);
+    await audit(req, { action: 'order.rto', entity: 'Order', entityId: order._id, summary: `${order.orderNumber}: returned to origin (${req.body.reason})${req.body.restock ? ', restocked' : ''}${result.refund ? ` · refund ${result.refund.amount}` : ''}` });
+    return ok(res, { status: result.order.status, refund: result.refund });
+  })
+);
+
 router.post(
   '/orders/:id/cancel',
   requirePermission('orders:write', 'refunds:write'),
@@ -244,9 +257,22 @@ router.get('/payments', requirePermission('orders:read'), h(async (req, res) => 
 router.get('/refunds', requirePermission('orders:read'), h(async (req, res) => {
   const pg = parsePagination(req.query, { defaultLimit: 50 });
   const filter = req.query.status ? { status: String(req.query.status) } : {};
+  if (req.query.mode) filter.mode = String(req.query.mode);
   const [items, total] = await Promise.all([Refund.find(filter).sort({ createdAt: -1 }).skip(pg.skip).limit(pg.limit).populate('order', 'orderNumber email').populate('initiatedBy', 'name').lean(), Refund.countDocuments(filter)]);
   return ok(res, items, pageMeta(pg, total));
 }));
+
+// COD refunds: the money was sent by bank transfer / UPI — record it and tell the customer
+router.post(
+  '/refunds/:id/mark-paid',
+  requirePermission('refunds:write'),
+  validate({ params: idParams, body: z.object({ reference: z.string().trim().min(4).max(80) }) }),
+  h(async (req, res) => {
+    const { refund, order } = await refunds.markManualRefundPaid(req.params.id, { reference: req.body.reference }, req.admin);
+    await audit(req, { action: 'refund.mark_paid', entity: 'Refund', entityId: refund._id, summary: `${order.orderNumber}: ₹${(refund.amount / 100).toFixed(2)} paid, ref ${refund.manualReference}` });
+    return ok(res, { refund, paymentStatus: order.payment.status, orderStatus: order.status });
+  })
+);
 
 // ---------------- returns ----------------
 

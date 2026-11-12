@@ -57,7 +57,7 @@ const GROUPS = {
     fields: [
       { name: 'guestCheckout', label: 'Allow guest checkout', type: 'checkbox', hint: 'Guests get an order link by email' },
       { name: 'orderNotesEnabled', label: 'Allow order notes', type: 'checkbox' },
-      { name: 'packagingMode', label: 'Packaging charge', type: 'select', required: true, options: [['per_unit', 'Per unit'], ['per_line', 'Once per product line'], ['per_order_max', 'Highest single charge per order'], ['included', 'Included in price (not shown)']] },
+      { name: 'packagingMode', label: 'Packaging charge', type: 'select', required: true, options: [['per_unit', 'Per unit — 3 of the same item = charged 3 times'], ['per_line', 'Once per product line — 3 of the same item = charged once'], ['per_order_max', 'Once per order — only the highest single charge'], ['included', 'Included in price — nothing added at checkout']], hint: 'Each product\'s charge is set on the product (Pricing → Packaging charge).' },
       { name: 'ageConfirmationText', label: 'Age confirmation text (restricted items)', type: 'textarea', rows: 2 },
       { name: 'codEnabled', label: 'Offer cash on delivery (COD)', type: 'checkbox', span: 2, hint: 'Customers choose "Cash on delivery" at checkout; the order is confirmed straight away and sent to Shiprocket as COD' },
       { name: 'codFee', label: 'COD fee', type: 'money', show: (v) => v.codEnabled, hint: 'Fixed fee shown as its own line. 0 = no fixed fee' },

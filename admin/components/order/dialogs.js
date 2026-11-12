@@ -117,7 +117,7 @@ export function CancelDialog({ order, onClose }) {
   return (
     <Modal open onClose={onClose} title={`Cancel ${order.orderNumber}?`} size="sm" footer={<Footer onClose={onClose} busy={save.isPending} disabled={reason.trim().length < 3} label="Cancel order" tone="btn-danger" onClick={() => save.mutate()} />}>
       <div className="space-y-4 text-sm">
-        <p>Reserved or committed stock is returned to inventory.</p>
+        <p>Reserved or committed stock is returned to inventory, and any coupon use is given back to the customer.</p>
         {paid > 0 ? <Notice tone="caution" title={`A refund of ${inr(paid)} will be issued`}>The full paid amount goes back to the original payment method through CCAvenue. Banks usually take 5–7 working days.</Notice> : null}
         <Textarea label="Reason" required rows={3} value={reason} onChange={(e) => setReason(e.target.value)} hint="Included in the cancellation email to the customer." />
       </div>
@@ -140,7 +140,7 @@ export function RefundDialog({ order, onClose, presetItems }) {
   const items = Object.entries(qty).filter(([, q]) => q > 0).map(([orderItem, quantity]) => ({ orderItem, quantity }));
   const save = useAction(() => api(`/orders/${order._id}/refunds`, { method: 'POST', body: { amount: paise, reason: reason.trim(), items: items.length ? items : undefined, restock: items.length ? restock : false, idempotencyKey, manualReference: isCod ? manualReference.trim() || undefined : undefined } }), {
     invalidate: keys(order),
-    success: isCod ? 'Refund recorded' : 'Refund initiated with CCAvenue',
+    success: isCod ? (manualReference.trim() ? 'Refund recorded as paid' : 'Refund saved as pending. Mark it paid once you have sent the money.') : 'Refund initiated with CCAvenue',
     onSuccess: onClose,
   });
   const valid = paise > 0 && paise <= order.refundable && reason.trim().length >= 3;
@@ -149,7 +149,7 @@ export function RefundDialog({ order, onClose, presetItems }) {
       <div className="space-y-4">
         <p className="text-sm text-graphite-600">
           Up to <strong>{inr(order.refundable)}</strong> can be refunded.{' '}
-          {isCod ? 'This was a cash-on-delivery order: pay the customer by bank transfer or UPI first, then record the transfer reference here.' : 'Money goes back to the original payment method; card details are never handled by us.'}
+          {isCod ? 'This was a cash-on-delivery order, so you send the money by bank transfer or UPI. Already sent it? Enter the reference below. Not yet? Leave it empty: the refund stays pending until you use "Mark as paid".' : 'Money goes back to the original payment method; card details are never handled by us.'}
         </p>
         <div className="overflow-x-auto rounded border border-stone-300">
           <table className="tbl">
@@ -185,7 +185,7 @@ export function RefundDialog({ order, onClose, presetItems }) {
           <Input label="Refund amount (₹)" inputMode="decimal" required value={shownAmount} onChange={(e) => (setAmount(e.target.value), setTouchedAmount(true))} hint={itemValue ? `Selected items are worth ${inr(itemValue)}. You can add delivery or packaging if they are refundable.` : 'Choose items above, or enter an amount (for example a goodwill or delivery refund).'} error={paise > order.refundable ? 'More than the refundable amount' : undefined} />
           <Textarea label="Reason" required rows={2} value={reason} onChange={(e) => setReason(e.target.value)} hint="Shown to the customer" />
         </div>
-        {isCod ? <Input label="Bank / UPI transfer reference" value={manualReference} onChange={(e) => setManualReference(e.target.value)} hint="UTR or UPI reference of the money you sent. Included in the customer's refund email." /> : null}
+        {isCod ? <Input label="Bank / UPI transfer reference" value={manualReference} onChange={(e) => setManualReference(e.target.value)} hint="Leave empty if you have not sent the money yet. The customer is only told the refund is complete once a reference is recorded." /> : null}
         {items.length ? <Checkbox label="Put the refunded items back into stock" hint="Only if they came back unused and sellable" checked={restock} onChange={(e) => setRestock(e.target.checked)} /> : null}
       </div>
     </Modal>
@@ -240,7 +240,64 @@ export function ReturnDialog({ order, request, onClose }) {
           <Input label="Deduction (₹)" inputMode="decimal" value={deduction} onChange={(e) => setDeduction(e.target.value)} hint="Only as stated in the return policy" />
         </div>
         {status === 'refund_initiated' ? <Checkbox label="Restock the returned items" checked={restock} onChange={(e) => setRestock(e.target.checked)} /> : null}
+        {status === 'refund_initiated' && order.payment?.provider === 'cod' ? (
+          <Notice tone="info" title="Cash-on-delivery order">The refund is saved as pending. Send the money by bank transfer or UPI, then use “Mark as paid” in the order’s Refunds list with the UTR / UPI reference. The return is closed as refunded at that point.</Notice>
+        ) : null}
         <Textarea label="Notes to the customer" rows={3} value={adminNotes} onChange={(e) => setNotes(e.target.value)} hint={status === 'rejected' ? 'Explain why the return was rejected.' : undefined} />
+      </div>
+    </Modal>
+  );
+}
+
+export function MarkPaidDialog({ refund, orderId, onClose }) {
+  const [reference, setReference] = useState('');
+  const save = useAction(() => api(`/refunds/${refund._id}/mark-paid`, { method: 'POST', body: { reference: reference.trim() } }), {
+    invalidate: [['order', orderId || refund.order?._id || refund.order], '/orders', '/refunds', '/returns', 'dashboard'],
+    success: 'Refund marked as paid. The customer has been emailed.',
+    onSuccess: onClose,
+  });
+  return (
+    <Modal open onClose={onClose} title={`Mark ${inr(refund.amount)} refund as paid`} size="sm" footer={<Footer onClose={onClose} busy={save.isPending} disabled={reference.trim().length < 4} label="Mark as paid" tone="btn-primary" onClick={() => save.mutate()} />}>
+      <div className="space-y-4 text-sm">
+        <p>Use this after you have sent the money to the customer by bank transfer or UPI.</p>
+        <Input label="UTR / UPI reference" required value={reference} onChange={(e) => setReference(e.target.value)} placeholder="e.g. 412345678901" hint="Sent to the customer in the refund email, so they can match it with their bank statement." />
+      </div>
+    </Modal>
+  );
+}
+
+export function RtoDialog({ order, onClose }) {
+  const prepaid = order.payment?.provider !== 'cod' && ['captured', 'partially_refunded'].includes(order.payment?.status);
+  const balance = Math.max(0, (order.payment?.amountPaid || 0) - (order.payment?.amountRefunded || 0));
+  const suggested = Math.max(0, balance - (order.pricing?.shippingCharge || 0));
+  const [reason, setReason] = useState('');
+  const [restock, setRestock] = useState(true);
+  const [amount, setAmount] = useState(toRupees(suggested));
+  const paise = prepaid ? toPaise(amount) || 0 : 0;
+  const save = useAction(() => api(`/orders/${order._id}/rto`, { method: 'POST', body: { reason: reason.trim(), restock, refundAmount: paise } }), {
+    invalidate: keys(order),
+    success: (r) => (r.refund ? `Marked returned to origin. Refund of ${inr(r.refund.amount)} initiated.` : 'Marked returned to origin'),
+    onSuccess: onClose,
+  });
+  const valid = reason.trim().length >= 3 && paise <= balance;
+  return (
+    <Modal open onClose={onClose} title={`Parcel came back: ${order.orderNumber}`} footer={<Footer onClose={onClose} busy={save.isPending} disabled={!valid} label="Mark returned to origin" tone="btn-danger" onClick={() => save.mutate()} />}>
+      <div className="space-y-4 text-sm">
+        <p>Use this when the courier returns the parcel undelivered, for example the customer refused a cash-on-delivery parcel or could not be reached. The order is closed as cancelled, the shipment is marked RTO, any coupon use is given back and the customer is emailed.</p>
+        <Textarea label="What happened" required rows={2} value={reason} onChange={(e) => setReason(e.target.value)} placeholder="Customer refused at the door" hint="Included in the email to the customer." />
+        <Checkbox label="Put the items back into stock" hint="Untick if the parcel came back damaged. Do this once the parcel has actually reached you." checked={restock} onChange={(e) => setRestock(e.target.checked)} />
+        {prepaid ? (
+          <Input
+            label="Refund to the customer (₹)"
+            inputMode="decimal"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            hint={`Paid online: ${inr(balance)}. Suggested amount leaves out the delivery charge of ${inr(order.pricing?.shippingCharge || 0)}. Enter 0 to refund nothing now. Goes back through CCAvenue.`}
+            error={paise > balance ? 'More than the amount paid' : undefined}
+          />
+        ) : (
+          <Notice tone="info">Cash-on-delivery order: nothing was paid, so there is nothing to refund.</Notice>
+        )}
       </div>
     </Modal>
   );
